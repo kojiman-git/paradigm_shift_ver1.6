@@ -1,0 +1,57 @@
+
+html,body{
+  overflow: hidden
+}
+
+
+
+h2{
+  font-size: 45px;
+  position: relative; /* 今の位置を基準 */
+  top: -40px; /* 上から10px */
+  left: 10px; /* 左から20px */
+}
+
+h1{
+  font-size: 85px;
+  position: relative; /* 今の位置を基準 */
+  top: -100px; /* 上から10px */
+  left: 20px; /* 左から20px */
+}
+
+p{
+  font-size: 17px;
+  position: relative; /* 今の位置を基準 */
+  top: -150px; /* 上から10px */
+  left: 40px; /* 左から20px */
+}
+
+img{
+   width:1222px ;
+   height: 540px;
+   position: relative; /* 今の位置を基準 */
+   top: -300px; /* 上から10px */
+   left: 250px; /* 左から20px */
+}
+
+button{
+  appearance: none;
+  border: 0;
+  border-radius: 25px;
+  background: #76f6ff;
+  color: rgb(0, 0, 0);
+  padding: 8px 16px;
+  font-size: 45px;
+  position: relative; /* 今の位置を基準 */
+  top: -400px; /* 上から10px */
+  left: -1150px; /* 左から20px */
+}
+
+button:hover {
+  background: #1d49aa;
+}
+ 
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px #cbd6ee;
+}
