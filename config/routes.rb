@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/post_search'
   get 'quiz_challenge/next_quiz'
   get 'quiz_challenge/previous_quiz'
   get 'quiz_challenge/check_the_answer'
