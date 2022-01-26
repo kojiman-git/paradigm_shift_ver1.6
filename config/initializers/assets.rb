@@ -17,4 +17,5 @@ Rails.application.config.assets.precompile += %w(
   home.css
   top.css
   applicaton.css
+  quiz.css
 )

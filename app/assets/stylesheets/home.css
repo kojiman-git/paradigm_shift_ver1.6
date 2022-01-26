@@ -5,7 +5,7 @@
 
 body{
   margin: 0px;
-  
+  overflow: hidden;
 }
 
 .container {
@@ -33,7 +33,7 @@ img {
   
 }
 
-h1{
+.app_name{
   position: relative; 
   top: 10px; 
   left: -30px;
@@ -42,7 +42,7 @@ h1{
 }
 
 main {
-  position: relative;
+  /* position: relative; */
   flex: 1;
   background-color: rgb(255, 255, 255);
   overflow-y: scroll;

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'quiz_challenge/next_quiz'
+  get 'quiz_challenge/previous_quiz'
+  get 'quiz_challenge/check_the_answer'
   get 'home_page/home'
   get 'home_page/quiz'
   get 'home_page/search'
