@@ -21,4 +21,5 @@ Rails.application.config.assets.precompile += %w(
   search.css
   post_search.css
   post.css
+  app_detailed_description.css
 )

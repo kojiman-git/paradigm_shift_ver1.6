@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'head_icon/profile'
+  get 'head_icon/follows_list'
+  get 'head_icon/followers_list'
+  get 'head_icon/app_detailed_description'
+  get 'head_icon/quiz_list'
   get 'search/post_search'
   get 'quiz_challenge/next_quiz'
   get 'quiz_challenge/previous_quiz'

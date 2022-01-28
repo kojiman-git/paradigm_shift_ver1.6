@@ -1,0 +1,21 @@
+
+
+.titel-container{
+  text-align: center;
+  background-color: #cefffb ;
+  font-weight: bold;
+  border: solid 1px #000000;
+}
+ 
+p {
+  
+  padding:40px;
+  font-size: 23px;
+} 
+
+.description-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
