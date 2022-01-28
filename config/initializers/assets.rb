@@ -20,4 +20,5 @@ Rails.application.config.assets.precompile += %w(
   quiz.css
   search.css
   post_search.css
+  post.css
 )

@@ -1,0 +1,28 @@
+
+
+.titel-container{
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  background-color: #cefffb ;
+  font-weight: bold;
+  border: solid 1px #000000;
+
+ 
+}
+
+#titel{
+  position: relative; 
+  right: -50px;
+}
+
+#post-btn{
+  position: relative; 
+  right: 30px;
+  border: solid 1px #000000;
+  border-radius: 20%;
+  background: #a7f9ff;
+  height: 33px;
+  }
+ 
+  

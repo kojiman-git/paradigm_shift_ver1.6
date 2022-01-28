@@ -1,2 +1,34 @@
-<h1>HomePage#post</h1>
-<p>Find me in app/views/home_page/post.html.erb</p>
+<html lang="ja">
+ <head>
+ <meta charset="utf-8">
+ <title>paradigm shift</title>
+ 
+ <%= stylesheet_link_tag 'home', :media => "all" %>
+ <%= stylesheet_link_tag 'post', :media => "all" %>
+ </head>
+ <body>
+  <div class="container">
+    <header>
+      <img src="../assets/undraw_profile_pic_ic-5-t.svg">
+      <h1 class="app_name">Paradigm Shift</h1>
+      <h1></h1>
+    </header>
+    <div class="titel-container">
+      <div></div>
+      <h1 id="titel">投稿編集</h1>
+      <h2 id="post-btn">投稿する</h2>
+    </div>
+    <main class="post-area">
+    </main>
+    <footer>
+      <img src="../assets/undraw_at_home_octe.svg" onclick="location.href='../home_page/home'">
+      <img src="../assets/undraw_questions_re_1fy7.svg" onclick="location.href='../home_page/quiz'" >
+      <img src="../assets/undraw_people_search_re_5rre.svg" onclick="location.href='../home_page/search'">
+      <img src="../assets/undraw_notify_re_65on.svg" onclick="location.href='../home_page/news'">
+      <img src="../assets/undraw_opened_re_i38e.svg" onclick="location.href='../home_page/direct_message'">
+    </footer>
+  </div>
+ </body>
+</html>
+     
+    
