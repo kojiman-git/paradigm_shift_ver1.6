@@ -24,5 +24,5 @@ Rails.application.config.assets.precompile += %w(
   app_detailed_description.css
   follows_list.css
   followers_list.css
-  
+  quiz_list.css
 )
