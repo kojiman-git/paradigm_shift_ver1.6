@@ -1,0 +1,33 @@
+.titel-container{
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  background-color: #cefffb ;
+  font-weight: bold;
+  border: solid 1px #000000;
+  
+}
+
+#profile-btn{
+  position: relative; 
+  left: 30px;
+  border: solid 1px #000000;
+  border-radius: 10px;
+  background: #a7f9ff;
+  height: 33px;
+  }
+ 
+
+   #category{
+    position: relative; 
+    right: 30px;
+    border: solid 1px #000000;
+    border-radius: 10px;
+    background: #a7f9ff;
+    height: 33px;
+  }
+
+  #titel{
+    position: relative;
+    right: 30px;
+  }

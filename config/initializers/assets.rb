@@ -25,4 +25,5 @@ Rails.application.config.assets.precompile += %w(
   follows_list.css
   followers_list.css
   quiz_list.css
+  profile.css
 )
