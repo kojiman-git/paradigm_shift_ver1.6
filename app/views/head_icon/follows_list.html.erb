@@ -11,11 +11,31 @@
  <body>
   <div class="container">
     <header>
-      <img src="../assets/undraw_profile_pic_ic-5-t.svg">
+      <label for="menu" class="open"><img src="../assets/undraw_profile_pic_ic-5-t.svg"></label>
       <h1 class="app_name">Paradigm Shift</h1>
       <h1></h1>
     </header>
     <h1 id="titel">All Follows</h1>
+    <input id="menu" type="checkbox" />
+    <label for="menu" class="back"></label>
+    <aside>
+        <div id="user-container">
+          <div id="name-container">
+            <img id="user-photo" onclick="location.href='../head_icon/profile'" src="../assets/undraw_profile_pic_ic-5-t.svg">
+            <h6 id="user-name">テストユーザー</h6>
+            <label for="menu" class="close">×</label>
+          </div>
+          <div id="follow-container">
+            <h6 onclick="location.href='../head_icon/follows_list'"> xxx follow</h6>
+            <h6 onclick="location.href='../head_icon/followers_list'"> yyy followers</h6>
+          </div>
+        </div>
+        <div id="drawer-menu">
+          <h3 onclick="location.href='../head_icon/profile'">プロフィール</h3>
+          <h3 onclick="location.href='../head_icon/quiz_list'">クイズ一覧</h3>
+          <h3 onclick="location.href='../head_icon/app_detailed_description'">このアプリの詳細説明</h3>
+        </div>
+    </aside>
     <main class="follows-area">
       
     </main>
