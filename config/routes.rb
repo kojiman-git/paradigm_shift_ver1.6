@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'users/index'
+  get 'users/show'
+  get 'users/new'
+  get 'users/create'
+  get 'users/edit'
+  get 'users/update'
+  get 'users/destroy'
   get 'head_icon/profile'
   get 'head_icon/follows_list'
   get 'head_icon/followers_list'
@@ -14,9 +21,11 @@ Rails.application.routes.draw do
   get 'home_page/news'
   get 'home_page/direct_message'
   get 'home_page/post'
-   
-  
   get 'static_pages/app_explanation'
   root 'static_pages#top'
 
+  resources :users
+
 end
+   
+  

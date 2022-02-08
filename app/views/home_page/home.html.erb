@@ -35,6 +35,9 @@
         </div>
     </aside>
     <main>
+      <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
       <button onclick="location.href='../home_page/post'"  type="button" id="login_button">+</button>
     </main>
     <footer>
