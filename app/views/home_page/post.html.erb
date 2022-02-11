@@ -1,54 +1,19 @@
-<html lang="ja">
- <head>
- <meta charset="utf-8">
- <title>paradigm shift</title>
+
  
  <%= stylesheet_link_tag 'home', :media => "all" %>
  <%= stylesheet_link_tag 'post', :media => "all" %>
- </head>
- <body>
+ 
+
   <div class="container">
-    <header>
-      <label for="menu" class="open"><img src="../assets/undraw_profile_pic_ic-5-t.svg"></label>
-      <h1 class="app_name">Paradigm Shift</h1>
-      <h1></h1>
-    </header>
+    <%= render 'shared/header' %>
     <div class="titel-container">
       <div></div>
       <h1 id="titel">投稿編集</h1>
       <h2 id="post-btn">投稿する</h2>
     </div>
-    <input id="menu" type="checkbox" />
-    <label for="menu" class="back"></label>
-    <aside>
-        <div id="user-container">
-          <div id="name-container">
-            <img id="user-photo" onclick="location.href='../head_icon/profile'" src="../assets/undraw_profile_pic_ic-5-t.svg">
-            <h6 id="user-name">テストユーザー</h6>
-            <label for="menu" class="close">×</label>
-          </div>
-          <div id="follow-container">
-            <h6 onclick="location.href='../head_icon/follows_list'"> xxx follow</h6>
-            <h6 onclick="location.href='../head_icon/followers_list'"> yyy followers</h6>
-          </div>
-        </div>
-        <div id="drawer-menu">
-          <h3 onclick="location.href='../head_icon/profile'">プロフィール</h3>
-          <h3 onclick="location.href='../head_icon/quiz_list'">クイズ一覧</h3>
-          <h3 onclick="location.href='../head_icon/app_detailed_description'">このアプリの詳細説明</h3>
-        </div>
-    </aside>
+    <%= render 'shared/drawer_menu' %>
     <main class="post-area">
     </main>
-    <footer>
-      <img src="../assets/undraw_at_home_octe.svg" onclick="location.href='../home_page/home'">
-      <img src="../assets/undraw_questions_re_1fy7.svg" onclick="location.href='../home_page/quiz'" >
-      <img src="../assets/undraw_people_search_re_5rre.svg" onclick="location.href='../home_page/search'">
-      <img src="../assets/undraw_notify_re_65on.svg" onclick="location.href='../home_page/news'">
-      <img src="../assets/undraw_opened_re_i38e.svg" onclick="location.href='../home_page/direct_message'">
-    </footer>
+    <%= render 'shared/footer' %>
   </div>
- </body>
-</html>
-     
-    
+
