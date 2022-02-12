@@ -27,4 +27,5 @@ Rails.application.config.assets.precompile += %w(
   quiz_list.css
   profile.css
   custom.scss
+  edit.css
 )

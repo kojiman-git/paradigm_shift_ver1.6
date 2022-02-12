@@ -6,7 +6,7 @@
   <div class="container">
     <%= render 'shared/header' %>
     <div class="titel-container">
-      <h2 id="profile-btn">プロフィール編集</h2>
+      <h2 id="profile-btn"><%= link_to "プロフィール編集", edit_user_path(current_user) %></h2>
       <h1 id="titel">My Profile</h1>
       
       <select id="category">
@@ -23,6 +23,9 @@
     <%= render 'shared/drawer_menu' %>
    
     <main class="profile-area">
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
     </main>
     <%= render 'shared/footer' %>
   </div>
