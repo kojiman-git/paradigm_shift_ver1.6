@@ -18,4 +18,14 @@
   text-align: center;
 }
 
+.users{
+  display: flex;
+  border: solid 1px #000000;
+}
+
+#name-intoroduction{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
 

@@ -1,3 +1,32 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<%= @user.name %>, <%= @user.email %>
+
+ <%= stylesheet_link_tag 'home', :media => "all" %>
+ <%= stylesheet_link_tag 'profile', :media => "all" %>
+ 
+ 
+  <div class="container">
+    <%= render 'shared/header' %>
+    <div class="titel-container">
+      <h2 id="profile-btn"><%= link_to "プロフィール編集", edit_user_path(current_user) %></h2>
+      <h1 id="titel">My Profile</h1>
+      
+      <select id="category">
+        <option selected>カテゴリーで絞る</option>
+        <option>英語</option>
+        <option>数学</option>
+        <option>国語</option>
+        <option>理科</option>
+        <option>社会</option>
+        <option>その他</option>
+      </select>
+ 
+    </div>
+    <%= render 'shared/drawer_menu' %>
+   
+    <main class="profile-area">
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+    </main>
+    <%= render 'shared/footer' %>
+  </div>
+ 

@@ -6,6 +6,7 @@ class HomePageController < ApplicationController
   end
 
   def search
+    @users = User.all
   end
 
   def news

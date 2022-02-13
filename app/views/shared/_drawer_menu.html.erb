@@ -14,7 +14,7 @@
           </div>
         </div>
         <div id="drawer-menu">
-          <h3 onclick="location.href='../head_icon/profile'">プロフィール</h3>
+          <h3><%= link_to "プロフィール", user_path(current_user) %></h3>
           <h3 onclick="location.href='../head_icon/quiz_list'">クイズ一覧</h3>
           <h3 onclick="location.href='../head_icon/app_detailed_description'">このアプリの詳細説明</h3>
           
