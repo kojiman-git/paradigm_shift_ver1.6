@@ -13,6 +13,14 @@
     </div>
     <%= render 'shared/drawer_menu' %>
     <main class="post-area">
+      <%= form_with(model: @post, local: true) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="field">
+        <%= f.text_field :term, class: 'form-control' %>
+        <%= f.text_area :paraphrase, placeholder: "自分の言葉で言い換えるとどんな感じ？" %>
+      </div>
+      <%= f.submit "Post", class: "btn btn-primary" %>
+      <% end %>
     </main>
     <%= render 'shared/footer' %>
   </div>

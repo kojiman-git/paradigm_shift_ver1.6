@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  term: MyString
+  paraphrase: MyText
+  m_category_id: 1
+
+two:
+  user: two
+  term: MyString
+  paraphrase: MyText
+  m_category_id: 1

@@ -16,5 +16,6 @@ class HomePageController < ApplicationController
   end
 
   def post
+    @post = current_user.posts.build if logged_in?
   end
 end
