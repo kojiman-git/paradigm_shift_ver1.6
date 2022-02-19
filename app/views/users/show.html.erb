@@ -23,19 +23,19 @@
     <%= render 'shared/drawer_menu' %>
    
     <main class="profile-area">
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %></div>
-    <% end %>
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
 
-    <div class="col-md-8">
-    <% if @user.posts.any? %>
-      <h3>posts (<%= @user.posts.count %>)</h3>
-      <ol class="posts">
-        <%= render 'shared/post' %>
-      </ol>
-      
-    <% end %>
-    </div>
+      <div class="col-md-8">
+      <% if @user.posts.any? %>
+        <h3>posts (<%= @user.posts.count %>)</h3>
+        <ol class="posts">
+          <%= render 'shared/post' %>
+        </ol>
+        
+      <% end %>
+      </div>
 
 
     </main>
