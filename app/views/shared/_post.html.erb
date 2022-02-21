@@ -1,15 +1,27 @@
-<% @posts.each do |post| %>
-  <li id="post-<%= post.id %>">
-    
-    <span class="user"><%= link_to post.user.name, post.user %></span>
-    <span class="content"><%= post.term %></span>
-    <span class="content"><%= post.paraphrase %></span>
-    <span class="timestamp">
-      Posted <%= time_ago_in_words(post.created_at) %> ago.
-      <% if current_user?(post.user) %>
-      <%= link_to "投稿を削除", post, 
-                                       data: { confirm: "投稿を本当に削除しますか?" } %>
-      <% end %>
-    </span>
-  </li>
+<% if @user.posts.any? %>
+  <div class="posts">
+    <% @posts.each do |post| %>
+      <div id="post">
+        <div id="left-container">
+        <div id="namephoto-container">
+          <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg"> 
+          <h1 id="user-name"><%=  post.user.name %></h1>
+        </div>
+        <span id="timestamp">
+          Posted <%= time_ago_in_words(post.created_at) %> ago.
+        </span>
+        </div> 
+        <div id="term-paraphrase">
+        <h2 id="term"><%= post.term %></h2>
+        <h3 id="paraphrase"><%= post.paraphrase %></h3>
+        
+        </div>
+        <% if current_user?(post.user) %>
+        <%= link_to "投稿を削除", post, 
+                                        data: { confirm: "投稿を本当に削除しますか?" } %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
+          

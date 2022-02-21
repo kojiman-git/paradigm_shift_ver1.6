@@ -1,15 +1,36 @@
 
  
  <%= stylesheet_link_tag 'home', :media => "all" %>
- <%= stylesheet_link_tag 'search', :media => "all" %>
+ <%= stylesheet_link_tag 'post_search', :media => "all" %>
+ <%= stylesheet_link_tag 'show', :media => "all"  %> 
+ 
 
  
   <div class="container">
     <%= render 'shared/header' %>
-    <h1 id="titel">All Posts</h1>
+    <h1 id="top-titel">All Posts</h1>
     <%= render 'shared/drawer_menu' %>
     <main class="posts-area">
-     
+     <% @feed_all.each do |feed| %>
+      <div id="post">
+        <div id="left-container">
+        <div id="namephoto-container">
+          <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg"> 
+          <h1 id="user-name"><%=link_to  feed.user.name , feed.user %></h1>
+          
+        </div>
+        <span id="timestamp">
+          Posted <%= time_ago_in_words(feed.created_at) %> ago.
+        </span>
+        </div> 
+        <div id="term-paraphrase">
+        <h2 id="term"><%= feed.term %></h2>
+        <h3 id="paraphrase"><%= feed.paraphrase %></h3>
+        
+        </div>
+        
+      </div>
+    <% end %>
     </main>
     <div class="operation-container">
       <h1 id="operation-btn" onclick="location.href='../home_page/search'">ユーザーを検索</h1>

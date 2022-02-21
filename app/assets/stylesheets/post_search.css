@@ -3,12 +3,12 @@
  
 }
 
-#titel{
+#top-titel{
   text-align: center;
   font-weight: bold;
   border: solid 1px #000000;
   background-color: #cefffb;
- 
+  
 }
 
 #operation-btn{

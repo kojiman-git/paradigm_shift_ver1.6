@@ -1,0 +1,91 @@
+.titel-container{
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  background-color: #cefffb ;
+  font-weight: bold;
+  border: solid 1px #000000;
+  
+}
+
+#profile-btn{
+  position: relative; 
+  left: 30px;
+  border: solid 1px #000000;
+  border-radius: 10px;
+  background: #a7f9ff;
+  height: 33px;
+  }
+ 
+
+   #category{
+    position: relative; 
+    right: 30px;
+    border: solid 1px #000000;
+    border-radius: 10px;
+    background: #a7f9ff;
+    height: 33px;
+  }
+
+  #titel{
+    position: relative;
+    right: 30px;
+  }
+
+  /* メイン部分のcss */
+
+  .users{
+    display: flex;
+    border: solid 2px #000000;
+  }
+
+  #left-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  #namephoto-container{
+  display: flex;
+ }
+
+ #user-name{
+   padding-top: 4vh;
+ }
+  
+ 
+ #follow-container{
+   display: flex;
+   justify-content: space-around;
+   
+  }
+   
+  #name-intoroduction{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding-left: 4vw;
+    padding-top: 4vh;
+  }
+   
+  .posts{
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  #post{
+    display: flex;
+    border: solid 1px #000000;
+  }
+
+  #timestamp{
+    padding-left: 4vw;
+  }
+
+  #term-paraphrase{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding-left: 4vw;
+    padding-top: 4vh;
+  }

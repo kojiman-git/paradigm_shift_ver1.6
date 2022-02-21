@@ -28,4 +28,5 @@ Rails.application.config.assets.precompile += %w(
   profile.css
   custom.scss
   edit.css
+  show.css
 )

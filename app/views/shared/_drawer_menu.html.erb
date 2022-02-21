@@ -4,8 +4,14 @@
 <aside>
         <div id="user-container">
           <div id="name-container">
+           <% if logged_in? %>
+            <img id="user-photo" onclick="location.href='../head_icon/profile'" src="../../assets/undraw_male_avatar_323b.svg">
+            <h6 id="user-name"><%= current_user.name %></h6>
+
+           <% else %>
             <img id="user-photo" onclick="location.href='../head_icon/profile'" src="../../assets/undraw_profile_pic_ic-5-t.svg">
             <h6 id="user-name">テストユーザー</h6>
+           <%end%>
             <label for="menu" class="close">×</label>
           </div>
           <div id="follow-container">

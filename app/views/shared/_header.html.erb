@@ -1,5 +1,9 @@
 <header>
+ <% if logged_in? %>
+  <label for="menu" class="open"><img src="../../assets/undraw_male_avatar_323b.svg"></label>
+<% else %>
   <label for="menu" class="open"><img src="../../assets/undraw_profile_pic_ic-5-t.svg"></label>
+<%end%>
   <h1 class="app_name">Paradigm Shift</h1>
   <h1></h1>
 </header>
