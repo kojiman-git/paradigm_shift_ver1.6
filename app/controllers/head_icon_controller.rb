@@ -3,9 +3,13 @@ class HeadIconController < ApplicationController
   end
 
   def follows_list
+    
+
   end
 
   def followers_list
+    
+
   end
 
   def app_detailed_description

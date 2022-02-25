@@ -15,8 +15,22 @@
             <label for="menu" class="close">×</label>
           </div>
           <div id="follow-container">
-            <h6 onclick="location.href='../head_icon/follows_list'"> xxx follow</h6>
-            <h6 onclick="location.href='../head_icon/followers_list'"> yyy followers</h6>
+            <div class="stats">
+              <a href="<%= following_user_path(current_user) %>">
+                <strong id="following" class="stat">
+                  <%= current_user.following.count %>
+                </strong>
+                following
+              </a>
+              <a href="<%= followers_user_path(current_user) %>">
+                <strong id="followers" class="stat">
+                  <%= current_user.followers.count %>
+                </strong>
+                followers
+              </a>
+            </div>
+            <%# <h6 onclick="location.href='../head_icon/follows_list'"> xxx follow</h6>
+            <h6 onclick="location.href='../head_icon/followers_list'"> yyy followers</h6> %>
           </div>
         </div>
         <div id="drawer-menu">

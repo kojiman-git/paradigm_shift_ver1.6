@@ -7,7 +7,18 @@
     <h1 id="titel">All Followers</h1>
     <%= render 'shared/drawer_menu' %>
     <main class="followers-area">
-      
+       <% @users.each do |user| %>
+        
+        <div class="users">
+       
+          <img id="user-photo" onclick="location.href='<%= user_path(user)%>'" src="../../assets/undraw_male_avatar_323b.svg"> 
+          <div id="name-intoroduction">
+            <h1><%= link_to user.name, user_path(user) %></h1>
+            <h2>自己紹介</h2>
+            <%= user.intoroduction %>
+          </div>
+        </div>
+      <% end %>
     </main>
     <%= render 'shared/footer' %>
   </div>

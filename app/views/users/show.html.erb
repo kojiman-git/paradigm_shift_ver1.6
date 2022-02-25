@@ -31,14 +31,15 @@
          <% if logged_in? %>
            <div id="left-container">
             <div id="namephoto-container">
+              <%= render 'shared/follow_form' if logged_in? %>
               <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg"> 
               <h1 id="user-name"><%=@user.name %></h1>
             </div>
 
             <div id="follow-container">
-              <h6 onclick="location.href='../head_icon/follows_list'"> xxx follow</h6>
-              
-              <h6 onclick="location.href='../head_icon/followers_list'"> yyy followers</h6>
+              <%= render 'shared/stats' %>
+              <%# <h6 onclick="location.href='../head_icon/follows_list'"> xxx follow</h6>
+              <h6 onclick="location.href='../head_icon/followers_list'"> yyy followers</h6> %>
             </div>
            </div>
            
