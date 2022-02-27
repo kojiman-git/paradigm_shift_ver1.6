@@ -7,7 +7,7 @@
     <%= render 'shared/header' %>
     <div class="titel-container">
       <h2 id="profile-btn"><%= link_to "プロフィール編集", edit_user_path(current_user) %></h2>
-      <h1 id="titel">My Profile</h1>
+      <h1 id="titel">Profile</h1>
       
       <select id="category">
         <option selected>カテゴリーで絞る</option>
@@ -31,7 +31,6 @@
          <% if logged_in? %>
            <div id="left-container">
             <div id="namephoto-container">
-              <%= render 'shared/follow_form' if logged_in? %>
               <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg"> 
               <h1 id="user-name"><%=@user.name %></h1>
             </div>
@@ -49,6 +48,7 @@
             <h3><%= @user.intoroduction %></h3>
             
           </div>
+          <%= render 'shared/follow_form' %>
          <% else %>
           <img id="user-photo" src="../../assets/undraw_profile_pic_ic-5-t.svg"> 
           <div id="name-intoroduction">
