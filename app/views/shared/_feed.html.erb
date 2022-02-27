@@ -1,17 +1,24 @@
 <% if @feed_items.any? %>
-  <ol class="microposts">
+  <div class="posts">
     <% @feed_items.each do |item| %>
-      <li id="post-<%= item.id %>">
-        
-        <span class="user"><%= link_to item.user.name, item.user %></span>
-        <span class="content"><%= item.term %></span>
-        <span class="content"><%= item.paraphrase %></span>
-        <span class="timestamp">
-          Posted <%= time_ago_in_words(item.created_at) %> ago.
-        </span>
-      </li>
+      <div id="post">
+        <div id="left-container">
+          <div id="namephoto-container">
+            <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg"> 
+            <h1 id="user-name"><%= link_to item.user.name, item.user%></h1>
+          </div>
+          <span id="timestamp">
+            Posted <%= time_ago_in_words(item.created_at) %> ago.
+          </span>
+        </div>
+        <div id="term-paraphrase">
+          <h2 id="term"><%= item.term %></h2>
+          <h3 id="paraphrase"><%= item.paraphrase %></h3>
+        </div>
+    </div>
     <% end %>
-  </ol>
+  </div>
  
 <% end %>
+
 

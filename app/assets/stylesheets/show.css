@@ -27,10 +27,11 @@
     height: 33px;
   }
 
-  #titel{
+  /* #titel{
     position: relative;
-    right: 30px;
-  }
+    right: 30px; 
+    
+  } */
 
   /* メイン部分のcss */
 
@@ -79,7 +80,7 @@
   }
 
   #timestamp{
-    padding-left: 4vw;
+    padding-left: 5vw;
   }
 
   #term-paraphrase{

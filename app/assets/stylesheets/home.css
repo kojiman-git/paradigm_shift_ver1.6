@@ -24,6 +24,13 @@ header {
   
 }
 
+#home-titel{
+  text-align: center;
+  font-weight: bold;
+  border: solid 1px #000000;
+  background-color: #cefffb;
+}
+
 img {
   width: 50px;
   height: 50px;
@@ -38,9 +45,9 @@ img {
   position: relative; 
   top: 10px; 
   left: -30px;
-  
-  
 }
+  
+  
 
 main {
   /* position: relative; */
@@ -54,7 +61,7 @@ button{
   height: 50px;
   border: 0;
   border-radius: 50%;
-  background: #a7f9ff;
+  background: #cefffb;
   color: rgb(0, 0, 0);
   padding: 5px;
   font-size: 38px;

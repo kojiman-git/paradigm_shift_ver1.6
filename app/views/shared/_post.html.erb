@@ -3,17 +3,17 @@
     <% @posts.each do |post| %>
       <div id="post">
         <div id="left-container">
-        <div id="namephoto-container">
-          <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg"> 
-          <h1 id="user-name"><%=  post.user.name %></h1>
-        </div>
-        <span id="timestamp">
-          Posted <%= time_ago_in_words(post.created_at) %> ago.
-        </span>
+          <div id="namephoto-container">
+            <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg"> 
+            <h1 id="user-name"><%=  post.user.name %></h1>
+          </div>
+          <span id="timestamp">
+            Posted <%= time_ago_in_words(post.created_at) %> ago.
+          </span>
         </div> 
         <div id="term-paraphrase">
-        <h2 id="term"><%= post.term %></h2>
-        <h3 id="paraphrase"><%= post.paraphrase %></h3>
+          <h2 id="term"><%= post.term %></h2>
+          <h3 id="paraphrase"><%= post.paraphrase %></h3>
         
         </div>
         <% if current_user?(post.user) %>
