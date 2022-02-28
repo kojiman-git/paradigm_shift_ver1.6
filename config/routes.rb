@@ -30,6 +30,11 @@ Rails.application.routes.draw do
 
   get '/posts/:id',  to: 'posts#destroy'
   resources :posts,only: [:create,:destroy]
+  resources :posts do
+    get 'cre' => 'likes#create'
+    get '/des' => 'likes#destroy'
+  end
+
   resources :relationships,only: [:create, :destroy]
   
 
