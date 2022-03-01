@@ -14,9 +14,9 @@
         <div id="term-paraphrase">
           <h2 id="term"><%= post.term %></h2>
           <h3 id="paraphrase"><%= post.paraphrase %></h3>
-          <div id="like-btn">
-            <%= render 'shared/like', post: post%>
-          </div>
+        </div>
+        <div id="like-btn">
+          <%= render 'shared/like', post: post%>
         </div>
         <% if current_user?(post.user) %>
         <%= link_to "投稿を削除", post, 
