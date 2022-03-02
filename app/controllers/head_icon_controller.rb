@@ -16,5 +16,8 @@ class HeadIconController < ApplicationController
   end
 
   def quiz_list
+    @posts = current_user.liked_all
+    
   end
 end
+    

@@ -7,6 +7,12 @@ class User < ApplicationRecord
                      OR user_id = :user_id", user_id: id)
   end
 
+  def liked_all
+    liked_post_ids = "SELECT post_id FROM likes
+                     WHERE user_id = :user_id"
+    Post.where("id IN (#{liked_post_ids})", user_id: self.id)
+  end
+
   # ユーザーをフォローする
   def follow(other_user)
     following << other_user
@@ -21,6 +27,8 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  
 
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post

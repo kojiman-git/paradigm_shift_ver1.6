@@ -7,6 +7,8 @@ class Post < ApplicationRecord
     likes.where(user_id: user.id).exists?
   end
 
+  
+
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
