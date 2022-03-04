@@ -29,4 +29,5 @@ Rails.application.config.assets.precompile += %w(
   custom.scss
   edit.css
   show.css
+  notice.css
 )

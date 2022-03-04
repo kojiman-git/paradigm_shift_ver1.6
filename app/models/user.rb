@@ -27,7 +27,9 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+  
 
+  has_many :notification, dependent: :destroy
   
 
   has_many :likes, dependent: :destroy

@@ -1,2 +1,25 @@
-<h1>HomePage#news</h1>
-<p>Find me in app/views/home_page/news.html.erb</p>
+<%= stylesheet_link_tag 'home', :media => "all" %>
+<%= stylesheet_link_tag 'notice', :media => "all" %>
+
+ 
+  <div class="container">
+   
+    <%= render 'shared/header' %>
+    <h1 id="titel">Notice</h1>
+    <%= render 'shared/drawer_menu' %>
+   
+    <main>
+      <% @notices.each do |notice| %>
+        <div class="content-area">
+            <img src="../../assets/undraw_male_avatar_323b.svg">
+            <h1 id = "content"><%= notice.content %></h1>
+            <h3 id = "content"><%= time_ago_in_words(notice.created_at) %> ago.</h3>
+        </div>
+      <% end %>
+    </main>
+    <%= render 'shared/footer' %>
+    
+  </div>
+      
+      
+  

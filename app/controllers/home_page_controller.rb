@@ -16,6 +16,8 @@ class HomePageController < ApplicationController
   end
 
   def news
+    @notices = Notification.where(user_id: current_user.id)
+
   end
 
   def direct_message
