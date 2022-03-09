@@ -149,7 +149,8 @@ aside{
     justify-content: space-around;
     align-items: center;
     height: 50%;
-    font-size: 4vh;
+    font-size: 3vh 3vw ;
+    
   }
     
   #menu[type="checkbox"]:checked ~ aside {

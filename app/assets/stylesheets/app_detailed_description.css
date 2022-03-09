@@ -1,6 +1,6 @@
 
 
-.titel-container{
+#titel-container{
   text-align: center;
   background-color: #cefffb ;
   font-weight: bold;
@@ -9,12 +9,9 @@
  
   
 
-.description-area{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+#description-area{
+ 
   font-size: 3vh;
-  height: 85%;
+  margin: 3vh;
   
 }
