@@ -8,8 +8,15 @@
 .content-area{
   display: flex;
   border: solid 1px #000000;
-  height: 15vh;
+  height: 20vh;
   align-items: center;
   justify-content: space-around;
+  font-size: 1vw;
+  
+}
+
+#content{
+   width: 70%;
+   
 }
 

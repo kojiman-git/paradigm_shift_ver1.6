@@ -1,25 +1,100 @@
-
+ 
  
  <%= stylesheet_link_tag 'home', :media => "all" %>
  <%= stylesheet_link_tag 'quiz', :media => "all" %>
+
+  
+
 
   <div class="container">
     <%= render 'shared/header' %>
     <h1 id="titel">クイズに挑戦</h1>
     <%= render 'shared/drawer_menu' %>
     <main class="quiz-area">
-      <%# likeした投稿データが入る %>
-      
+       <div id = "question">
+          <div id = "contributor">
+            <img id="user-photo"  src="../../assets/undraw_male_avatar_323b.svg">
+            <div id = "name"></div>
+          </div>
+          <div id = "term"></div>
+          <div></div>
+          <div></div>
+       </div>
+       <div id = "paraphrase">
+          <div id = "para">
+            
+          </div>
+       </div>
     </main>
     <div class="operation-container">
-      <h1 id="operation-btn">回答を表示する</h1>
-      <h1 id="operation-btn">前のクイズに戻る</h1>
-      <h1 id="operation-btn">次のクイズへ進む</h1>
+      <h1 id="answer-btn" class="operation-btn">回答を表示する</h1>
+      <h1 id="hide-btn" class="operation-btn">回答を隠す</h1>
+      <h1 id="next-btn" class="operation-btn" onclick="location.href='../../home_page/quiz'">次のクイズへ進む</h1>
     </div>
     <%= render 'shared/footer' %>
   </div>
+          
+       
+            
+            
+         
+
+<script>
+  (function() {
+    'use strict';
+
+  let words = [
+      <% @posts.each do |post| %>
+        {'term': '<%=post.term%>' ,
+        'para': '<%=post.paraphrase%>',
+        'Hide the answer': '上の用語はどんな意味の言葉であったか思い出してみましょう',
+        'name':'投稿者:<%=User.find_by(id: post.user_id).name%>'},
+      <% end %>
+    ];
+
+    let term = document.getElementById('term');
+    let para = document.getElementById('para');
+    let answer = document.getElementById('answer-btn');
+    let hide = document.getElementById('hide-btn');
+    let name = document.getElementById('name');
+     answer.addEventListener('click', function() {
+       open_answer();
+     });
+     hide.addEventListener('click', function() {
+       hide_answer();
+     });
+     
+    let num = Math.floor(Math.random() * words.length);
+     
+    function set_quiz() {
+      para.innerHTML = words[num]['Hide the answer'];
+      term.innerHTML = words[num]['term'];
+      name.innerHTML = words[num]['name'];
+    }
+    function open_answer() {
+      para.innerHTML = words[num]['para'];
+    }
+    function hide_answer() {
+      para.innerHTML = words[num]['Hide the answer'];
+    }
+    
+    set_quiz();
+    
+    
+  })();
+</script>
+      
+      
+     
+
+
+   
+
 
     
+
+      
+     
       
 
 

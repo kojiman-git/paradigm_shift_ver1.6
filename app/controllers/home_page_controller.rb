@@ -7,6 +7,8 @@ class HomePageController < ApplicationController
   end
 
   def quiz
+    @posts = current_user.liked_all
+   
   end
 
   def search

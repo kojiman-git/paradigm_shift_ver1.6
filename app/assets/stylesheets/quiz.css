@@ -11,14 +11,50 @@
  
 }
 
-#operation-btn{
+.operation-btn{
   border: solid 1px #000000;
   background-color: #cefffb;
   flex: 1;
   text-align: center;
 }
 
+.quiz-area{
+  display: flex;
+  flex-direction: column;
+}
 
+#question{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+#contributor{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+#name{
+   padding-left: 3vw; 
+} 
 
+#term{
+  font-size: 5vw;
+  font-weight: bold;
+  border-radius: 25px;
+} 
+
+#paraphrase{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
+
+#para{
+  font-weight: bold;
+  font-size: 3vw;
+  margin: 3vh;
+}

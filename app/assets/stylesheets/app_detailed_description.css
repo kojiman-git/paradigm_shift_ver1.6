@@ -7,15 +7,14 @@
   border: solid 1px #000000;
 }
  
-p {
   
-  padding:40px;
-  font-size: 23px;
-} 
 
 .description-area{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 3vh;
+  height: 85%;
+  
 }
