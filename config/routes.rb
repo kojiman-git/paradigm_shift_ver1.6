@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'rooms/show'
   get 'sessions/new'
   get 'head_icon/profile'
   get 'head_icon/follows_list'
@@ -35,8 +36,10 @@ Rails.application.routes.draw do
     get '/des' => 'likes#destroy'
   end
 
-  resources :relationships,only: [:create, :destroy]
-  
+  resources :relationships,only: [:create, :destroy] 
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create,:show]
+  get '/rooms',   to: 'rooms#create'
 
 end
    

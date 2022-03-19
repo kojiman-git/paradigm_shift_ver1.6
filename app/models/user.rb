@@ -28,6 +28,8 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
   
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   has_many :notification, dependent: :destroy
   

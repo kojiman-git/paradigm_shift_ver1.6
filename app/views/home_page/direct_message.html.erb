@@ -1,2 +1,22 @@
-<h1>HomePage#direct_message</h1>
-<p>Find me in app/views/home_page/direct_message.html.erb</p>
+<%= stylesheet_link_tag 'home', :media => "all" %>
+<%= stylesheet_link_tag 'message_partner', :media => "all" %>
+
+ 
+  <div class="container">
+   
+    <%= render 'shared/header' %>
+    <h1 id="home-titel">Message Partner</h1>
+    <%= render 'shared/drawer_menu' %>
+   
+    <main>
+      <% @message_partners.each do |message_partner| %>
+        <div id = "message-partner">
+          <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg">
+          <%= link_to "#{message_partner.user.name}とのトークルームへ移動", "/rooms/#{message_partner.room_id}" , id: "talk-room" %>
+        </div>
+     
+      <% end %>
+    </main>
+    <%= render 'shared/footer' %>
+    
+  </div>

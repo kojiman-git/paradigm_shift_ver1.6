@@ -1,0 +1,50 @@
+
+<%= stylesheet_link_tag 'home', :media => "all" %>
+<%= stylesheet_link_tag 'direct', :media => "all" %>
+
+ 
+  <div class="container">
+   
+    <%= render 'shared/header' %>
+    <h1 id="titel">Direct Message</h1>
+    <%= render 'shared/drawer_menu' %>
+    <main>
+      <div class="chats">
+        <div class="chat">
+          <% if @messages.present? %>
+            <% @messages.each do |m| %>
+              <div class="chat-box">
+                <div class="chat-face">
+                  <img id="user-photo"  src="../../assets/undraw_male_avatar_323b.svg">
+                  <h2 id="user-name"><%= m.user.name %></h2>
+                </div>
+                <div class="chat-hukidashi"> 
+                  <p><%= m.message %></p> 
+                  
+                </div>
+                <div>
+                  <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        
+      </div>
+    </main>
+    <%# <div class="posts"> %>
+      <%= form_with(model: @message, local: true) do |f| %>
+        <%= f.text_field :message, placeholder: "メッセージを入力して下さい" ,  class:"form-text-field" %>
+          <%= f.hidden_field :room_id, value: @room.id %>
+                                                         
+            <%= f.submit "投稿",class: 'form-submit'%>
+      <% end %>
+    <%# </div> %>
+    <%= render 'shared/footer' %>
+    
+  </div>
+     
+
+
+   
+          

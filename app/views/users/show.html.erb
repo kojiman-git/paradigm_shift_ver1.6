@@ -28,17 +28,16 @@
       <% end %>
       <div class="col-md-8">
         <div class="users">
-         <% if logged_in? %>
-           <div id="left-container">
+        <% if logged_in? %>
+          <div id="left-container">
             <div id="namephoto-container">
               <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg"> 
               <h1 id="user-name"><%=@user.name %></h1>
             </div>
-
             <div id="follow-container">
               <%= render 'shared/stats' %>
             </div>
-           </div>
+          </div>
            
           <div id="name-intoroduction">
             
@@ -46,15 +45,33 @@
             <h3><%= @user.intoroduction %></h3>
             
           </div>
+          <div>
+            <% unless @user.id == current_user.id %>
+              <% if (current_user.following? @user) && (@user.following? current_user)  %>
+                <% if @isRoom == true %>
+                 <a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
+                <% else %>
+      
+                  <%= form_with(model: @room, local: true) do |f| %>
+                    <%= fields_for @entry do |e| %>
+                      <%= e.hidden_field :user_id, value: @user.id %>
+                    <% end %>
+                    <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+
           <%= render 'shared/follow_form' %>
-         <% else %>
+        <% else %>
           <img id="user-photo" src="../../assets/undraw_profile_pic_ic-5-t.svg"> 
           <div id="name-intoroduction">
             <h1>テストユーザー</h1>
             <h2>自己紹介</h2>
             <h3>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</h3>
           </div>
-         <% end %>
+        <% end %>
         </div>
         <%= render 'shared/post'%>
       </div>

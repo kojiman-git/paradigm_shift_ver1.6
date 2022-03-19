@@ -1,0 +1,43 @@
+#titel{
+  text-align: center;
+  background-color: #cefffb ;
+  font-weight: bold;
+  border: solid 1px #000000;
+}
+
+.chat-box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: solid 1px #000000;
+}
+
+.chat-face{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+ 
+}
+
+#user-name{
+  padding-left: 3vw;
+}
+
+.chat-hukidashi{
+  width: 70%;
+}
+
+p {
+  font-size: 3vh;
+}
+
+.form-text-field{
+  width: 88vw;
+  font-size: 3vh;
+}
+
+.form-submit{
+  width: 10vw;
+  font-size: 3vh;
+  background-color: #cefffb ;
+}
