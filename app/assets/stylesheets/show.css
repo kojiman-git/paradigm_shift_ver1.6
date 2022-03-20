@@ -74,8 +74,8 @@
     font-size: 2vw;
     margin-top: 2vh;
     margin-right: 1vw;
-    border-radius: 50%;
-    
+    border-radius: 40px;
+    border: solid 1px #000000;
   }
   
   .btn-default{
