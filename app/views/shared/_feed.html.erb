@@ -1,7 +1,7 @@
 <% if @feed_items.any? %>
   <div class="posts">
     <% @feed_items.each do |post| %>
-      <div id="post">
+      <div id="post"  >
         <div id="left-container">
           <div id="namephoto-container">
             <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg"> 
@@ -11,7 +11,7 @@
             Posted <%= time_ago_in_words(post.created_at) %> ago.
           </span>
         </div>
-        <div id="term-paraphrase">
+        <div id="term-paraphrase" onclick="location.href='../post_details/<%=post.id%>'" >
           <h2 id="term"><%= post.term %></h2>
           <h3 id="paraphrase"><%= post.paraphrase %></h3>
         </div>

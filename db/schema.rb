@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_16_150115) do
+ActiveRecord::Schema.define(version: 2022_03_20_114923) do
 
   create_table "chatroom_messages", force: :cascade do |t|
     t.integer "chatroom_user_id", null: false
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 2022_03_16_150115) do
   create_table "chatrooms", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "entries", force: :cascade do |t|
@@ -112,6 +122,8 @@ ActiveRecord::Schema.define(version: 2022_03_16_150115) do
   add_foreign_key "chatroom_messages", "chatroom_users"
   add_foreign_key "chatroom_users", "chatrooms"
   add_foreign_key "chatroom_users", "users"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
   add_foreign_key "entries", "rooms"
   add_foreign_key "entries", "users"
   add_foreign_key "likes", "posts"

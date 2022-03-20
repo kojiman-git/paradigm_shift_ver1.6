@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get 'rooms/show'
   get 'sessions/new'
   get 'head_icon/profile'
@@ -40,6 +41,8 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
   resources :rooms, only: [:create,:show]
   get '/rooms',   to: 'rooms#create'
+  resources :post_details ,only: [:create,:show]
+
 
 end
    

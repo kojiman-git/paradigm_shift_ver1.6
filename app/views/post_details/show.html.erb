@@ -1,0 +1,70 @@
+<%= stylesheet_link_tag 'home', :media => "all" %>
+<%= stylesheet_link_tag 'direct', :media => "all" %>
+<%= stylesheet_link_tag 'post_details', :media => "all" %>
+
+
+
+ 
+  <div class="container">
+   
+    <%= render 'shared/header' %>
+    <h1 id="home-titel">Post Details</h1>
+    <%= render 'shared/drawer_menu' %>
+   
+    <main>
+      <div id="post"  >
+        <div id="container">
+          <div id="namephoto-container">
+            <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg"> 
+            <h1 id="user-name"><%= link_to @post.user.name, @post.user%></h1>
+          </div>
+          <h2 id="term"><%= @post.term %></h2>
+          <div id="timestamp">
+            Posted <%= time_ago_in_words(@post.created_at) %> ago.
+          </div>
+        </div>
+        <div id="paraphrase">
+         
+          <h3 id="paraphrase"><%= @post.paraphrase %></h3>
+        </div>
+        <div id="btn">
+          <div>
+          </div>
+          <div id="like-btn" >
+            <%= render 'shared/like', post: @post%>
+          </div>
+        </div>
+      </div>
+      <div>
+      <h1 id="home-titel">Comments</h1>
+        <% @comments.each do |c| %>
+          <div class="chat-box">
+            <div class="chat-face">
+              <img id="user-photo"  src="../../assets/undraw_male_avatar_323b.svg">
+              <h2 id="user-name"><%= c.user.name %></h2>
+            </div>
+            <div class="chat-hukidashi"> 
+              <p><%= c.comment %></p> 
+              
+            </div>
+            <div>
+              <%= c.created_at.strftime("%Y-%m-%d %H:%M")%>
+            </div>
+          </div>
+        <% end %>
+      </div>
+       
+    </main>
+    <%= form_with(model:  @comment, local: true, url: post_details_path) do |f| %>
+        <%= f.text_field :comment, placeholder: "この投稿にコメントしてみよう" ,  class:"form-text-field" %>
+        <%= f.hidden_field :post_id, value: @post.id %>
+          
+                                                         
+            <%= f.submit "送信",class: 'form-submit'%>
+    <% end %>
+    <%= render 'shared/footer' %>
+    
+  </div>
+
+ 
+      

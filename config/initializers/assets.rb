@@ -32,4 +32,5 @@ Rails.application.config.assets.precompile += %w(
   notice.css
   direct.css
   message_partner.css
+  post_details.css
 )

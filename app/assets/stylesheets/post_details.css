@@ -1,0 +1,35 @@
+#post{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#namephoto-container{
+  text-align: center;
+}
+
+#term{
+  font-size: 3.5vw;
+}
+
+
+#paraphrase{
+  text-align: center;
+  font-size: 3.5vw;
+}
+
+#btn{
+  display: flex;
+  justify-content: space-between;
+}
+
+#like-btn{
+  padding-right: 1vw;
+}
