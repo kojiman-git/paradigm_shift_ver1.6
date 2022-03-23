@@ -15,9 +15,12 @@
           <h2 id="term"><%= post.term %></h2>
           <h3 id="paraphrase"><%= post.paraphrase %></h3>
         </div>
+        
         <div id="like-btn">
+          <%= render 'shared/review', post: post%>
           <%= render 'shared/like', post: post%>
         </div>
+        
         <% if current_user?(post.user) %>
         <%= link_to "投稿を削除", post, 
                                         data: { confirm: "投稿を本当に削除しますか?" } %>

@@ -1,9 +1,9 @@
 <% if post.liked_by?(current_user) %>
   <%= link_to(post_des_path(post),remote: true, id: :"dislike-button") do %>
-      <i class="fa-lg fas fa-heart icon-btn liked"><img src="../../assets/icons8-いいね-48 (1).png"></i>
+      <img src="../../assets/icons8-いいね-48 (1).png">
   <% end %>
 <% else %>
   <%= link_to(post_cre_path(post),remote: true, id: :"like-button") do %>
-      <i class="fa-lg fas fa-heart icon-btn not-like"><img src="../../assets/icons8-いいね-50.png"></i>
+      <img src="../../assets/icons8-いいね-50.png">
   <% end %>
 <% end %>

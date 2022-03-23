@@ -111,6 +111,7 @@
 
   #like-btn{
     padding-top: 18vh;
+    display: flex;
   }
 
   

@@ -1,0 +1,31 @@
+<%= stylesheet_link_tag 'home', :media => "all" %>
+<%= stylesheet_link_tag 'reviewers_list', :media => "all" %>
+
+
+ 
+  <div class="container">
+   
+    <%= render 'shared/header' %>
+    <h1 id="home-titel">Reviewers</h1>
+    <%= render 'shared/drawer_menu' %>
+   
+    <main>
+    
+    <% @reviews.each do |review| %>
+      <div id="reviewers-list">
+        <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg"> 
+        <h1 id="user-name"><%= review.user.name %></h1>
+        <h1 >score:<%= review.score %></h1>
+       </div>
+    <% end %>
+     
+    </main>
+    <%= render 'shared/footer' %>
+    
+  </div>
+
+ 
+      
+
+
+    

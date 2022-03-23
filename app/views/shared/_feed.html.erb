@@ -15,7 +15,10 @@
           <h2 id="term"><%= post.term %></h2>
           <h3 id="paraphrase"><%= post.paraphrase %></h3>
         </div>
+        
+        
         <div id="like-btn">
+          <%= render 'shared/review', post: post%>
           <%= render 'shared/like', post: post%>
           
         </div>
@@ -25,4 +28,8 @@
  
 <% end %>
 
+       
+        
+          
+         
 

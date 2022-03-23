@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'home', :media => "all" %>
 <%= stylesheet_link_tag 'direct', :media => "all" %>
 <%= stylesheet_link_tag 'post_details', :media => "all" %>
-
+<%= stylesheet_link_tag 'reviews', :media => "all" %>
 
 
  
@@ -20,18 +20,21 @@
           </div>
           <h2 id="term"><%= @post.term %></h2>
           <div id="timestamp">
-            Posted <%= time_ago_in_words(@post.created_at) %> ago.
+            <%# Posted <%= time_ago_in_words(@post.created_at) ago.  %>
           </div>
         </div>
         <div id="paraphrase">
          
           <h3 id="paraphrase"><%= @post.paraphrase %></h3>
         </div>
-        <div id="btn">
-          <div>
+        <div id="review-area">
+          <div >
+            <%= render 'reviews/form', review: @review,  post: @post %>
+            <%= link_to "#{@reviews_count}件のレビュー", post_detail_reviews_path(@post.id)%>
           </div>
           <div id="like-btn" >
             <%= render 'shared/like', post: @post%>
+            
           </div>
         </div>
       </div>

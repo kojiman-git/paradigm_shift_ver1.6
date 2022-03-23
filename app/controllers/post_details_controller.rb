@@ -3,6 +3,8 @@ class PostDetailsController < ApplicationController
     @post = Post.find(params[:id])
     @comment= Comment.new
     @comments = Comment.where(post_id: @post.id)
+    @review = Review.new
+    @reviews_count = @post.reviews.count
     
   end
 

@@ -33,3 +33,10 @@
 #like-btn{
   padding-right: 1vw;
 }
+
+#review-area{
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+ 
+}

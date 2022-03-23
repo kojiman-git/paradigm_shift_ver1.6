@@ -3,6 +3,7 @@
  <%= stylesheet_link_tag 'home', :media => "all" %>
  <%= stylesheet_link_tag 'post_search', :media => "all" %>
  <%= stylesheet_link_tag 'show', :media => "all"  %> 
+ <%= stylesheet_link_tag 'reviewers', :media => "all" %>
  
 
  
@@ -27,7 +28,9 @@
           <h2 id="term"><%= post.term %></h2>
           <h3 id="paraphrase"><%= post.paraphrase %></h3>
         </div>
+        
         <div id="like-btn">
+          <%= render 'shared/review', post: post%>
           <%= render 'shared/like', post: post%>
         </div>
         

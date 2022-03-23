@@ -1,0 +1,6 @@
+#reviewers-list{
+  display: flex;
+  border: solid 1px #000000;
+  justify-content: space-around;
+  align-items: center;
+}

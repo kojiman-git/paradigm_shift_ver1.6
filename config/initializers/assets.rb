@@ -33,4 +33,7 @@ Rails.application.config.assets.precompile += %w(
   direct.css
   message_partner.css
   post_details.css
+  reviews.scss
+  reviews.js
+  reviewers.scss
 )
