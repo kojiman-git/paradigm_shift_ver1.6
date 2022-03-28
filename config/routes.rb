@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'head_icon/app_detailed_description'
   get 'head_icon/quiz_list'
   get 'search/post_search'
+  get 'search/narrow_down_by_category'
   get 'quiz_challenge/next_quiz'
   get 'quiz_challenge/previous_quiz'
   get 'quiz_challenge/check_the_answer'

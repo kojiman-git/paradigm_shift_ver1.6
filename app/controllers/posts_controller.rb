@@ -9,7 +9,7 @@ class PostsController < ApplicationController
       redirect_to home_page_home_path
     else
       @feed_items = []
-      render 'home_pages/post'
+      render 'home_page/post'
     end
   end
 
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:paraphrase,:term)
+      params.require(:post).permit(:paraphrase,:term,:m_category_id)
     end
 
     def correct_user

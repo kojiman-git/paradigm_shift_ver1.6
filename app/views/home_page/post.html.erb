@@ -17,6 +17,7 @@
       <%= render 'shared/error_messages', object: f.object %>
       
       <%= f.text_field :term, placeholder: "自分の理解したい用語を入力しよう" ,class: 'form-control' %>
+      <%= f.collection_select :m_category_id, MCategory.all, :id, :name, { prompt: 'カテゴリーを選択してください' }, class: 'form-control'%>
       <%= f.text_area :paraphrase, placeholder: "その用語を自分の言葉で言い換えるとどんな感じ？" ,class: 'paraphrase form-control' %>
       <%= f.submit "投稿する", class: "btn form-control" %>
       

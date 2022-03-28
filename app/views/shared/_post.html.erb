@@ -12,6 +12,7 @@
           </span>
         </div> 
         <div id="term-paraphrase">
+          <h2 ><%="カテゴリー : #{post.m_category.name}" %></h2>
           <h2 id="term"><%= post.term %></h2>
           <h3 id="paraphrase"><%= post.paraphrase %></h3>
           <%= render 'shared/review', post: post%>
