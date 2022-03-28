@@ -13,6 +13,11 @@ class SearchController < ApplicationController
     @post = Post.new
   end
 
+  def user_search
+    @users = User.search(params[:keyword])
+   
+  end
+
   private
 
     def category_params

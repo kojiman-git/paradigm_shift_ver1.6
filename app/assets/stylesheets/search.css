@@ -50,3 +50,17 @@
   background-color: #cefffb;
 }
 
+
+#titel-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  border: solid 1px #000000;
+  background-color: #cefffb;
+}
+
+.search-btn{
+  
+  background-color:#a7f9ff
+}
