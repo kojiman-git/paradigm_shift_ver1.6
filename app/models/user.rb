@@ -31,6 +31,9 @@ class User < ApplicationRecord
   def self.search(keyword)
     where(["name like? OR intoroduction like?", "%#{keyword}%", "%#{keyword}%"])
   end
+
+  mount_uploader :image, ImageUploader
+  
   
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy

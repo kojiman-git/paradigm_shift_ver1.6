@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_24_154505) do
+ActiveRecord::Schema.define(version: 2022_03_29_140228) do
 
   create_table "chatroom_messages", force: :cascade do |t|
     t.integer "chatroom_user_id", null: false
@@ -130,9 +130,9 @@ ActiveRecord::Schema.define(version: 2022_03_24_154505) do
     t.string "email"
     t.string "password_digest"
     t.text "intoroduction"
-    t.text "profile_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
   end
 
   add_foreign_key "chatroom_messages", "chatroom_users"

@@ -34,9 +34,20 @@
           <%= f.label :password_confirmation, "Confirmation" %>
           <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+          <% if @user.image? %>
+            <%= image_tag @user.image.thumb.url, class: "user-icon" %>
+          <% else %>
+            <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon" %>
+          <% end %>
+          <%= f.label :image, "プロフィール画像" %>
+          <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: " form-control" %>
+       
+
           <%= f.submit "Save changes", class: "btn form-control" %>
           
         <% end %>
+          
+         
       
      
     </main>

@@ -95,3 +95,7 @@ end
 gem 'mysql2'
 
 gem 'bulma-rails'
+
+gem 'carrierwave'
+
+gem 'rmagick'
