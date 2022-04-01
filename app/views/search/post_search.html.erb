@@ -29,7 +29,12 @@
       <div id="post">
         <div id="left-container">
         <div id="namephoto-container">
-          <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg"> 
+          <% if post.user.image? %>
+              <%= image_tag post.user.image.thumb.url, class: "user-icon" ,id: "user-photo"%>
+          <% else %>
+              <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon",id: "user-photo" %>
+          <% end %>
+          
           <h1 id="user-name"><%=link_to  post.user.name , post.user %></h1>
           
         </div>

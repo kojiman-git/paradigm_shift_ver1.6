@@ -15,7 +15,12 @@
       <div id="post"  >
         <div id="container">
           <div id="namephoto-container">
-            <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg"> 
+            <% if @post.user.image? %>
+              <%= image_tag @post.user.image.thumb.url, class: "user-icon" ,id: "user-photo"%>
+            <% else %>
+              <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon",id: "user-photo" %>
+            <% end %>
+            
             <h1 id="user-name"><%= link_to @post.user.name, @post.user%></h1>
           </div>
           <h2 id="term"><%= @post.term %></h2>
@@ -43,7 +48,12 @@
         <% @comments.each do |c| %>
           <div class="chat-box">
             <div class="chat-face">
-              <img id="user-photo"  src="../../assets/undraw_male_avatar_323b.svg">
+              <% if c.user.image? %>
+               <%= image_tag c.user.image.thumb.url, class: "user-icon" ,id: "user-photo"%>
+              <% else %>
+               <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon",id: "user-photo" %>
+              <% end %>
+              
               <h2 id="user-name"><%= c.user.name %></h2>
             </div>
             <div class="chat-hukidashi"> 

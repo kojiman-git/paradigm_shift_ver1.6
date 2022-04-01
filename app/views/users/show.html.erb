@@ -7,18 +7,9 @@
   <div class="container">
     <%= render 'shared/header' %>
     <div class="titel-container">
-      <h2 id="profile-btn"><%= link_to "プロフィール編集", edit_user_path(current_user) %></h2>
+      <h2 id="profile-btn"><%= link_to "Edit", edit_user_path(current_user) %></h2>
       <h1 id="titel">Profile</h1>
-      
-      <select id="category">
-        <option selected>カテゴリーで絞る</option>
-        <option>英語</option>
-        <option>数学</option>
-        <option>国語</option>
-        <option>理科</option>
-        <option>社会</option>
-        <option>その他</option>
-      </select>
+      <h2></h2>
  
     </div>
     <%= render 'shared/drawer_menu' %>
@@ -32,7 +23,12 @@
         <% if logged_in? %>
           <div id="left-container">
             <div id="namephoto-container">
-              <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg"> 
+              <% if @user.image? %>
+                <%= image_tag @user.image.thumb.url, class: "user-icon" ,id: "user-photo"%>
+              <% else %>
+                <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon",id: "user-photo" %>
+              <% end %>
+              
               <h1 id="user-name"><%=@user.name %></h1>
             </div>
             <div id="follow-container">

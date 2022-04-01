@@ -5,8 +5,12 @@
         <div id="user-container">
           <div id="name-container">
            <% if logged_in? %>
-            <img id="user-photo" onclick="location.href='../head_icon/profile'" src="../../assets/undraw_male_avatar_323b.svg">
-            <h6 id="user-name"><%= current_user.name %></h6>
+            <% if current_user.image? %>
+              <%= image_tag current_user.image.thumb.url,class: "user-icon", id: "user-photo" %>
+            <% else %>
+              <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon" %>
+            <% end %>
+              <h6 id="user-name"><%= current_user.name %></h6>
 
            <% else %>
             <img id="user-photo" onclick="location.href='../head_icon/profile'" src="../../assets/undraw_profile_pic_ic-5-t.svg">

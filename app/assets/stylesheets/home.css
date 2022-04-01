@@ -80,6 +80,10 @@ footer{
   
 }
 
+.user-icon {
+  border-radius: 100%;
+}
+
 /* ドロワーメニューのcss */
 #menu{
   position: absolute;
@@ -116,9 +120,9 @@ aside{
   }
 
   #user-photo{
-    height: 20vh;
-    width: 20vw;
-   
+    height: 15vh;
+    width: 12vw;
+    
   }
 
   #user-name{

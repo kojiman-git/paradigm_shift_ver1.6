@@ -3,28 +3,19 @@
  <%= stylesheet_link_tag 'home', :media => "all" %>
  <%= stylesheet_link_tag 'quiz_list', :media => "all" %>
  <%= stylesheet_link_tag 'show', :media => "all" %>
- <%= stylesheet_link_tag 'reviewers', :media => "all" %>う
+ <%= stylesheet_link_tag 'reviewers', :media => "all" %>
 
  
   <div class="container">
     <%= render 'shared/header' %>
     
-    <div class="titel-container">
-      <h2 id="order-btn">出題順番入れ替え</h2> 
+    <div id="titel-container">
+      
     
       
-      <h1 id="titel">Quiz List</h1>
+      <h1 >Quiz List</h1>
      
-      <select id="category">
-        <option selected>Category</option>
-        <option>英語</option>
-        <option>数学</option>
-        <option>国語</option>
-        <option>理科</option>
-        <option>社会</option>
-        <option>その他</option>
-      </select>
- 
+      
     </div>
     <%= render 'shared/drawer_menu' %>
     <main class="quiz-area">
@@ -34,7 +25,11 @@
           <div id="post">
             <div id="left-container">
               <div id="namephoto-container">
-                <img id="user-photo" src="../../assets/undraw_male_avatar_323b.svg"> 
+                <% if post.user.image? %>
+                  <%= image_tag post.user.image.thumb.url, class: "user-icon ",id: "user-photo" %>
+                <% else %>
+                  <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon" %>
+                <% end %>
                 <h1 id="user-name"><%=  post.user.name %></h1>
               </div>
               <span id="timestamp">
@@ -42,6 +37,7 @@
               </span>
             </div> 
             <div id="term-paraphrase">
+              <h2 ><%="カテゴリー : #{post.m_category.name}" %></h2>
               <h2 id="term"><%= post.term %></h2>
               <h3 id="paraphrase"><%= post.paraphrase %></h3>
               <%= render 'shared/review', post: post%>

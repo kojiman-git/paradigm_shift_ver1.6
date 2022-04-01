@@ -1,6 +1,10 @@
 <header>
- <% if logged_in? %>
-  <label for="menu" class="open"><img src="../../assets/undraw_male_avatar_323b.svg"></label>
+<% if logged_in? %>
+  <% if current_user.image? %>
+    <label for="menu" class="open"><%= image_tag current_user.image.thumb.url, class: "user-icon " %></label>
+  <% else %>
+    <label for="menu" class="open"><%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon" %></label>
+  <% end %>
 <% else %>
   <label for="menu" class="open"><img src="../../assets/undraw_profile_pic_ic-5-t.svg"></label>
 <%end%>

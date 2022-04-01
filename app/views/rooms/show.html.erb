@@ -15,7 +15,11 @@
             <% @messages.each do |m| %>
               <div class="chat-box">
                 <div class="chat-face">
-                  <img id="user-photo"  src="../../assets/undraw_male_avatar_323b.svg">
+                  <% if m.user.image? %>
+                      <%= image_tag m.user.image.thumb.url, class: "user-icon" ,id: "user-photo"%>
+                  <% else %>
+                      <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon",id: "user-photo" %>
+                  <% end %>
                   <h2 id="user-name"><%= m.user.name %></h2>
                 </div>
                 <div class="chat-hukidashi"> 
