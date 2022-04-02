@@ -1,9 +1,9 @@
 
  
- <%= stylesheet_link_tag 'home', :media => "all" %>
+
  <%= stylesheet_link_tag 'search', :media => "all" %>
   <div class="container">
-    <%= render 'shared/header' %>
+    <%= render 'shared/header_and_drawer' %>
     <div id="titel-container">
       <div></div>
       <div></div>
@@ -15,14 +15,14 @@
         <%= f.submit "検索", class: "search-btn" %>
       <% end %>
     </div>
-    <%= render 'shared/drawer_menu' %>
+    
     <main class="users-area">
     
     <%= render 'shared/user-list' %>
     </main>
     <div class="operation-container">
-      <h1 id="operation-btn" onclick="location.href='../home_page/search'">ユーザーを検索</h1>
-      <h1 id="operation-btn" onclick="location.href='../search/post_search'">投稿を検索</h1>
+      <h1 id="operation-btn" onclick="location.href='../home_page/search'">User Search</h1>
+      <h1 id="operation-btn" onclick="location.href='../search/post_search'">Post Search</h1>
     </div>
       
     <%= render 'shared/footer' %>

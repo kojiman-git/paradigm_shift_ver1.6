@@ -1,0 +1,62 @@
+<header>
+<% if logged_in? %>
+  <% if current_user.image? %>
+    <label for="menu" class="open"><%= image_tag current_user.image.thumb.url, class: "user-icon " %></label>
+  <% else %>
+    <label for="menu" class="open"><%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon" %></label>
+  <% end %>
+<% else %>
+  <label for="menu" class="open"><img src="../../assets/undraw_profile_pic_ic-5-t.svg"></label>
+<%end%>
+  <h1 class="app_name">Paradigm Shift</h1>
+  <h1></h1>
+</header>
+
+<input id="menu" type="checkbox" />
+<label for="menu" class="back"></label>
+
+<aside>
+        <div id="user-container">
+          <div id="name-container">
+           <% if logged_in? %>
+            <% if current_user.image? %>
+              <%= image_tag current_user.image.thumb.url,class: "user-icon", id: "user-photo" %>
+            <% else %>
+              <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon" %>
+            <% end %>
+              <h6 id="user-name"><%= current_user.name %></h6>
+
+           <% else %>
+            <img id="user-photo" onclick="location.href='../head_icon/profile'" src="../../assets/undraw_profile_pic_ic-5-t.svg">
+            <h6 id="user-name">テストユーザー</h6>
+           <%end%>
+            <label for="menu" class="close">×</label>
+          </div>
+          <div id="follow-container">
+            <div class="stats">
+              <a href="<%= following_user_path(current_user) %>">
+                <strong id="following" class="stat">
+                  <%= current_user.following.count %>
+                </strong>
+                following
+              </a>
+              <a href="<%= followers_user_path(current_user) %>">
+                <strong id="followers" class="stat">
+                  <%= current_user.followers.count %>
+                </strong>
+                followers
+              </a>
+            </div>
+            <%# <h6 onclick="location.href='../head_icon/follows_list'"> xxx follow</h6>
+            <h6 onclick="location.href='../head_icon/followers_list'"> yyy followers</h6> %>
+          </div>
+        </div>
+        <div id="drawer-menu">
+          <h3><%= link_to "My profile", user_path(current_user) %></h3>
+          <h3 onclick="location.href='../head_icon/quiz_list'">Quiz list</h3>
+          <h3 onclick="location.href='../head_icon/app_detailed_description'">App description</h3>
+          
+          <h3><%= link_to "Log out", logout_path, method: :delete %></h3>
+          
+        </div>
+</aside>

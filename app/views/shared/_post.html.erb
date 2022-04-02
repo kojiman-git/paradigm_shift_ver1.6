@@ -1,5 +1,4 @@
-<% if @user.posts.any? %>
-  <div class="posts">
+
     <% @posts.each do |post| %>
       <div id="post">
         <div id="left-container">
@@ -10,13 +9,13 @@
                 <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon",id: "user-photo" %>
             <% end %>
            
-            <h1 id="user-name"><%=  post.user.name %></h1>
+            <h1 id="user-name"><%= link_to post.user.name, post.user%></h1>
           </div>
           <span id="timestamp">
             Posted <%= time_ago_in_words(post.created_at) %> ago.
           </span>
         </div> 
-        <div id="term-paraphrase">
+        <div id="term-paraphrase" onclick="location.href='../post_details/<%=post.id%>'" >
           <h2 ><%="カテゴリー : #{post.m_category.name}" %></h2>
           <h2 id="term"><%= post.term %></h2>
           <h3 id="paraphrase"><%= post.paraphrase %></h3>
@@ -34,7 +33,5 @@
         <% end %>
       </div>
     <% end %>
-  </div>
-<% end %>
-           
+  
           

@@ -1,6 +1,6 @@
 
  
- <%= stylesheet_link_tag 'home', :media => "all" %>
+
  <%= stylesheet_link_tag 'post_search', :media => "all" %>
  <%= stylesheet_link_tag 'show', :media => "all"  %> 
  <%= stylesheet_link_tag 'reviewers', :media => "all" %>
@@ -8,7 +8,7 @@
 
  
   <div class="container">
-    <%= render 'shared/header' %>
+    <%= render 'shared/header_and_drawer' %>
     <div id = "titel-container">
      <div></div>
      <div></div>
@@ -23,43 +23,13 @@
       
       <% end %>
     </div>
-    <%= render 'shared/drawer_menu' %>
+    
     <main class="posts-area">
-     <% @posts.each do |post| %>
-      <div id="post">
-        <div id="left-container">
-        <div id="namephoto-container">
-          <% if post.user.image? %>
-              <%= image_tag post.user.image.thumb.url, class: "user-icon" ,id: "user-photo"%>
-          <% else %>
-              <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon",id: "user-photo" %>
-          <% end %>
-          
-          <h1 id="user-name"><%=link_to  post.user.name , post.user %></h1>
-          
-        </div>
-        <span id="timestamp">
-          Posted <%= time_ago_in_words(post.created_at) %> ago.
-        </span>
-        </div> 
-        <div id="term-paraphrase">
-          <h2 ><%="カテゴリー : #{post.m_category.name}" %></h2>
-          <h2 id="term"><%= post.term %></h2>
-          <h3 id="paraphrase"><%= post.paraphrase %></h3>
-          <%= render 'shared/review', post: post%>
-        </div>
-        
-        <div id="like-btn">
-          
-          <%= render 'shared/like', post: post%>
-        </div>
-        
-      </div>
-    <% end %>
+     <%= render 'shared/post'%>
     </main>
     <div class="operation-container">
-      <h1 id="operation-btn" onclick="location.href='../home_page/search'">ユーザーを検索</h1>
-      <h1 id="operation-btn" onclick="location.href='../search/post_search'">投稿を検索</h1>
+      <h1 id="operation-btn" onclick="location.href='../home_page/search'">User Search</h1>
+      <h1 id="operation-btn" onclick="location.href='../search/post_search'">Post Search</h1>
     </div>
       
     <%= render 'shared/footer' %>

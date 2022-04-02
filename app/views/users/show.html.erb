@@ -1,19 +1,17 @@
 
- <%= stylesheet_link_tag 'home', :media => "all" %>
+
  <%= stylesheet_link_tag 'show', :media => "all" %>
  <%= stylesheet_link_tag 'reviewers', :media => "all" %>
  
  
   <div class="container">
-    <%= render 'shared/header' %>
+    <%= render 'shared/header_and_drawer' %>
     <div class="titel-container">
       <h2 id="profile-btn"><%= link_to "Edit", edit_user_path(current_user) %></h2>
-      <h1 id="titel">Profile</h1>
+      <h1 >Profile</h1>
       <h2></h2>
  
     </div>
-    <%= render 'shared/drawer_menu' %>
-   
     <main class="profile-area">
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
@@ -43,21 +41,21 @@
             
           </div>
           <div >
-          <% unless @user.id == current_user.id %>
-            
-              <% if @isRoom == true %>
-                <div class="btn btn-primary btn-lg" onclick="location.href='/rooms/<%= @roomId %>'"> Message</div>
-              <% else %>
-    
-                <%= form_with(model: @room, local: true) do |f| %>
-                  <%= fields_for @entry do |e| %>
-                    <%= e.hidden_field :user_id, value: @user.id %>
+            <% unless @user.id == current_user.id %>
+              
+                <% if @isRoom == true %>
+                  <div class="btn btn-primary btn-lg" onclick="location.href='/rooms/<%= @roomId %>'"> Message</div>
+                <% else %>
+                  <%= form_with(model: @room, local: true) do |f| %>
+                    <%= fields_for @entry do |e| %>
+                      <%= e.hidden_field :user_id, value: @user.id %>
+                    <% end %>
+                    <%= f.submit "Message", class:"btn btn-primary btn-lg user-show-chat"%>
                   <% end %>
-                  <%= f.submit "Message", class:"btn btn-primary btn-lg user-show-chat"%>
                 <% end %>
-              <% end %>
-            
-          <% end %>
+      
+              
+            <% end %>
           </div>
 
           <%= render 'shared/follow_form' %>
@@ -70,12 +68,18 @@
           </div>
         <% end %>
         </div>
-        <%= render 'shared/post'%>
+        <% if @user.posts.any? %>
+          <div class="posts">
+            <%= render 'shared/post'%>
+          </div>
+        <% end %>
       </div>
     </main>
     <%= render 'shared/footer' %>
   </div>
         
+    
+   
  
         
        
