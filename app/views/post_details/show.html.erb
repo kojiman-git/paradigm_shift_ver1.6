@@ -2,15 +2,9 @@
 <%= stylesheet_link_tag 'direct', :media => "all" %>
 <%= stylesheet_link_tag 'post_details', :media => "all" %>
 <%= stylesheet_link_tag 'reviews', :media => "all" %>
-
-
- 
   <div class="container">
-   
     <%= render 'shared/header_and_drawer' %>
-    <h1 id="home-titel">Post Details</h1>
-    
-   
+    <h1 id="titel">Post Details</h1>
     <main>
       <div id="post"  >
         <div id="container">
@@ -20,7 +14,6 @@
             <% else %>
               <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon",id: "user-photo" %>
             <% end %>
-            
             <h1 id="user-name"><%= link_to @post.user.name, @post.user%></h1>
           </div>
           <h2 id="term"><%= @post.term %></h2>
@@ -30,7 +23,6 @@
           </div>
         </div>
         <div id="paraphrase">
-         
           <h3 id="paraphrase"><%= @post.paraphrase %></h3>
         </div>
         <div id="review-area">
@@ -40,12 +32,11 @@
           </div>
           <div id="like-btn" >
             <%= render 'shared/like', post: @post%>
-            
           </div>
         </div>
       </div>
       <div>
-      <h1 id="home-titel">Comments</h1>
+        <h1 id="titel">Comments</h1>
         <% @comments.each do |c| %>
           <div class="chat-box">
             <div class="chat-face">
@@ -54,12 +45,10 @@
               <% else %>
                <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon",id: "user-photo" %>
               <% end %>
-              
               <h2 id="user-name"><%= c.user.name %></h2>
             </div>
             <div class="chat-hukidashi"> 
               <p><%= c.comment %></p> 
-              
             </div>
             <div>
               <%= c.created_at.strftime("%Y-%m-%d %H:%M")%>
@@ -67,17 +56,13 @@
           </div>
         <% end %>
       </div>
-       
     </main>
     <%= form_with(model:  @comment, local: true, url: post_details_path) do |f| %>
         <%= f.text_field :comment, placeholder: "この投稿にコメントしてみよう" ,  class:"form-text-field" %>
-        <%= f.hidden_field :post_id, value: @post.id %>
-          
-                                                         
+        <%= f.hidden_field :post_id, value: @post.id %>                                               
             <%= f.submit "送信",class: 'form-submit'%>
     <% end %>
     <%= render 'shared/footer' %>
-    
   </div>
 
  

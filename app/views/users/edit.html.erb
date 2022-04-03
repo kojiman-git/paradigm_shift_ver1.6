@@ -1,58 +1,44 @@
-
-  
-
 <%= stylesheet_link_tag 'edit', :media => "all" %>
-   <%= render 'shared/header_and_drawer' %>
-   <div class="container">
-    
-    <div class="titel-container">
-      
-      
+  <%= render 'shared/header_and_drawer' %>
+  <div class="container">
       <h1 id="titel">Edit My Profile</h1>
-      
-      
-    </div>
-    
-   
     <main >
-   
-        <%= form_with(model: @user, local: true ,class: 'edit-area') do |f| %>
-         <%= render 'shared/error_messages', object: f.object %>
+      <%= form_with(model: @user, local: true ,class: 'edit-area') do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
 
-          <%= f.label :name %>
-          <%= f.text_field :name, class: 'form-control' %>
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
+        
+        <%= f.label :intoroduction %>
+        <%= f.text_field :intoroduction, class: 'form-control' %>
 
-          <%= f.label :email %>
-          <%= f.email_field :email, class: 'form-control' %>
-          
-          <%= f.label :intoroduction %>
-          <%= f.text_field :intoroduction, class: 'form-control' %>
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
 
-          <%= f.label :password %>
-          <%= f.password_field :password, class: 'form-control' %>
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-          <%= f.label :password_confirmation, "Confirmation" %>
-          <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-          <% if @user.image? %>
-            <%= image_tag @user.image.thumb.url, class: "user-icon" %>
-          <% else %>
-            <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon" %>
-          <% end %>
-          <%= f.label :image, "プロフィール画像" %>
-          <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: " form-control" %>
-       
-
-          <%= f.submit "Save changes", class: "btn form-control" %>
-          
+        <% if @user.image? %>
+          <%= image_tag @user.image.thumb.url, class: "user-icon" %>
+        <% else %>
+          <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon" %>
         <% end %>
-          
-         
-      
-     
+        <%= f.label :image, "プロフィール画像" %>
+        <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: " form-control" %>
+
+        <%= f.submit "Save changes", class: "btn form-control" %>
+      <% end %>
     </main>
     <%= render 'shared/footer' %>
   </div>
+          
+         
+      
+
+  
+
 
  
    

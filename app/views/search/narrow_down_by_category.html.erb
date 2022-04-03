@@ -1,7 +1,5 @@
 
- <%= stylesheet_link_tag 'post_search', :media => "all" %>
- <%= stylesheet_link_tag 'show', :media => "all"  %> 
- <%= stylesheet_link_tag 'reviewers', :media => "all" %>
+  <%= stylesheet_link_tag 'search', :media => "all" %>
   <div class="container">
     <%= render 'shared/header_and_drawer' %>
     <div id = "titel-container">
@@ -9,24 +7,18 @@
      <div></div>
      <h1 >All Posts</h1>
      <%= form_with(model: @post ,url: 'narrow_down_by_category',method: :get, local: true,class: 'edit-area') do |f| %>
-      
       <%= f.collection_select :m_category_id, MCategory.all, :id, :name, { prompt: '全てのカテゴリー' }, class: 'form-control'%>
-      
-      <%= f.submit "絞り込む", class: "btn form-control" %>
-      
+      <%= f.submit "絞り込む", class: "search-btn" %>
       <% end %>
     </div>
     <main class="posts-area">
      <%= render 'shared/post'%>
     </main>
-    <div class="operation-container">
-      <h1 id="operation-btn" onclick="location.href='../home_page/search'">User Search</h1>
-      <h1 id="operation-btn" onclick="location.href='../search/post_search'">Post Search</h1>
-    </div>
-      
+    <%= render 'shared/operation'%>
     <%= render 'shared/footer' %>
-   
   </div>
+ 
+
  
 
  

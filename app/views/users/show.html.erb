@@ -1,16 +1,11 @@
 
-
  <%= stylesheet_link_tag 'show', :media => "all" %>
- <%= stylesheet_link_tag 'reviewers', :media => "all" %>
- 
- 
   <div class="container">
     <%= render 'shared/header_and_drawer' %>
-    <div class="titel-container">
+    <div id="titel-container">
       <h2 id="profile-btn"><%= link_to "Edit", edit_user_path(current_user) %></h2>
       <h1 >Profile</h1>
       <h2></h2>
- 
     </div>
     <main class="profile-area">
       <% flash.each do |message_type, message| %>
@@ -18,60 +13,50 @@
       <% end %>
       <div class="col-md-8">
         <div class="users">
-        <% if logged_in? %>
-          <div id="left-container">
-            <div id="namephoto-container">
-              <% if @user.image? %>
-                <%= image_tag @user.image.thumb.url, class: "user-icon" ,id: "user-photo"%>
-              <% else %>
-                <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon",id: "user-photo" %>
-              <% end %>
-              
-              <h1 id="user-name"><%=@user.name %></h1>
-            </div>
-            <div id="follow-container">
-              <%= render 'shared/stats' %>
-            </div>
-          </div>
-           
-          <div id="name-intoroduction">
-            
-            <h2>自己紹介</h2>
-            <h3><%= @user.intoroduction %></h3>
-            
-          </div>
-          <div >
-            <% unless @user.id == current_user.id %>
-              
-                <% if @isRoom == true %>
-                  <div class="btn btn-primary btn-lg" onclick="location.href='/rooms/<%= @roomId %>'"> Message</div>
+          <% if logged_in? %>
+            <div id="left-container">
+              <div id="namephoto-container">
+                <% if @user.image? %>
+                  <%= image_tag @user.image.thumb.url, class: "user-icon" ,id: "user-photo"%>
                 <% else %>
-                  <%= form_with(model: @room, local: true) do |f| %>
-                    <%= fields_for @entry do |e| %>
-                      <%= e.hidden_field :user_id, value: @user.id %>
-                    <% end %>
-                    <%= f.submit "Message", class:"btn btn-primary btn-lg user-show-chat"%>
-                  <% end %>
+                  <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon",id: "user-photo" %>
                 <% end %>
-      
-              
-            <% end %>
-          </div>
-
-          <%= render 'shared/follow_form' %>
-        <% else %>
-          <img id="user-photo" src="../../assets/undraw_profile_pic_ic-5-t.svg"> 
-          <div id="name-intoroduction">
-            <h1>テストユーザー</h1>
-            <h2>自己紹介</h2>
-            <h3>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</h3>
-          </div>
-        <% end %>
+                <h1 id="user-name"><%=@user.name %></h1>
+              </div>
+              <div id="follow-container">
+                <%= render 'shared/stats' %>
+              </div>
+            </div>
+            <div id="name-intoroduction">
+              <h2>自己紹介</h2>
+              <h3><%= @user.intoroduction %></h3>
+            </div>
+            <div >
+              <% unless @user.id == current_user.id %>
+                  <% if @isRoom == true %>
+                    <div class="btn btn-primary btn-lg" onclick="location.href='/rooms/<%= @roomId %>'"> Message</div>
+                  <% else %>
+                    <%= form_with(model: @room, local: true) do |f| %>
+                      <%= fields_for @entry do |e| %>
+                        <%= e.hidden_field :user_id, value: @user.id %>
+                      <% end %>
+                      <%= f.submit "Message", class:"btn btn-primary btn-lg user-show-chat"%>
+                    <% end %>
+                  <% end %>
+              <% end %>
+            </div>
+            <%= render 'shared/follow_form' %>
+          <% else %>
+            <img id="user-photo" src="../../assets/undraw_profile_pic_ic-5-t.svg"> 
+            <div id="name-intoroduction">
+              <h1>テストユーザー</h1>
+              <h2>自己紹介</h2>
+              <h3>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</h3>
+            </div>
+          <% end %>
         </div>
         <% if @user.posts.any? %>
-          <div class="posts">
-            <%= render 'shared/post'%>
-          </div>
+          <%= render 'shared/post'%>
         <% end %>
       </div>
     </main>

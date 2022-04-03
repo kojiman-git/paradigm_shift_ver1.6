@@ -1,13 +1,8 @@
 
-
 <%= stylesheet_link_tag 'direct', :media => "all" %>
-
- 
   <div class="container">
-   
     <%= render 'shared/header_and_drawer' %>
     <h1 id="titel">Direct Message</h1>
-    
     <main>
       <div class="chats">
         <div class="chat">
@@ -24,7 +19,6 @@
                 </div>
                 <div class="chat-hukidashi"> 
                   <p><%= m.message %></p> 
-                  
                 </div>
                 <div>
                   <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
@@ -33,19 +27,14 @@
             <% end %>
           <% end %>
         </div>
-        
       </div>
     </main>
-    <%# <div class="posts"> %>
       <%= form_with(model: @message, local: true) do |f| %>
         <%= f.text_field :message, placeholder: "メッセージを入力して下さい" ,  class:"form-text-field" %>
-          <%= f.hidden_field :room_id, value: @room.id %>
-                                                         
-            <%= f.submit "投稿",class: 'form-submit'%>
+          <%= f.hidden_field :room_id, value: @room.id %>                           
+          <%= f.submit "投稿",class: 'form-submit'%>
       <% end %>
-    <%# </div> %>
-    <%= render 'shared/footer' %>
-    
+    <%= render 'shared/footer' %>   
   </div>
      
 

@@ -1,11 +1,5 @@
- 
- 
-
  <%= stylesheet_link_tag 'quiz', :media => "all" %>
-
-  
-
-
+ <%= stylesheet_link_tag 'operation', :media => "all" %>
   <div class="container">
     <%= render 'shared/header_and_drawer' %>
     <h1 id="titel">Quiz Challenge</h1>
@@ -34,56 +28,31 @@
     </div>
     <%= render 'shared/footer' %>
   </div>
-          
-       
-            
+  <script>
+  let words = [
+        <% @posts.each do |post| %>
+          {'term': '<%=post.term%>' ,
+          'para': '<%=post.paraphrase%>',
+          'Hide the answer': '上の用語はどんな意味の言葉であったか思い出してみましょう',
+          'name':'投稿者:<%=User.find_by(id: post.user_id).name%>'},
+        <% end %>
+      ];
+  </script>
+  <%= javascript_include_tag 'quiz.js' %>             
+ 
+
+  
+ 
+ 
+
+
+
+
+ 
             
          
 
-<script>
-  (function() {
-    'use strict';
 
-  let words = [
-      <% @posts.each do |post| %>
-        {'term': '<%=post.term%>' ,
-        'para': '<%=post.paraphrase%>',
-        'Hide the answer': '上の用語はどんな意味の言葉であったか思い出してみましょう',
-        'name':'投稿者:<%=User.find_by(id: post.user_id).name%>'},
-      <% end %>
-    ];
-
-    let term = document.getElementById('term');
-    let para = document.getElementById('para');
-    let answer = document.getElementById('answer-btn');
-    let hide = document.getElementById('hide-btn');
-    let name = document.getElementById('name');
-     answer.addEventListener('click', function() {
-       open_answer();
-     });
-     hide.addEventListener('click', function() {
-       hide_answer();
-     });
-     
-    let num = Math.floor(Math.random() * words.length);
-     
-    function set_quiz() {
-      para.innerHTML = words[num]['Hide the answer'];
-      term.innerHTML = words[num]['term'];
-      name.innerHTML = words[num]['name'];
-    }
-    function open_answer() {
-      para.innerHTML = words[num]['para'];
-    }
-    function hide_answer() {
-      para.innerHTML = words[num]['Hide the answer'];
-    }
-    
-    set_quiz();
-    
-    
-  })();
-</script>
       
       
      

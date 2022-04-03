@@ -1,0 +1,11 @@
+.operation-container{
+  display: flex;
+ 
+}
+
+.operation-btn{
+  border: solid 1px #000000;
+  background-color: #cefffb;
+  flex: 1;
+  text-align: center;
+}

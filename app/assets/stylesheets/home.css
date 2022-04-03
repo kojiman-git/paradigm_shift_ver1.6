@@ -30,6 +30,15 @@ header {
   background-color: #cefffb;
 }
 
+#titel-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  border: solid 1px #000000;
+  background-color: #cefffb;
+}
+
 img {
   width: 50px;
   height: 50px;

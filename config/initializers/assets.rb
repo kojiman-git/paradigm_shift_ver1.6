@@ -37,4 +37,8 @@ Rails.application.config.assets.precompile += %w(
   reviews.js
   reviewers.scss
   reviewers_list.css
+  operation.css
+  user-list.css
+  posts.css
+  quiz.js
 )

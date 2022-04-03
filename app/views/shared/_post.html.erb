@@ -1,4 +1,7 @@
-
+<%= stylesheet_link_tag 'posts', :media => "all" %>
+<%= stylesheet_link_tag 'reviewers', :media => "all" %>
+<%= stylesheet_link_tag 'show', :media => "all" %>
+<div class="posts">
     <% @posts.each do |post| %>
       <div id="post">
         <div id="left-container">
@@ -33,5 +36,5 @@
         <% end %>
       </div>
     <% end %>
-  
+</div>
           

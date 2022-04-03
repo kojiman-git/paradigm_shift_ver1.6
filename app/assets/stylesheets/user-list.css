@@ -1,0 +1,28 @@
+.users{
+  display: flex;
+  border: solid 1px #000000;
+}
+
+#name-intoroduction{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.btn{
+  width: 10vw;
+  height: 7vh;
+  font-size: 2vw;
+  margin-top: 2vh;
+  margin-right: 1vw;
+  border-radius: 50%;
+  
+}
+
+.btn-default{
+  background-color: darkgray;
+}
+
+.btn-primary{
+  background-color: #cefffb;
+}

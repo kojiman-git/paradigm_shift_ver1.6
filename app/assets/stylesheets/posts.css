@@ -1,0 +1,28 @@
+.posts{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+#post{
+  display: flex;
+  border: solid 1px #000000;
+}
+
+#timestamp{
+  padding-left: 5vw;
+}
+
+#term-paraphrase{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding-left: 4vw;
+  padding-top: 4vh;
+}
+
+#like-btn{
+  padding-top: 18vh;
+  display: flex;
+}
+

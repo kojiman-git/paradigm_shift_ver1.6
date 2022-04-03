@@ -1,28 +1,18 @@
-
- 
- 
- <%= stylesheet_link_tag 'post', :media => "all" %>
- 
-
+<%= stylesheet_link_tag 'post', :media => "all" %>
   <div class="container">
     <%= render 'shared/header_and_drawer' %>
-    <div class="titel-container">
-      
-      <h1 id="titel">Post Edit</h1>
-      
-    </div>
-   
+    <h1 id="titel">Post Edit</h1>
     <main class="post-area">
       <%= form_with(model: @post, local: true,class: 'edit-area') do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-      
       <%= f.text_field :term, placeholder: "自分の理解したい用語を入力しよう" ,class: 'form-control' %>
       <%= f.collection_select :m_category_id, MCategory.all, :id, :name, { prompt: 'カテゴリーを選択してください' }, class: 'form-control'%>
       <%= f.text_area :paraphrase, placeholder: "その用語を自分の言葉で言い換えるとどんな感じ？" ,class: 'paraphrase form-control' %>
       <%= f.submit "投稿する", class: "btn form-control" %>
-      
       <% end %>
     </main>
     <%= render 'shared/footer' %>
   </div>
+ 
+
 

@@ -1,13 +1,10 @@
- 
- <%= stylesheet_link_tag 'followers_list', :media => "all" %>
-  <%= stylesheet_link_tag 'search', :media => "all" %>
-  <div class="container">
-    <%= render 'shared/header_and_drawer' %>
-    <h1 id="titel">All Followers</h1>
-    
-    <main class="followers-area">
-      <%= render 'shared/user-list' %>
-    </main>
-    <%= render 'shared/footer' %>
-  </div>
+
+<div class="container">
+  <%= render 'shared/header_and_drawer' %>
+  <h1 id="titel">All Followers</h1>
+  <main class="followers-area">
+    <%= render 'shared/user-list' %>
+  </main>
+  <%= render 'shared/footer' %>
+</div>
  

@@ -12,18 +12,14 @@
         <%= f.submit "検索", class: "search-btn" %>
       <% end %>
     </div>
-    
     <main class="users-area">
       <%= render 'shared/user-list' %>
     </main>
-    <div class="operation-container">
-      <h1 id="operation-btn" onclick="location.href='../home_page/search'">User Search</h1>
-      <h1 id="operation-btn" onclick="location.href='../search/post_search'">Post Search</h1>
-    </div>
-      
+    <%= render 'shared/operation'%>
     <%= render 'shared/footer' %>
-    
   </div>
+ 
+    
     
       
 
