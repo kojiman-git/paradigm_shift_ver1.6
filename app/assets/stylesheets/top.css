@@ -1,32 +1,39 @@
 
-html,body{
-  overflow: hidden
+.up{
+  margin-left: 3vw;
 }
 
-
-h1{
-  font-size: 120px;
-  position: relative; /* 今の位置を基準 */
-  top: -100px; /* 上から10px */
-  left: 20px; /* 左から20px */
+#app-titel{
+  font-size: 8vw;
 }
 
-p {
-  font-size: 25px;
-  position: relative; /* 今の位置を基準 */
-  top: -150px; /* 上から10px */
-  left: 60px; /* 左から20px */
+#app-explanation{
+  margin-left: 3vw;
+  font-size: 2vw;
 }
 
-img{
-  width: 687px;
-  height: 581px;
-  position: relative; /* 今の位置を基準 */
-  top: -270px; /* 上から10px */
-  left: 250px; /* 左から20px */
+.bottom{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10vh;
 }
 
-button{
+.btn{
+  margin-left: 7vw;
+  margin-top: 7vh;
+}
+
+.login{
+  display: flex;
+  justify-content: space-between;
+  font-size: 1vw;
+}
+
+#testuser_login{
+  margin-left: 2vw;
+}
+
+h2{
   appearance: none;
   border: 0;
   border-radius: 25px;
@@ -36,31 +43,21 @@ button{
   font-size: 16px;
 }
 
-button:hover {
+h2:hover {
   background: #1d49aa;
 }
  
-button:focus {
+h2:focus {
   outline: none;
   box-shadow: 0 0 0 4px #cbd6ee;
 }
 
-
-
-button#login_button{
-  position: relative; /* 今の位置を基準 */
-  top: -600px; /* 上から10px */
-  left: 150px; /* 左から20px */
+#newuser{
+  text-align: center;
+  
 }
 
-button#testuser_login{
-  position: relative; /* 今の位置を基準 */
-  top: -600px; /* 上から10px */
-  left: 200px; /* 左から20px */
-}
-
-a#newuser{
-  position: relative; /* 今の位置を基準 */
-  top: -550px; /* 上から10px */
-  left: -140px; /* 左から20px */
+img{
+  width: 60vw;
+  height: 60vh;
 }
