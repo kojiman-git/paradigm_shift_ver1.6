@@ -1,25 +1,23 @@
-<%= stylesheet_link_tag 'edit', :media => "all" %>
-  <%= render 'shared/header_and_drawer' %>
+
+ <%= stylesheet_link_tag 'edit', :media => "all" %>
   <div class="container">
-      <h1 id="titel">Edit My Profile</h1>
-    <main >
-      <%= form_with(model: @user, local: true ,class: 'edit-area') do |f| %>
+    <%= render 'shared/header_and_drawer' %>
+    <h1 id="titel">Edit My Profile</h1>
+  
+    <main class="profile-area">
+       <%= form_with(model: @user, local: true ,class: 'edit-area') do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <%= f.label :name %>
         <%= f.text_field :name, class: 'form-control' %>
-
         <%= f.label :email %>
         <%= f.email_field :email, class: 'form-control' %>
         
         <%= f.label :intoroduction %>
         <%= f.text_field :intoroduction, class: 'form-control' %>
-
         <%= f.label :password %>
         <%= f.password_field :password, class: 'form-control' %>
-
         <%= f.label :password_confirmation, "Confirmation" %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
-
         <% if @user.image? %>
           <%= image_tag @user.image.thumb.url, class: "user-icon" %>
         <% else %>
@@ -28,12 +26,11 @@
         
         <%= f.label :image, "プロフィール画像" %>
         <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: " form-control" %>
-
         <%= f.submit "Save changes", class: "btn form-control" %>
       <% end %>
+      
     </main>
     <%= render 'shared/footer' %>
   </div>
-           
- 
-   
+        
+    
