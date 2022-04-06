@@ -41,4 +41,5 @@ Rails.application.config.assets.precompile += %w(
   user-list.css
   posts.css
   quiz.js
+  new.css
 )

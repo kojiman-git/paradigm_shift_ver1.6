@@ -1,16 +1,17 @@
 
+<%= stylesheet_link_tag 'new', :media => "all" %>
+<%= stylesheet_link_tag 'top', :media => "all" %>
 
- <%= stylesheet_link_tag 'custom', :media => "all" %>
- 
+<div class="container">
+  <h1 id="app-titel">Paradigm Shift</h1>
+  <h1 id="titel">Log in</h1>
+  <main>
     <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
-
-    <h1>Log in</h1>
-
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+        <%= form_with(url: login_path, scope: :session, local: true ,class: 'sign-area') do |f| %>
 
           <%= f.label :email %>
           <%= f.email_field :email, class: 'form-control' %>
@@ -18,11 +19,20 @@
           <%= f.label :password %>
           <%= f.password_field :password, class: 'form-control' %>
 
-          <%= f.submit "Log in", class: "btn btn-primary" %>
+          <%= f.submit "Log in", class: "btn form-control" %>
         <% end %>
-
-        <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+        <div id="newuser">
+          <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+        </div>
       </div>
     </div>
+  </main>
+  <h1 id="app-titel">世界が変わる瞬間</h1>
+</div>
+
+
+  
     
  
+
+    

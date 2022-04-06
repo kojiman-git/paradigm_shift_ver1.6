@@ -1,0 +1,25 @@
+#app-titel{
+  text-align: center;
+  border: solid 1px #000000;
+  background-color:#a7f9ff ;
+}
+
+
+.sign-area{
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  margin-left : auto;
+  margin-right : auto;
+  margin-top: 6vh;
+}
+
+.form-control{
+ height: 4vh;
+ margin-bottom: 7vh;
+}
+
+
+.btn{
+ background-color: #cefffb ;
+}

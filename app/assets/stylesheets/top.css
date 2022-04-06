@@ -1,36 +1,31 @@
 
-.up{
-  margin-left: 3vw;
-}
 
 #app-titel{
-  font-size: 8vw;
+  text-align: center;
+  border: solid 1px #000000;
+  background-color:#a7f9ff ;
 }
+
+.up{
+  margin-top: 10vh;
+  text-align: center;
+}
+
 
 #app-explanation{
-  margin-left: 3vw;
-  font-size: 2vw;
+  
+  font-size: 3vw;
 }
 
-.bottom{
-  display: flex;
-  justify-content: space-between;
+#login_button{
   margin-top: 10vh;
+  width: 70vw;
+  text-align: center;
+  display: inline-block;
 }
 
 .btn{
-  margin-left: 7vw;
-  margin-top: 7vh;
-}
-
-.login{
-  display: flex;
-  justify-content: space-between;
-  font-size: 1vw;
-}
-
-#testuser_login{
-  margin-left: 2vw;
+  text-align: center;
 }
 
 h2{
@@ -54,10 +49,6 @@ h2:focus {
 
 #newuser{
   text-align: center;
-  
+  margin-top: 10vh;
 }
 
-img{
-  width: 60vw;
-  height: 60vh;
-}

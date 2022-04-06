@@ -1,26 +1,25 @@
 
  <%= stylesheet_link_tag 'top', :media => "all" %>
-
-<div class = "all">
-
-  <div class = up>
-    <h1 id = "app-titel">paradigm shift</h1>
-    <p id = "app-explanation">このアプリはアクティブラーニングで重要な要素である再言語化</p>
-    <p id = "app-explanation">と想起を元にした学習を支援するSNSサービスになります</p>
+  <div class="container">
+    <h1 id="app-titel">Paradigm Shift</h1>
+    <main>
+      <div class = up>
+        <p id = "app-explanation">このアプリはアクティブラーニングで重要な要素である再言語化</p>
+        <p id = "app-explanation">と想起を元にした学習を支援するSNSサービスになります</p>
+      </div>
+      <div>
+          <div class = btn>
+            <h2 onclick="location.href='/login'" id="login_button">ログインはこちら</h2>
+            <h2 onclick="location.href='home_page/home'"   id="login_button">テストユーザーでログイン</h2>
+          </div>
+          <div id="newuser">
+            <a href= "users/new"  >新規会員登録はこちら!</a>
+          </div>
+      </div>
+    </main>
+   <h1 id="app-titel">世界が変わる瞬間</h1>
   </div>
 
-  <div class = "bottom">
-    <div class= "btn">
-      <div class = "login" >
-        <h2 onclick="location.href='/login'" id="login_button">ログインはこちら</h2>
-        <h2 onclick="location.href='home_page/home'"   id="testuser_login">テストユーザーでログイン</h2>
-      </div>
-      <div id="newuser">
-        <a href= "users/new"  >新規会員登録はこちら!</a>
-      </div>
-    </div>
-    <div>
-      <img src="../assets/undraw_friends_r511.svg">
-    </div>
-  </div>
-</div>
+  
+
+ 

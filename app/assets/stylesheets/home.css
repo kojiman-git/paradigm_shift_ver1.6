@@ -14,12 +14,12 @@ body{
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  
 }
 
 header {
   display: flex;
   justify-content: space-between; 
-  /* align-content: center; */
   background-color:#a7f9ff ;
   
 }
@@ -62,6 +62,7 @@ main {
   flex: 1;
   background-color: rgb(255, 255, 255);
   overflow-y: scroll;
+  
 }
 
 button{
