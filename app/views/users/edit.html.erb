@@ -3,7 +3,7 @@
   <div class="container">
     <%= render 'shared/header_and_drawer' %>
     <h1 id="titel">Edit My Profile</h1>
-  ""
+  
     <main class="profile-area">
        <%= form_with(model: @user, local: true ,class: 'edit-area') do |f| %>
         <%= render 'shared/error_messages', object: f.object %>

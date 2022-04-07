@@ -46,13 +46,6 @@
               <% end %>
             </div>
             <%= render 'shared/follow_form' %>
-          <% else %>
-            <img id="user-photo" src="../../assets/undraw_profile_pic_ic-5-t.svg"> 
-            <div id="name-intoroduction">
-              <h1>テストユーザー</h1>
-              <h2>自己紹介</h2>
-              <h3>テストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト</h3>
-            </div>
           <% end %>
         </div>
         <% if @user.posts.any? %>
