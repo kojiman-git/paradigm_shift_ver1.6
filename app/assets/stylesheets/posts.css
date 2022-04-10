@@ -6,6 +6,7 @@
 
 #post{
   display: flex;
+  justify-content: space-around;
   border: solid 1px #000000;
 }
 
@@ -22,7 +23,10 @@
 }
 
 #like-btn{
-  padding-top: 18vh;
+ 
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 4vw;
 }
 

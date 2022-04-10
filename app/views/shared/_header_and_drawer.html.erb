@@ -18,18 +18,12 @@
 <aside>
         <div id="user-container">
           <div id="name-container">
-           <% if logged_in? %>
             <% if current_user.image? %>
               <%= image_tag current_user.image.thumb.url,class: "user-icon", id: "user-photo" %>
             <% else %>
               <%= image_tag 'undraw_male_avatar_323b.svg', alt: "user-icon", size: "200", class: "user-icon" %>
             <% end %>
               <h6 id="user-name"><%= current_user.name %></h6>
-
-           <% else %>
-            <img id="user-photo" onclick="location.href='../head_icon/profile'" src="../../assets/undraw_profile_pic_ic-5-t.svg">
-            <h6 id="user-name">テストユーザー</h6>
-           <%end%>
             <label for="menu" class="close">×</label>
           </div>
           <div id="follow-container">
@@ -54,7 +48,7 @@
         <div id="drawer-menu">
           <h3><%= link_to "My profile", user_path(current_user) %></h3>
           <h3 onclick="location.href='../head_icon/quiz_list'">Quiz list</h3>
-          <h3 onclick="location.href='../head_icon/app_detailed_description'">App description</h3>
+          <h3 onclick="location.href='../head_icon/app_detailed_description'">Description</h3>
           
           <h3><%= link_to "Log out", logout_path, method: :delete %></h3>
           

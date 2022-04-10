@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   width: 70%;
+  padding-left: 3vw;
 }
 
 .btn{

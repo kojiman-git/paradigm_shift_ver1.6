@@ -31,21 +31,25 @@
               <h2>自己紹介</h2>
               <h3><%= @user.intoroduction %></h3>
             </div>
-            <div >
-              <% unless @user.id == current_user.id %>
-                  <% if @isRoom == true %>
-                    <div class="btn btn-primary btn-lg" onclick="location.href='/rooms/<%= @roomId %>'"> Message</div>
-                  <% else %>
-                    <%= form_with(model: @room, local: true) do |f| %>
-                      <%= fields_for @entry do |e| %>
-                        <%= e.hidden_field :user_id, value: @user.id %>
+            <div class="form">
+              <div>
+                <%= render 'shared/follow_form' %>
+              </div>
+              <div >
+                <% unless @user.id == current_user.id %>
+                    <% if @isRoom == true %>
+                      <div class="btn btn-primary btn-lg" onclick="location.href='/rooms/<%= @roomId %>'"> Message</div>
+                    <% else %>
+                      <%= form_with(model: @room, local: true) do |f| %>
+                        <%= fields_for @entry do |e| %>
+                          <%= e.hidden_field :user_id, value: @user.id %>
+                        <% end %>
+                        <%= f.submit "Message", class:"btn btn-primary btn-lg user-show-chat"%>
                       <% end %>
-                      <%= f.submit "Message", class:"btn btn-primary btn-lg user-show-chat"%>
                     <% end %>
-                  <% end %>
-              <% end %>
+                <% end %>
+              </div>
             </div>
-            <%= render 'shared/follow_form' %>
           <% end %>
         </div>
         <% if @user.posts.any? %>

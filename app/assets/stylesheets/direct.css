@@ -19,6 +19,7 @@
 
 .chat-hukidashi{
   width: 70%;
+  padding-left: 4vw;
 }
 
 p {
@@ -26,12 +27,13 @@ p {
 }
 
 .form-text-field{
-  width: 88vw;
-  font-size: 3vh;
+  width: 86vw;
+  font-size: 2vw;
 }
 
 .form-submit{
   width: 10vw;
-  font-size: 3vh;
+  font-size: 2vw;
   background-color: #cefffb ;
 }
+

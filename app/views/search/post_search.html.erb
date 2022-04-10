@@ -5,7 +5,9 @@
     <div id = "titel-container">
      <div></div>
      <div></div>
+     <div></div>
      <h1 >All Posts</h1>
+     <div></div>
      <%= form_with(model: @post ,url: 'narrow_down_by_category',method: :get, local: true,class: 'edit-area') do |f| %>
      <%= f.collection_select :m_category_id, MCategory.all, :id, :name, { prompt: '全てのカテゴリー' }, class: 'form-control'%>
      <%= f.submit "絞り込む", class: "search-btn" %>

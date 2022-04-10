@@ -17,10 +17,8 @@
             <h1 id="user-name"><%= link_to @post.user.name, @post.user%></h1>
           </div>
           <h2 id="term"><%= @post.term %></h2>
-          <h2 ><%="カテゴリー : #{@post.m_category.name}" %></h2>
-          <div id="timestamp">
-            <%# Posted <%= time_ago_in_words(@post.created_at) ago.  %>
-          </div>
+          <h2 ><%=" #{@post.m_category.name}" %></h2>
+          <div></div>
         </div>
         <div id="paraphrase">
           <h3 id="paraphrase"><%= @post.paraphrase %></h3>
