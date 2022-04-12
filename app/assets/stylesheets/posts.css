@@ -22,6 +22,10 @@
   padding-top: 4vh;
 }
 
+button{
+  background: #cefffb;
+}
+
 #like-btn{
  
   display: flex;

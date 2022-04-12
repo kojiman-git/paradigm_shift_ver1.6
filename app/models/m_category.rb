@@ -1,4 +1,4 @@
 class MCategory < ApplicationRecord
-  has_many :posts, dependent: :destroy
+  has_many :posts
   
 end

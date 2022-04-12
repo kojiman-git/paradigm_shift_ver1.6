@@ -18,6 +18,7 @@
              <%= time_ago_in_words(post.created_at) %> ago.
           </span>
         </div> 
+        
         <div id="term-paraphrase" onclick="location.href='../post_details/<%=post.id%>'" >
           <h2 ><%=" #{post.m_category.name}" %></h2>
           <h2 id="term"><%= post.term %></h2>
@@ -27,7 +28,7 @@
         
         <div id="like-btn">
           <% if current_user?(post.user) %>
-           <%= link_to "削除", post, data: { confirm: "投稿を本当に削除しますか?" } %>
+           <%= button_to "削除", post, { method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } } %>
           <% end %>
           <div></div>
           <div></div>

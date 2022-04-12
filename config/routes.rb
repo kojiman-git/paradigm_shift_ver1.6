@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/posts/:id',  to: 'posts#destroy'
+ 
   resources :posts,only: [:create,:destroy]
   resources :posts do
     get 'cre' => 'likes#create'
