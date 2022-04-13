@@ -1,0 +1,5 @@
+  <%= stylesheet_link_tag 'success', :media => "all" %>
+ 
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>

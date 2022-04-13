@@ -8,9 +8,7 @@
       <h2></h2>
     </div>
     <main class="profile-area">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
+      <%= render 'shared/success_message' %>
       <div class="col-md-8">
         <div class="users">
           <% if logged_in? %>

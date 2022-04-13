@@ -2,9 +2,7 @@
     <%= render 'shared/header_and_drawer' %>
     <h1 id="titel">Home</h1>
     <main>
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
+      <%= render 'shared/success_message' %>
       <% if @posts.any? %>
          <%= render 'shared/post' %>
       <% end %>

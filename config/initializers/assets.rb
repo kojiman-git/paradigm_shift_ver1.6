@@ -42,4 +42,6 @@ Rails.application.config.assets.precompile += %w(
   posts.css
   quiz.js
   new.css
+  error.css
+  success.css
 )
