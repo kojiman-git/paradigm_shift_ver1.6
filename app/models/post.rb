@@ -27,6 +27,7 @@ class Post < ApplicationRecord
   belongs_to :m_category
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
+  validates :term, presence: true
   validates :user_id, presence: true
   validates :m_category_id, presence: true
   validates :paraphrase, presence: true, length: { maximum: 250 }
