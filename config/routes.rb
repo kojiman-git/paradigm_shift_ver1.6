@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   resources :relationships,only: [:create, :destroy] 
   resources :messages, only: [:create]
   resources :rooms, only: [:create,:show]
-  get '/rooms',   to: 'rooms#create'
+  
   resources :post_details ,only: [:create,:show] do
     resources :reviews, only: [:index, :create]
   end
