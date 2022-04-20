@@ -92,6 +92,10 @@ group :production do
   gem 'pg', '0.20.0'
 end
 
+gem "rspec-rails", "~> 4.0.1"
+
+gem 'factory_bot_rails', '~> 4.10.0'
+
 gem 'mysql2'
 
 gem 'bulma-rails'

@@ -7,7 +7,7 @@ class LikesController < ApplicationController
     liked_user = User.find_by(id:post.user_id)
     notice = Notification.create(user_id: liked_user.id, content:"#{user.name}さんが#{post.term}の投稿をお気に入りに追加しました。")
     
-    redirect_to request.referrer
+    redirect_to request.referrer || home_page_home_path
 
   end
 
@@ -16,7 +16,7 @@ class LikesController < ApplicationController
     post = Post.find(params[:post_id])
     like = Like.find_by(user_id: user.id, post_id: post.id)
     like.delete
-    redirect_to request.referrer
+    redirect_to request.referrer || home_page_home_path
   end
 
 end

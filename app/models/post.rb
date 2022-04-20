@@ -24,8 +24,8 @@ class Post < ApplicationRecord
     end
   end
   
-  belongs_to :m_category
-  belongs_to :user
+  belongs_to :m_category, optional: true
+  belongs_to :user, optional: true
   default_scope -> { order(created_at: :desc) }
   validates :term, presence: true
   validates :user_id, presence: true

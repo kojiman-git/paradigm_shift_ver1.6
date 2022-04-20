@@ -2,10 +2,6 @@ Rails.application.routes.draw do
   
   
   get 'rooms/show'
-  get 'sessions/new'
-  get 'head_icon/profile'
-  get 'head_icon/follows_list'
-  get 'head_icon/followers_list'
   get 'head_icon/app_detailed_description'
   get 'head_icon/quiz_list'
   get 'search/post_search'
