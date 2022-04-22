@@ -27,10 +27,13 @@ RSpec.describe "delete", type: :request do
       delete "/posts/#{@post1.id}"
       expect(Post.count).to eq 2
     end
+
     it "フォローを解除できること" do
       delete "/relationships/1"
       expect(Relationship.count).to eq 0
     end
+
+   
 
     
   end

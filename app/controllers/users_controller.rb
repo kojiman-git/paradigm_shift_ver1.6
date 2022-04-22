@@ -58,6 +58,7 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
+    
     if @user.update(user_params)
       # 更新に成功した場合を扱う。
       flash[:success] = "Profile updated"

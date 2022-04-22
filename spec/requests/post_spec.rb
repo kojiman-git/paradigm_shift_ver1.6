@@ -36,6 +36,12 @@ RSpec.describe "post", type: :request do
         m_category_id: "2"} }
       expect(Post.count).to eq 4
     end
+    it "投稿した後 post created! と表示されること" do
+      post   "/posts",
+      params: { post: { term: "テスト",paraphrase: "テスト",
+        m_category_id: "2"} }
+        expect(flash[:success]).to include("post created!")
+    end
     it "ユーザーをフォローできること" do
       post   "/relationships",
       params: { followed_id: @user3.id }
@@ -60,6 +66,14 @@ RSpec.describe "post", type: :request do
       post   "/post_details",
       params: { comment: {comment:"テストコメント",post_id: @post2.id} }
       expect(Comment.count).to eq 1
+    end
+
+    it "ログインした後、You were able to log inと表示されること" do
+      post login_path, 
+      params: { session: { email: @user1.email,
+        password: @user1.password } }
+      expect(flash[:success]).to include("You were able to log")
+    
     end
 
    
