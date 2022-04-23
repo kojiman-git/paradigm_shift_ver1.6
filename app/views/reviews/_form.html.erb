@@ -23,9 +23,10 @@
     </div>
     <%= f.hidden_field :post_id, value: post.id %>
     <%= f.hidden_field :score, id: "rating-value" %>
-  
-    <%= f.submit "送信", class: "button mt-3" %>
-   
+    <%if current_user.reviews.where(post_id: post.id) == [] %>
+    
+     <%= f.submit "送信", class: "button mt-3" %>
+    <% end %>
   <% end %>
 </div>
 
