@@ -10,7 +10,7 @@ gem 'bootstrap-sass', '3.4.1'
 gem 'bcrypt',  '3.1.12'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.1'
+gem 'rails', '~> 7.0.3'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -96,7 +96,7 @@ gem "rspec-rails", "~> 4.0.1"
 
 gem 'factory_bot_rails', '~> 4.10.0'
 
-gem 'mysql2'
+gem 'mysql2', '~> 0.5.4'
 
 gem 'bulma-rails'
 
