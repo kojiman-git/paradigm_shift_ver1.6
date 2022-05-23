@@ -51,6 +51,7 @@ test:
 #
 production:
   <<: *default
-  database: paradigm_shift_ver1_6_production
-  username: paradigm_shift
+  database: <%= ENV["PARADIGM_SHIFT_DATABASE"] %>
+  username: <%= ENV["PARADIGM_SHIFT_DATABASE_USERNAME"] %>
   password: <%= ENV["PARADIGM_SHIFT_DATABASE_PASSWORD"] %>
+  host: <%= ENV["PARADIGM_SHIFT_DATABASE_HOST"] %>
