@@ -87,11 +87,6 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-# 本番環境ではPostgresqlを使う
-group :production do
-  gem 'pg', '0.20.0'
-end
-
 gem "rspec-rails", "~> 4.0.1"
 
 gem 'factory_bot_rails', '~> 4.10.0'

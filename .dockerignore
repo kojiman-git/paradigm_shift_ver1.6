@@ -1,0 +1,4 @@
+tmp
+logs/*
+db/mysql_data
+.git
