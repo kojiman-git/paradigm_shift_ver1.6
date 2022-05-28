@@ -9,9 +9,9 @@ RSpec.describe "get", type: :request do
       post login_path, 
       params: { session: { email: @user1.email,
         password: @user1.password } }
-      @category = FactoryBot.create(:m_category, :a)
-      @category = FactoryBot.create(:m_category, :b)
-      @category = FactoryBot.create(:m_category, :c)
+      @category1 = FactoryBot.create(:m_category, :a)
+      @category2 = FactoryBot.create(:m_category, :b)
+      @category3 = FactoryBot.create(:m_category, :c)
       @post1 = FactoryBot.create(:post,:a)
       @post2 = FactoryBot.create(:post,:b)
       @post3 = FactoryBot.create(:post,:c)
@@ -93,7 +93,7 @@ RSpec.describe "get", type: :request do
 
     it "カテゴリーで絞るボタンを押してページ遷移できること" do
       get '/search/narrow_down_by_category', 
-      params: { post: { m_category_id: @category.id } }
+      params: { post: { m_category_id: @category1.id } }
       expect(response).to be_successful
     end
 
