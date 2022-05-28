@@ -7,7 +7,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7
+      - image: cimg/ruby:3.1.0
     working_directory: ~/paradigm_shift_ver1.6
     steps:
       - checkout:
@@ -16,8 +16,8 @@ jobs:
 
   test:
     docker:
-      - image: circleci/ruby:2.7
-      - image: circleci/mysql:5.5
+      - image: cimg/ruby:3.1.0
+      - image: cimg/mysql:8.0
         environment:
           MYSQL_ROOT_PASSWORD: password
           MYSQL_DATABASE: paradigm_shift_ver1_6_test
