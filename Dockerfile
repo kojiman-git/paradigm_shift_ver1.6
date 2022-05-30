@@ -4,7 +4,9 @@ ENV RAILS_ENV=production
 
 WORKDIR /paradigm_shift_docker
 
-RUN apt-get update && apt-get -y install imagemagick pkg-config imagemagick libmagick++-dev /paradigm_shift_docker/
+RUN apt-get update && apt-get -y install imagemagick libmagickcore-dev libmagickwand-dev 
+
+
 
 # Gemfileのみでbundle
 COPY Gemfile Gemfile.lock /paradigm_shift_docker/
