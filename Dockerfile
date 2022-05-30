@@ -4,7 +4,7 @@ ENV RAILS_ENV=production
 
 WORKDIR /paradigm_shift_docker
 
-RUN apt-get update && apt-get -y install imagemagick libmagickcore-dev libmagickwand-dev 
+RUN apt-get update && apt-get -y install imagemagick pkg-config ImageMagick6-c++-devel
 
 
 
