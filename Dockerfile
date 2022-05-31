@@ -7,7 +7,6 @@ WORKDIR /paradigm_shift_docker
 RUN apt-get update && apt-get -y install imagemagick pkg-config libmagick++-dev
 
 
-
 # Gemfileのみでbundle
 COPY Gemfile Gemfile.lock /paradigm_shift_docker/
 RUN bundle install
