@@ -15,7 +15,7 @@ jobs:
     steps:
       - checkout:
           path: ~/paradigm_shift_ver1.6
-      - run: bundle install imagemagick
+      
       - ruby/install-deps
 
   test:

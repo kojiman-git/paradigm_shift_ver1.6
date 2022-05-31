@@ -205,7 +205,7 @@ GEM
     reline (0.3.1)
       io-console (~> 0.5)
     rexml (3.2.5)
-    rmagick (4.2.5)
+    rmagick (2.16.0)
     rspec-core (3.11.0)
       rspec-support (~> 3.11.0)
     rspec-expectations (3.11.0)
@@ -303,7 +303,7 @@ DEPENDENCIES
   mysql2 (~> 0.5.4)
   puma (~> 5.0)
   rails (~> 7.0.3)
-  rmagick
+  rmagick (= 2.16.0)
   rspec-rails (~> 4.0.1)
   rubocop
   rubocop-rails
