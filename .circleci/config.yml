@@ -8,13 +8,14 @@ jobs:
   build:
     docker:
       - image: cimg/ruby:3.1.0
-    working_directory: ~/paradigm_shift_ver1.6
+        working_directory: ~/paradigm_shift_ver1.6
+        environment:
+          PKG_CONFIG_PATH: /usr/lib/x86_64-linux-gnu/pkgconfig
     
    
     steps:
       - checkout:
           path: ~/paradigm_shift_ver1.6
-      - run: apt-get -y install imagemagick pkg-config libmagick++-dev
       - ruby/install-deps
 
   test:
