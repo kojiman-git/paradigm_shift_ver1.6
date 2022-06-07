@@ -15,8 +15,8 @@ jobs:
     steps:
       - checkout:
           path: ~/paradigm_shift_ver1.6
-      run: sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
-      run: sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libwebp-dev
+      - run: sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
+      - run: sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libwebp-dev
       - ruby/install-deps
 
   test:
