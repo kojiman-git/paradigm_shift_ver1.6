@@ -97,4 +97,4 @@ gem 'bulma-rails'
 
 gem 'carrierwave'
 
-gem 'rmagick' , '2.16.0'
+gem 'rmagick' 
