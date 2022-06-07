@@ -9,14 +9,14 @@ jobs:
     docker:
       - image: cimg/ruby:3.1.0
     working_directory: ~/paradigm_shift_ver1.6
-    
+      - run: sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
+      - run: sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libwebp-dev
     
    
     steps:
       - checkout:
           path: ~/paradigm_shift_ver1.6
-      - run: sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
-      - run: sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libwebp-dev
+     
       - ruby/install-deps
 
   test:
