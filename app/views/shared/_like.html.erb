@@ -1,9 +1,9 @@
 <% if post.liked_by?(current_user) %>
   <%= link_to(post_des_path(post),remote: true, id: :"dislike-button") do %>
-      <img src="../../assets/icons8-いいね-48 (1).png">
+      <%= image_tag '/assets/icons8-いいね-48 (1)-902061bae5a416b10d1e4817a3d6dab8bf2fb8b336bd56f48a57d29a17046d8e.png' %>
   <% end %>
 <% else %>
   <%= link_to(post_cre_path(post),remote: true, id: :"like-button") do %>
-      <img src="../../assets/icons8-いいね-50.png">
+      <%= image_tag '/assets/icons8-いいね-50-746339632680dca3ea50017c8da80ddd642be0af7b7e894bf306d55f2cc9d5cc.png' %>
   <% end %>
 <% end %>

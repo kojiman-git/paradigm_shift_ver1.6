@@ -98,3 +98,8 @@ gem 'bulma-rails'
 gem 'carrierwave'
 
 gem 'rmagick' 
+
+group :production, :staging do
+  gem 'unicorn'
+end
+
