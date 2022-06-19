@@ -54,3 +54,4 @@ production:
   username: root
   password: password
   socket: /var/lib/mysql/mysql.sock
+  host: paradigm-shift-web.c5xe5hixhxfb.ap-northeast-1.rds.amazonaws.com  
