@@ -93,4 +93,6 @@ Rails.application.configure do
 
   config.assets.compile = true
   config.assets.initialize_on_precompile = false
+
+  config.action_controller.asset_host = "http://ba-for-paradigm-shift.s3.amazonaws.com"
 end
