@@ -93,4 +93,6 @@ Rails.application.configure do
 
   config.assets.compile = true
   config.assets.initialize_on_precompile = false
+
+  config.action_controller.asset_host = "https://d1ubu6yjosqwg1.cloudfront.net"
 end
