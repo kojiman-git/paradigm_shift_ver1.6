@@ -103,3 +103,6 @@ group :production, :staging do
   gem 'unicorn'
 end
 
+gem 'asset_sync'
+
+gem 'fog-aws'
