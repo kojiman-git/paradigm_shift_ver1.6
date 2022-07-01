@@ -76,15 +76,10 @@ GEM
       mime-types (>= 2.99)
       unf
     ast (2.4.2)
-    autoprefixer-rails (10.4.7.0)
-      execjs (~> 2)
     bcrypt (3.1.12)
     bindex (0.8.1)
     bootsnap (1.12.0)
       msgpack (~> 1.2)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
     builder (3.2.4)
     bulma-rails (0.9.3)
       sassc (~> 2.0)
@@ -131,7 +126,6 @@ GEM
     digest (3.1.0)
     erubi (1.10.0)
     excon (0.92.3)
-    execjs (2.8.1)
     factory_bot (4.10.0)
       activesupport (>= 3.0.0)
     factory_bot_rails (4.10.0)
@@ -352,7 +346,6 @@ DEPENDENCIES
   asset_sync
   bcrypt (= 3.1.12)
   bootsnap
-  bootstrap-sass (= 3.4.1)
   bulma-rails
   byebug
   capistrano
