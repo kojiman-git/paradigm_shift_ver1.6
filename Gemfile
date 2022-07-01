@@ -5,7 +5,7 @@ ruby '3.1.0'
 
 gem 'byebug'
 
-gem 'bootstrap-sass', '3.4.1'
+
 
 gem 'bcrypt',  '3.1.12'
 
@@ -106,3 +106,11 @@ end
 gem 'asset_sync'
 
 gem 'fog-aws'
+
+group :development, :test do
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+end

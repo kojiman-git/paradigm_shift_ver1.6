@@ -95,4 +95,5 @@ Rails.application.configure do
   config.assets.initialize_on_precompile = false
 
   config.action_controller.asset_host = "https://d1ubu6yjosqwg1.cloudfront.net"
+  config.require_master_key = true
 end
