@@ -106,3 +106,11 @@ end
 gem 'asset_sync'
 
 gem 'fog-aws'
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+end
