@@ -46,6 +46,9 @@ jobs:
       - setup_remote_docker:
           version: 19.03.13
       - heroku/install
+      - run: sudo apt-get update
+      - run: sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
+      - run: sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libwebp-dev
       - ruby/install-deps
       - add_ssh_keys:
           fingerprints: "9a:60:9f:39:4d:3b:c0:c1:6d:a4:01:54:05:b1:cd:b1"
