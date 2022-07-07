@@ -24,8 +24,6 @@ jobs:
     steps:
       - checkout:
           path: ~/paradigm_shift_ver1.6
-      - add_ssh_keys:
-          fingerprints: "9a:60:9f:39:4d:3b:c0:c1:6d:a4:01:54:05:b1:cd:b1"
       - run: sudo apt-get update
       - run: sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
       - run: sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libwebp-dev
@@ -47,22 +45,12 @@ jobs:
       - checkout
       - setup_remote_docker:
           version: 19.03.13
-      - heroku/install
-      - run:
-          name: heroku login
-          command: heroku container:login
-      - run:
-          name: push docker image
-          command: heroku container:push web -a $HEROKU_APP_NAME
-      - run:
-          name: release docker image
-          command: heroku container:release web -a $HEROKU_APP_NAME
-      - run:
-          name: database setup
-          command: heroku run bundle exec rake db:migrate RAILS_ENV=production -a $HEROKU_APP_NAME
-      - run:
-          name: database setup2
-          command: heroku run bundle exec rake db:seed RAILS_ENV=production -a $HEROKU_APP_NAME
+     - ruby/install-deps
+      - add_ssh_keys:
+          fingerprints: "9a:60:9f:39:4d:3b:c0:c1:6d:a4:01:54:05:b1:cd:b1"
+      - deploy:
+          name: Capistrano deploy
+          command: bundle exec cap production deploy
 
 
 workflows:
