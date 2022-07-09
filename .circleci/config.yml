@@ -51,7 +51,7 @@ jobs:
       - run: sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libwebp-dev
       - ruby/install-deps
       - add_ssh_keys:
-          fingerprints: "9a:60:9f:39:4d:3b:c0:c1:6d:a4:01:54:05:b1:cd:b1"
+          fingerprints: "15:f2:e0:83:58:75:2e:ec:4f:ff:61:15:8e:3b:cb:96"
       - deploy:
           name: Capistrano deploy
           command: bundle exec cap production deploy
