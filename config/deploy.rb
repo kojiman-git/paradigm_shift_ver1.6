@@ -12,7 +12,7 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bund
 
 # SSH接続設定
 set :ssh_options, auth_methods: ['publickey'],
-                              keys: ['/home/circleci/.ssh/id_rsa_15f2e08358752eec4fff61158e3bcb96'] 
+                              keys: ['~/.ssh/id_rsa_15f2e08358752eec4fff61158e3bcb96'] 
 
 # 保存しておく世代の設定
 set :keep_releases, 5
