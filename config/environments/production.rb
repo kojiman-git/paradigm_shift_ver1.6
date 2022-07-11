@@ -96,5 +96,5 @@ Rails.application.configure do
 
   config.action_controller.asset_host = "https://d1ubu6yjosqwg1.cloudfront.net"
 
-  config.require_master_key = true
+  
 end
