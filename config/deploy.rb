@@ -8,7 +8,7 @@ set :repo_url,  'git@github.com:kojiman-git/paradigm_shift_ver1.6.git'
 # sharedディレクトリに入れるファイルを指定
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
 
-
+append :linked_files, 'config/credentials/production.key'
 
 # SSH接続設定
 set :ssh_options, auth_methods: ['publickey'],
