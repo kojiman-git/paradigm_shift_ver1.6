@@ -38,5 +38,5 @@ end
 
 set :branch, "main"
 
-
+set :linked_files, %w{config/master.key}
 
