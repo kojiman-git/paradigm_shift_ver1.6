@@ -3,6 +3,8 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.8.0
   heroku: circleci/heroku@1.2.3
+  aws-ecr: circleci/aws-ecr@6.1.0
+  aws-ecs: circleci/aws-ecs@0.0.8
   
 
 jobs:
@@ -38,35 +40,21 @@ jobs:
           name: test
           command: bundle exec rake spec
 
-  deploy:
-    docker:
-      - image: cimg/ruby:3.1.0
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: 19.03.13
-      - heroku/install
-      - run: sudo apt-get update
-      - run: sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
-      - run: sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libwebp-dev
-      - ruby/install-deps
-      - add_ssh_keys:
-          fingerprints: "15:f2:e0:83:58:75:2e:ec:4f:ff:61:15:8e:3b:cb:96"
-      - deploy:
-          name: Capistrano deploy
-          command: bundle exec cap production deploy
-
-
-
 workflows:
-  version: 2
-  build_test_and_deploy:
-    jobs:
-      - test
-      - deploy:
-          requires:
-            - test
-          filters:
-              branches:
-                only: main
-      
+    build_and_push_image:
+          jobs:
+          - test  # 追加、デプロイ操作前にテストを実行
+          - aws-ecr/build-and-push-image:
+              requires:
+                  - test # 追加、テストに成功したときだけデプロイ操作に移るようにする
+              region: AWS_REGION
+              account-url: AWS_ECR_ACCOUNT_URL
+              repo: 'paradigm-shift-ecs'
+              tag: "${CIRCLE_SHA1}"
+          - aws-ecs/deploy-service-update:
+              requires:
+                  - aws-ecr/build-and-push-image
+              family: '867e086a165540bc96f596064d336310' # タスク名
+              cluster-name: 'paradigm-shift-ecs-cluster'
+              service-name: 'paradigm-shift-ecs-alb-ecs'
+              container-image-name-updates: 'container=paradigm-shift-ecs-container,tag=${CIRCLE_SHA1}'
