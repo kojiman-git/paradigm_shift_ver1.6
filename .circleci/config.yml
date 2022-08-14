@@ -3,8 +3,8 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.8.0
   heroku: circleci/heroku@1.2.3
-  aws-ecr: circleci/aws-ecr@8.1.2
-  aws-ecs: circleci/aws-ecs@3.1.0
+  aws-ecr: circleci/aws-ecr@0.0.10
+  aws-ecs: circleci/aws-ecs@0.0.8
   
 
 jobs:
@@ -47,13 +47,14 @@ workflows:
           - aws-ecr/build-and-push-image:
               requires:
                   - test # 追加、テストに成功したときだけデプロイ操作に移るようにする
-              region: AWS_REGION
               account-url: AWS_ECR_ACCOUNT_URL
               repo: 'paradigm-shift-ecs'
+              region: AWS_REGION
               tag: "${CIRCLE_SHA1}"
           - aws-ecs/deploy-service-update:
               requires:
                   - aws-ecr/build-and-push-image
+              aws-region: AWS_REGION
               family: '867e086a165540bc96f596064d336310' # タスク名
               cluster-name: 'paradigm-shift-ecs-cluster'
               service-name: 'paradigm-shift-ecs-alb-ecs'
