@@ -3,8 +3,8 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.8.0
   heroku: circleci/heroku@1.2.3
-  aws-ecr: circleci/aws-ecr@6.1.0
-  aws-ecs: circleci/aws-ecs@0.0.8
+  aws-ecr: circleci/aws-ecr@8.1.1
+  aws-ecs: circleci/aws-ecs@3.0.0
   
 
 jobs:
@@ -54,7 +54,6 @@ workflows:
           - aws-ecs/deploy-service-update:
               requires:
                   - aws-ecr/build-and-push-image
-              aws-region: AWS_REGION
               family: '867e086a165540bc96f596064d336310' # タスク名
               cluster-name: 'paradigm-shift-ecs-cluster'
               service-name: 'paradigm-shift-ecs-alb-ecs'
