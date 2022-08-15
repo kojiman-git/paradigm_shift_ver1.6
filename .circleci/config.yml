@@ -50,11 +50,11 @@ workflows:
               region: AWS_REGION
               account-url: AWS_ECR_ACCOUNT_URL
               repo: 'paradigm-shift-ecs'
-              tag: CIRCLE_SHA1
+              tag: "${CIRCLE_SHA1}"
           - aws-ecs/deploy-service-update:
               requires:
                   - aws-ecr/build-and-push-image
               family: '3ae0d8b998ff4546a82a3509a156fae9' # タスク名
               cluster-name: 'paradigm-shift-ecs-cluster'
               service-name: 'paradigm-shift-ecs-alb-ecs'
-              container-image-name-updates: 'container=paradigm-shift-ecs-container,tag=CIRCLE_SHA1'
+              container-image-name-updates: 'container=paradigm-shift-ecs-container,tag=${CIRCLE_SHA1}'
