@@ -3,7 +3,7 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.8.0
   heroku: circleci/heroku@1.2.3
-  aws-ecr: circleci/aws-ecr@8.0.0
+  aws-ecr: circleci/aws-ecr@7.3.0
   aws-ecs: circleci/aws-ecs@2.0.0
   
 
