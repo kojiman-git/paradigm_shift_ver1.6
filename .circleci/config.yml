@@ -47,9 +47,9 @@ workflows:
           - aws-ecr/build-and-push-image:
               requires:
                   - test # 追加、テストに成功したときだけデプロイ操作に移るようにする
+              region: AWS_REGION
               account-url: AWS_ECR_ACCOUNT_URL
               repo: 'paradigm-shift-ecs'
-              region: AWS_REGION
               tag: "${CIRCLE_SHA1}"
           - aws-ecs/deploy-service-update:
               requires:
