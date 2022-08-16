@@ -46,7 +46,6 @@ jobs:
       image: ubuntu-1604:201903-01
     steps:
       - checkout
-           path: ~/paradigm_shift_ver1.6
       - aws-ecr/build-and-push-image:
               region: AWS_REGION
               account-url: AWS_ECR_ACCOUNT_URL
