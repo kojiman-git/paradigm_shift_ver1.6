@@ -43,7 +43,6 @@ workflows:
     build_and_push_image:
           jobs:
           - test  # 追加、デプロイ操作前にテストを実行
-          - checkout
           - aws-ecr/build-and-push-image:
               requires:
                   - test # 追加、テストに成功したときだけデプロイ操作に移るようにする
