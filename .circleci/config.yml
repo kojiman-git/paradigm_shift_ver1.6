@@ -39,22 +39,37 @@ jobs:
       - run:
           name: test
           command: bundle exec rake spec
+  
 
-workflows:
-    build_and_push_image:
-          jobs:
-          - test  # 追加、デプロイ操作前にテストを実行
-          - aws-ecr/build-and-push-image:
-              requires:
-                  - test # 追加、テストに成功したときだけデプロイ操作に移るようにする
+  build_and_push_image:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - checkout
+           path: ~/paradigm_shift_ver1.6
+      - aws-ecr/build-and-push-image:
               region: AWS_REGION
               account-url: AWS_ECR_ACCOUNT_URL
               repo: 'paradigm-shift-ecs'
-              tag: 'latest'
-          - aws-ecs/deploy-service-update:
+              tag: "${CIRCLE_SHA1}"
+              path: ~/paradigm_shift_ver1.6
+
+
+
+
+
+
+
+workflows:
+   version: 2
+   test:
+       - build_and_push_image:
+        requires:
+           - test
+           - aws-ecs/deploy-service-update:
               requires:
-                  - aws-ecr/build-and-push-image
+                 - build_and_push_image:
               family: '3ae0d8b998ff4546a82a3509a156fae9' # タスク名
               cluster-name: 'paradigm-shift-ecs-cluster'
               service-name: 'paradigm-shift-ecs-alb-ecs'
-              container-image-name-updates: 'container=paradigm-shift-ecs-container,tag=latest'
+              container-image-name-updates: 'container=paradigm-shift-ecs-container,tag=${CIRCLE_SHA1}'
