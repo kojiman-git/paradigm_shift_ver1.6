@@ -49,8 +49,8 @@ workflows:
               region: AWS_REGION
               account-url: AWS_ECR_ACCOUNT_URL
               repo: 'paradigm-shift-ecs'
-              tag: "${CIRCLE_SHA1}"
-              path: ~/paradigm_shift_ver1.6
+              tag: '${CIRCLE_SHA1}'
+             
 
           - aws-ecs/deploy-service-update:
               requires:
