@@ -1,10 +1,9 @@
-
 version: 2.1
 orbs:
   ruby: circleci/ruby@1.8.0
   heroku: circleci/heroku@1.2.3
   aws-ecr: circleci/aws-ecr@7.3.0
-  aws-ecs: circleci/aws-ecs@2.3.0
+  aws-ecs: circleci/aws-ecs@2.0.0
   
 
 jobs:
@@ -39,36 +38,24 @@ jobs:
       - run:
           name: test
           command: bundle exec rake spec
-  
 
-  build_and_push_image:
-    machine:
-      image: ubuntu-1604:201903-01
-    steps:
-      - checkout
-      - aws-ecr/build-and-push-image:
+workflows:
+    build_and_push_image:
+          jobs:
+          - test  # 追加、デプロイ操作前にテストを実行
+          - checkout
+          - aws-ecr/build-and-push-image:
+              requires:
+                  - test # 追加、テストに成功したときだけデプロイ操作に移るようにする
               region: AWS_REGION
               account-url: AWS_ECR_ACCOUNT_URL
               repo: 'paradigm-shift-ecs'
               tag: "${CIRCLE_SHA1}"
               path: ~/paradigm_shift_ver1.6
 
-
-
-
-
-
-
-workflows:
-   version: 2
-   test:
-   build_and_push_image:
-        requires:
-           - test
-        jobs:
-           - aws-ecs/deploy-service-update:
+          - aws-ecs/deploy-service-update:
               requires:
-                build_and_push_image:
+                  - aws-ecr/build-and-push-image
               family: '3ae0d8b998ff4546a82a3509a156fae9' # タスク名
               cluster-name: 'paradigm-shift-ecs-cluster'
               service-name: 'paradigm-shift-ecs-alb-ecs'
