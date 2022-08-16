@@ -50,7 +50,7 @@ workflows:
               region: AWS_REGION
               account-url: AWS_ECR_ACCOUNT_URL
               repo: 'paradigm-shift-ecs'
-              tag: latest
+              tag: 'latest'
           - aws-ecs/deploy-service-update:
               requires:
                   - aws-ecr/build-and-push-image
