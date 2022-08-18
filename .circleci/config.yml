@@ -55,7 +55,7 @@ workflows:
           - aws-ecs/deploy-service-update:
               requires:
                   - aws-ecr/build-and-push-image
-              region: AWS_REGION
+
               family: '3ae0d8b998ff4546a82a3509a156fae9' # タスク名
               cluster-name: 'paradigm-shift-ecs-cluster'
               service-name: 'paradigm-shift-ecs-alb-ecs'
