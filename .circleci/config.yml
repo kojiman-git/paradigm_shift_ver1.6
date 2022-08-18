@@ -56,7 +56,7 @@ workflows:
               requires:
                   - aws-ecr/build-and-push-image
 
-              family: '3ae0d8b998ff4546a82a3509a156fae9' # タスク名
+              family: '3a9042b5255b4138a526a58e78c1ceed' # タスク名
               cluster-name: 'paradigm-shift-ecs-cluster'
               service-name: 'paradigm-shift-ecs-alb-ecs'
               container-image-name-updates: 'container=paradigm-shift-ecs-container,tag=${CIRCLE_SHA1}'
