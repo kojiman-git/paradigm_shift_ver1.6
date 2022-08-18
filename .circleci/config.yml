@@ -50,7 +50,10 @@ workflows:
               account-url: AWS_ECR_ACCOUNT_URL
               repo: 'paradigm-shift-ecs'
               tag: '${CIRCLE_SHA1}'
-             
+              filters:    
+                branches:
+                    only:
+                    - main
 
           - aws-ecs/deploy-service-update:
               requires:
@@ -60,3 +63,7 @@ workflows:
               cluster-name: 'paradigm-shift-ecs-cluster'
               service-name: 'paradigm-shift-ecs-service2'
               container-image-name-updates: 'container=paradigm-shift-ecs-container,tag=${CIRCLE_SHA1}'
+              filters:   
+                branches:
+                    only:
+                    - main
