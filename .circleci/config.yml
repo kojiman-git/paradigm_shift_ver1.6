@@ -49,11 +49,11 @@ workflows:
               region: AWS_REGION
               account-url: AWS_ECR_ACCOUNT_URL
               repo: 'paradigm-shift-ecs'
+              dockerfile: Dockerfile
+              extra-build-args: '--build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}'
               tag: '${CIRCLE_SHA1}'
-              filters:    
-                branches:
-                    only:
-                    - main
+
+              
 
           - aws-ecs/deploy-service-update:
               requires:
@@ -63,7 +63,4 @@ workflows:
               cluster-name: 'paradigm-shift-ecs-cluster'
               service-name: 'paradigm-shift-ecs-service2'
               container-image-name-updates: 'container=paradigm-shift-ecs-container,tag=${CIRCLE_SHA1}'
-              filters:   
-                branches:
-                    only:
-                    - main
+             

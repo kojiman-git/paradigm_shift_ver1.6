@@ -2,6 +2,11 @@ FROM ruby:3.1.0
 
 ENV RAILS_ENV=production
 
+### CircleCI経由でイメージのプッシュ/デプロイを行う際に使用
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
+
+
 WORKDIR /paradigm_shift_docker
 
 # Gemfileのみでbundle
