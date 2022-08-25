@@ -50,7 +50,7 @@ workflows:
               account-url: AWS_ECR_ACCOUNT_URL
               repo: 'paradigm-shift-ecs'
               dockerfile: Dockerfile
-              extra-build-args: '--build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}'
+              extra-build-args: '--build-arg RAILS_PRODUCTION_KEY=${RAILS_PRODUCTION_KEY}'
               tag: '${CIRCLE_SHA1}'
 
               
