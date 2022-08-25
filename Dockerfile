@@ -4,7 +4,7 @@ ENV RAILS_ENV=production
 
 ### CircleCI経由でイメージのプッシュ/デプロイを行う際に使用
 ARG RAILS_PRODUCTION_KEY
-ENV RAILS_PRODUCTION_KEY ${RAILS_PRODUCTION_KEY}
+
 
 
 WORKDIR /paradigm_shift_docker
