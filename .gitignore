@@ -36,3 +36,5 @@
 /db/mysql_data
 
 /config/credentials/production.key
+
+/terraform/.terraform

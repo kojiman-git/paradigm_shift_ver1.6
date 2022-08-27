@@ -17,9 +17,7 @@ RUN bundle install
 COPY . /paradigm_shift_docker
 RUN bundle install
 
-WORKDIR /paradigm_shift_docker/config/credentials
-RUN touch production.key 
-RUN echo ${RAILS_PRODUCTION_KEY} >production.key
+RUN echo ${RAILS_PRODUCTION_KEY} > /paradigm_shift_docker/config/credentials/production.key
 
 WORKDIR /paradigm_shift_docker
 
