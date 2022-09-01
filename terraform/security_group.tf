@@ -75,3 +75,37 @@ resource "aws_security_group_rule" "db_out_all" {
   to_port                  = 0
   cidr_blocks = ["0.0.0.0/0"]
 }
+
+resource "aws_security_group" "alb_sg" {
+  name        = "SecurityGroup_for_paradigm_shift_alb_terraform"
+  description = "alb role security group"
+  vpc_id      = aws_vpc.vpc.id
+  tags = {
+    Name    = "SecurityGroup_for_paradigm_shift_alb_terraform"
+  }
+}
+
+resource "aws_security_group_rule" "alb_in_http" {
+  security_group_id = aws_security_group.alb_sg.id
+  type              = "ingress"
+  protocol          = "tcp"
+  from_port         = 80
+  to_port           = 80
+  cidr_blocks       = ["0.0.0.0/0"]
+}
+resource "aws_security_group_rule" "alb_in_https" {
+  security_group_id = aws_security_group.alb_sg.id
+  type              = "ingress"
+  protocol          = "tcp"
+  from_port         = 443
+  to_port           = 443
+  cidr_blocks       = ["0.0.0.0/0"]
+}
+resource "aws_security_group_rule" "alb_out_all" {
+  security_group_id        = aws_security_group.alb_sg.id
+  type                     = "egress"
+  protocol                 = "-1"
+  from_port                = 0
+  to_port                  = 0
+  cidr_blocks = ["0.0.0.0/0"]
+}
