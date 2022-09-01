@@ -4,7 +4,7 @@ data "aws_ami" "app" {
 
   filter {
     name   = "name"
-    values = ["paradigm_shift_appserver_image_terraform"]
+    values = ["image for paradimg shift terraform"]
   }
   filter {
     name   = "root-device-type"
