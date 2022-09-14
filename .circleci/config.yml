@@ -48,7 +48,7 @@ workflows:
                   - test # 追加、テストに成功したときだけデプロイ操作に移るようにする
               region: AWS_REGION
               account-url: AWS_ECR_ACCOUNT_URL
-              repo: 'paradigm-shift-ecs'
+              repo: 'paradigm-shift-ecs-terraform'
               dockerfile: Dockerfile
               extra-build-args: '--build-arg RAILS_PRODUCTION_KEY=${RAILS_PRODUCTION_KEY}'
               tag: '${CIRCLE_SHA1}'
@@ -56,18 +56,17 @@ workflows:
                 branches:
                     only:
                     - main
-
               
 
           - aws-ecs/deploy-service-update:
               requires:
                   - aws-ecr/build-and-push-image
 
-              family: 'paradigm-shift-ecs-service' # タスク名
-              cluster-name: 'paradigm-shift-ecs-cluster'
-              service-name: 'paradigm-shift-ecs-service2'
-              container-image-name-updates: 'container=paradigm-shift-ecs-container,tag=${CIRCLE_SHA1}'
+              family: 'paradigm-shift-ecs-task-definition-terraform' # タスク名
+              cluster-name: 'paradigm-shift-ecs-cluster-terraform'
+              service-name: 'paradigm-shift-ecs-servic-terraform'
+              container-image-name-updates: 'container=paradigm-shift-ecs-container-terraform,tag=${CIRCLE_SHA1}'
               filters:    
                 branches:
                     only:
-                    - main
+                    - main           
