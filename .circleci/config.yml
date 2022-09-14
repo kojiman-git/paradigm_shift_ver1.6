@@ -52,7 +52,10 @@ workflows:
               dockerfile: Dockerfile
               extra-build-args: '--build-arg RAILS_PRODUCTION_KEY=${RAILS_PRODUCTION_KEY}'
               tag: '${CIRCLE_SHA1}'
-              
+              filters:    
+                branches:
+                    only:
+                    - main
               
 
           - aws-ecs/deploy-service-update:
@@ -63,4 +66,7 @@ workflows:
               cluster-name: 'paradigm-shift-ecs-cluster-terraform'
               service-name: 'paradigm-shift-ecs-servic-terraform'
               container-image-name-updates: 'container=paradigm-shift-ecs-container-terraform,tag=${CIRCLE_SHA1}'
-              
+              filters:    
+                branches:
+                    only:
+                    - main           
