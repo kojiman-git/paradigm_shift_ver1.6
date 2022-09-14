@@ -20,7 +20,7 @@ data "aws_iam_policy_document" "ec2_assume_role" {
 
     principals {
       type        = "Service"
-      identifiers = ["ec2.amazonaws.com"]
+      identifiers = ["ecs-tasks.amazonaws.com"]
     }
   }
 }
@@ -49,4 +49,9 @@ resource "aws_iam_role_policy_attachment" "app_iam_role_s3_readonly" {
 resource "aws_iam_role_policy_attachment" "app_iam_role_admin" {
   role       = aws_iam_role.app_iam_role.name
   policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+}
+
+resource "aws_iam_role_policy_attachment" "amazon_ecs_task_execution_role_policy" {
+  role       = aws_iam_role.app_iam_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
