@@ -1,0 +1,194 @@
+  <template>
+    
+     
+     <router-view/>
+    
+  </template>
+
+  <script>
+   
+ 
+  </script>
+
+<style>
+ 
+*{
+  padding: 0px;
+  margin: 0px;
+}
+
+body{
+  margin: 0px;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  
+}
+
+header {
+  display: flex;
+  justify-content: space-between; 
+  background-color:#a7f9ff ;
+  
+}
+
+#titel{
+  text-align: center;
+  border: solid 1px #000000;
+  background-color: #cefffb;
+}
+
+#titel-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  border: solid 1px #000000;
+  background-color: #cefffb;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+  position: relative; 
+  top: 0px; 
+  left: 15px; 
+  padding: 5px; 
+  
+}
+
+.app_name{
+  position: relative; 
+  top: 10px; 
+  left: -30px;
+}
+  
+  
+
+main {
+  /* position: relative; */
+  flex: 1;
+  background-color: rgb(255, 255, 255);
+  overflow-y: scroll;
+  
+}
+
+#post_button{
+  width: 50px;
+  height: 50px;
+  border: 0;
+  border-radius: 50%;
+  background: #cefffb;
+  color: rgb(0, 0, 0);
+  padding: 5px;
+  font-size: 38px;
+  position: absolute;
+  right: 10px;
+  bottom: 70px;
+  position: fixed;
+  
+}
+
+
+footer{
+  display: flex;
+  justify-content: space-around; 
+  background-color: #a7f9ff;
+  
+}
+
+.user-icon {
+  border-radius: 100%;
+}
+
+/* ドロワーメニューのcss */
+#menu{
+  position: absolute;
+  left: -1000px;
+}
+
+
+aside{
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  left: -1000px;
+  height: 100%;
+  transition: all 0.2s;
+  width: 60%;
+  border: solid 1px #000000;
+  z-index: 10;
+  }
+
+  #user-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-bottom: solid 1px;
+    height: 30%;
+
+  }
+
+  #name-container{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    
+  }
+
+  #user-photo{
+    height: 130px;
+    width: 130px;
+    
+  }
+
+  #user-name{
+    font-size: 2vh;
+    font-size: 2vw;
+    /* position: relative; 
+    top: 40px; 
+    left: -50px; */
+  }
+
+  .close{
+    font-size: 2vh;
+    font-size: 2vw;
+    align-self: start;
+  }
+    
+
+  #follow-container{
+    display: flex;
+    justify-content: space-around;
+    font-size: 2vh;
+    font-size: 2vw;
+    }
+  
+  #drawer-menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 50%;
+    font-size: 3vh 3vw ;
+    
+  }
+    
+  #menu[type="checkbox"]:checked ~ aside {
+    left: 0;
+}
+  #menu[type="checkbox"]:checked ~ .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8) ;
+      z-index: 5;
+  }
+
+
+</style>
