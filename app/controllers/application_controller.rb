@@ -1,4 +1,7 @@
-class ApplicationController < ActionController::Base
+# ActionController::APIを継承する必要がある
+# https://railsguides.jp/api_app.html
+class ApplicationController < ActionController::API
+#class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   include SessionsHelper
