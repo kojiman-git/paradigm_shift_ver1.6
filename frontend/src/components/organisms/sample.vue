@@ -1,0 +1,3 @@
+Organism
+1. 親コンポーネントからデータをpropsで受け取り、必要であればMoleculeやAtomのコンポーネントにpropsでデータを渡す
+2. emitで親コンポーネントでデータを送る

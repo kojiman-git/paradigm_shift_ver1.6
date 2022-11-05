@@ -1,0 +1,5 @@
+Template
+
+1. 親コンポーネントからデータをpropsで受け取り、必要であればOrganismやMoleculeやAtomのコンポーネントにpropsでデータを渡す
+2. emitで親コンポーネントでデータを送る
+
