@@ -23,6 +23,8 @@ RSpec.describe "post", type: :request do
       @relationship = FactoryBot.create(:relationship,:a)
     end
 
+    # postリソースに関するテストファイルのはずですが、なぜuserなど他のリソースのテストがあるのでしょうか？
+    # リソースごとにテストファイルを分けてあげてください
     it "新規ユーザー登録できること" do
       post   "/users",
       params: { user: { name: "テスト",email: "test@gmail.com",
@@ -34,6 +36,10 @@ RSpec.describe "post", type: :request do
       post   "/posts",
       params: { post: { term: "テスト",paraphrase: "テスト",
         m_category_id: "2"} }
+      # 他のテストの影響などで元々4件だった場合、このテストは意図せず通ってしまうことがあると思います
+      # 元々何件で何件に変わったのか調べる方がいいと思います。
+      # RSpecにchangeというマッチャーがあるのでこういうものを使うと良いです
+      # https://relishapp.com/rspec/rspec-expectations/docs/built-in-matchers/change-matcher
       expect(Post.count).to eq 4
     end
     it "投稿した後 post created! と表示されること" do
