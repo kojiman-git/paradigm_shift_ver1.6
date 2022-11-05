@@ -3,6 +3,8 @@ class SessionsController < ApplicationController
   def new
   end
 
+  # SPAのログインに関してはgemを使えば問題ない
+  # 参考: https://qiita.com/tomokazu0112/items/5fdd6a51a84c520c45b5
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])

@@ -19,12 +19,34 @@
     </main>
    <h1 id="app-titel">世界が変わる瞬間</h1>
    <!-- 2. template層コンポーネントを呼び出し、このコンポーネントに1で取得したデータをpropsで渡すようにします -->
+   <reviews
+     :reviews="reviews"
+     @onSubmit="handleSubmit"
+   >
+   </reviews>
   </div>
+  
 </template>
 
-  <script>
-  // 1. トップレベルの階層でバックエンドにリクエストを投げてレンダリングするデータを取得します
-  </script>
+<script>
+// 1. トップレベルの階層でバックエンドにリクエストを投げてレンダリングするデータを取得します
+export default {
+  components: {
+    reviews
+  },
+  mounted() {
+    // このページがトップレベルとする
+    // Railsサーバーからreviews一覧を取得して、dataに設定する
+    this.data = axios.get('reviews')
+  },
+  methods: {
+    handleSubmit() {
+      // railaサーバーにpostリクエストを送る
+      axios.post('/revies')
+    }
+  }
+}
+</script>
 
 <style>
 

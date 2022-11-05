@@ -17,6 +17,39 @@ class ReviewsController < ApplicationController
     #    status: 200,
     #    data: {}
     #  }
+    # 課題1: jsonの形をどうしたらいいか？書く人にバラバラになったり、APIごとにformatが異なって、フロントでの取り回しが難しい
+    # 解決法: 何かしらのjsonのformatに則りましょう.
+    # 例: https://jsonapi.org/
+    @json = {
+      "data": [{
+        "type": "reviews",
+        "id": "1",
+        "attributes": {
+          "score": 100
+        },
+        "relationships": {
+          "author": {
+            "data": { "type": "post", "id": "1" }
+          },
+        },
+      }],
+      "included": [{
+        "type": "post",
+        "id": "1",
+        "attributes": {
+          "paraphrase": "Dan",
+          "term": "Gebhardt"
+        },
+      }]
+    }
+
+    # 課題2: 上記のようなjsonを毎回作るのめんどくさい、いい感じに整形してくれるのがないかな？
+    # https://github.com/jsonapi-serializer/jsonapi-serializer
+    # jsonapi-serializerを使えば、json apini準拠したformatでdataをシリアライズしてくれる
+    # rails g serializerを使いたいモデルクラス
+    # シリアライザには、フロントに返してあげたい情報を設定する(必要なカラムを記述上げる)
+    # シリアライザで、どういうデータを返すかを定義する場所
+    render json: ReviewSerializer.new(@reviews).serializable_hash
   end
 
   def create
