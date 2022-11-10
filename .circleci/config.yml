@@ -24,7 +24,7 @@ jobs:
     working_directory: ~/paradigm_shift_ver1.6
     steps:
       - checkout:
-          path: ~/paradigm_shift_ver1.6
+          path: ~/paradigm_shift_ver1.6/BackEnd
       - run: sudo apt-get update
       - run: sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
       - run: sudo apt-get install libjpeg-dev libpng-dev libtiff-dev libwebp-dev
