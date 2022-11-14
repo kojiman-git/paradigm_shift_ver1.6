@@ -1,15 +1,15 @@
 <template>
- <v-app>
-  <Nuxt />
- </v-app>
+  <div>
+    loginです。
+  </div>
 </template>
 
 <script>
+export default {
 
+}
 </script>
 
 <style>
-
-
 
 </style>
