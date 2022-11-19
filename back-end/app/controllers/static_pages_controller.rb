@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def top
+    render json: User.all 
   end
 
   def guest_sign_in

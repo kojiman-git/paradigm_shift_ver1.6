@@ -1,11 +1,11 @@
 <template>
  <div class="con">
-    <AtomsNoLoginHeader/>
+    <AtomsNoLoginHeaderAndFooter>Paradigm Shift</AtomsNoLoginHeaderAndFooter>
     <main>
     <AtomsAppExplanation/>
     <MoleculesLoginAndSignUpBtn/>
     </main>
-   <AtomsNoLoginFooter/>
+   <AtomsNoLoginHeaderAndFooter>世界が変わる瞬間</AtomsNoLoginHeaderAndFooter>
  </div>
 </template>
 

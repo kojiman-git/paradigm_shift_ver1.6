@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class = btn>
-      <v-btn  id="login_button" color="#76f6ff" to="/login">
+      <v-btn  id="login_button" color="#cefffb" to="/login">
       ログインはこちら
       </v-btn>
-      <v-btn  id="login_button" color="#76f6ff">
+      <v-btn  id="login_button" color="#cefffb">
       ゲストユーザーとしてログイン
       </v-btn>
     </div>
