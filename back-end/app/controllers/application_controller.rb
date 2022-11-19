@@ -1,5 +1,6 @@
-class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+class ApplicationController < ActionController::API
+  include ActionController::Cookies # 追加
+#  protect_from_forgery with: :exception 
   
   include SessionsHelper
   

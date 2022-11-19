@@ -4,15 +4,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    user = User.find_by(email: params[:email].downcase)
+    if user && user.authenticate(params[:password])
       log_in user
-      flash[:success] = "You were able to log in"
-      redirect_to controller: :home_page, action: :home
+      payload = { message: 'ログインしました。', name: user.name }
     else
-      flash.now[:danger] = 'Invalid email/password combination'
-      render 'new'
+      payload = { message: 'メールアドレスまたはパスワードが正しくありません。' }
     end
+    render json: payload
   end
 
   def destroy

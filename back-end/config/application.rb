@@ -11,6 +11,9 @@ module ParadigmShiftVer16
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    config.api_only = true
+    config.debug_exception_response_format = :api
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -18,5 +21,8 @@ module ParadigmShiftVer16
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+    config.middleware.use ActionDispatch::ContentSecurityPolicy::Middleware
   end
 end
