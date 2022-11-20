@@ -35,18 +35,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(name:params[:name],email: params[:email],password:params[:password],password_confirmation:params[:password_confirmation])
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to the paradigm shift!"
-      redirect_to controller: :home_page, action: :home
+      payload = { message: 'ユーザーを作ってログインしました。', name: @user.name }
     else
-      
-      render 'new'
-      
+      payload = { message: 'ユーザーの保存に失敗しました。' }
     end
-  
-      
+    render json: payload
   end
 
     
