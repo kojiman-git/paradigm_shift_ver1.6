@@ -7,11 +7,11 @@
         <v-row justify="center" no-gutters>
           <v-col cols="10">
             <div v-show="isDisplay">
-            <v-alert
-              color="red"
-              type="warning"
-            >{{errormessage}}
-            </v-alert>
+              <v-alert
+                color="red"
+                type="warning"
+              >{{errormessage}}
+              </v-alert>
             </div>
             <v-text-field
             v-model="email"
