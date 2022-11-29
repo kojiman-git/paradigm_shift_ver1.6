@@ -21,7 +21,7 @@
             </router-link> 
           </v-col>
           <v-col class=center>
-            <router-link to="/search">
+            <router-link to="/userSearch">
               <v-img
                 max-height="50"
                 max-width="50"

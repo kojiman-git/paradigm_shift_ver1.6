@@ -11,7 +11,7 @@ module ParadigmShiftVer16
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
-    config.api_only = false
+    config.api_only = true
     config.debug_exception_response_format = :api
 
     # Configuration for the application, engines, and railties goes here.
