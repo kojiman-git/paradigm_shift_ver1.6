@@ -1,12 +1,12 @@
 <template>
   <div class="con">
     <MoleculesLogedinHeader>Paradigm Shift</MoleculesLogedinHeader>
-    <AtomsSubHeader>Quiz Challenge</AtomsSubHeader>
+    <MoleculesAllPostsSubHeader/>
     <main>
       
      
     </main>
-    <MoleculesQuizChallengeBtn/>
+    <MoleculesUserAndPostSearchBtn/>
     <MoleculesLogedinFooter/>
  </div>
 </template>
