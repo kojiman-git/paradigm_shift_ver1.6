@@ -61,7 +61,7 @@
 </template>
 
 <script>
- 
+ import axios from 'axios';
   export default {
     data () {
       return {
@@ -77,7 +77,16 @@
     },
     methods: {
       LogOutEvent() {
-        // ログアウト機能は後で開発する
+      axios
+        .get('http://localhost:3000/logout')
+        .then(response => {
+          if (response.data.message === "ログアウトしました") {
+              this.$router.push('/')
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });  
         },
     }
   }
