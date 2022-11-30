@@ -65,7 +65,7 @@ export default {
     console.log(this.$data.email)
   },
    LoginEvents() {
-     const params = {email:this.$data.email,password:this.$data.password}  
+     const params = {session:{email:this.$data.email,password:this.$data.password}}  
       axios
         .post('http://localhost:3000/login',params)
         .then(response => {
