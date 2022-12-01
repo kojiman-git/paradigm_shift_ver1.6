@@ -67,7 +67,7 @@ export default {
    LoginEvents() {
      const params = {session:{email:this.$data.email,password:this.$data.password}}  
       axios
-        .post('http://localhost:3000/login',params)
+        .post('http://localhost:3000/login',params, { withCredentials: true })
         .then(response => {
           if (response.data.message === "ログインしました。") {
               this.$router.push('/home')

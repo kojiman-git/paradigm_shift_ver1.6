@@ -15,7 +15,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    byebug
     log_out
     payload = { message: 'ログアウトしました'}
     render json: payload
