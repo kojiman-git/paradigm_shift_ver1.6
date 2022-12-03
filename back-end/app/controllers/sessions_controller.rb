@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
-      payload = { message: 'ログインしました。', name: user.name }
+      payload = { message: 'ログインしました。',id: user.id, name: user.name ,email: user.email,intoroduction: user.intoroduction,profile_url: user.profile_url,image: user.image}
     else
       payload = { message: 'メールアドレスまたはパスワードが正しくありません。' }
     end

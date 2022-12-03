@@ -15,7 +15,7 @@
         </v-list-item-avatar>
 
         <v-list-item-content>
-          <v-list-item-title>Test User</v-list-item-title>
+          <v-list-item-title>{{this.$store.state.currentUser.name}}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
@@ -81,6 +81,7 @@
         .get('http://localhost:3000/logout',{ withCredentials: true })
         .then(response => {
           if (response.data.message === "ログアウトしました") {
+              this.$store.dispatch('logoutEvent')
               this.$router.push('/')
           }
         })

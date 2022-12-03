@@ -3,7 +3,10 @@
     <MoleculesLogedinHeader>Paradigm Shift</MoleculesLogedinHeader>
     <AtomsSubHeader>Message Partner</AtomsSubHeader>
     <main>
-      
+    
+ 
+
+ 
      
     </main>
     <MoleculesLogedinFooter/>
@@ -11,13 +14,7 @@
 </template>
 
 <script>
-export default {
- data(){
-    return {
-     
-    }
-  },
-}  
+
 </script>
 
 <style scoped>
