@@ -43,7 +43,7 @@
           <NuxtLink to="signUp" class=mt-12>New user ? Sign up now!</NuxtLink>
         </v-row>
       </v-container >
-     </main>
+    </main>
     <AtomsNoLoginHeaderAndFooter>世界が変わる瞬間</AtomsNoLoginHeaderAndFooter>
  </div>
 </template>
@@ -70,6 +70,7 @@ export default {
         .post('http://localhost:3000/login',params, { withCredentials: true })
         .then(response => {
           if (response.data.message === "ログインしました。") {
+              this.$store.dispatch('loginEvent',response.data)
               this.$router.push('/home')
           }else{
               this.$data.errormessage = response.data.message
