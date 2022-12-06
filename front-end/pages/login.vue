@@ -92,11 +92,9 @@ export default {
   width: 100vw;
   height: 100vh;  
 }
-
 main {
   flex: 1;
   background-color: rgb(255, 255, 255);
   overflow-y: scroll; 
 }
-
 </style>

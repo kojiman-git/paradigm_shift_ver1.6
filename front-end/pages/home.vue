@@ -3,7 +3,7 @@
     <MoleculesLogedinHeader>Paradigm Shift</MoleculesLogedinHeader>
     <AtomsSubHeader>Home</AtomsSubHeader>
     <main>
-      
+     <MoleculesFollowingPost/>
      <AtomsPlusBtn/>
     </main>
     <MoleculesLogedinFooter/>
@@ -12,11 +12,8 @@
 
 <script>
 export default {
- data(){
-    return {
-     
-    }
-  },
+ 
+
 }  
 </script>
 
