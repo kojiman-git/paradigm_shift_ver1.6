@@ -58,6 +58,7 @@
         <slot></slot>
       <v-spacer />
     </v-app-bar>
+    <v-divider></v-divider>
   </div>
 </template>
 

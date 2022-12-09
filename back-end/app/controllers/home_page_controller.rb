@@ -2,6 +2,12 @@ class HomePageController < ApplicationController
   def home
     if logged_in?
       @posts = current_user.feed
+      vueHome = []
+      @posts.each do |post|
+        vueHome.push({post_id:post.id,user_id:post.user.id,user_name:post.user.name,term:post.term,paraphrase:post.paraphrase,category:post.m_category.name,created_at: post.created_at,avg_score:post.avg_score,reviewsCount:post.reviews.count,reviewScorePercentage:post.review_score_percentage,userImage:post.user.image.thumb.url,Liked:post.liked_by?(current_user)})
+      end
+      render json: vueHome
+
     end
 
   end

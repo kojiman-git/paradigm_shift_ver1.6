@@ -71,7 +71,15 @@ export default {
         .then(response => {
           if (response.data.message === "ログインしました。") {
               this.$store.dispatch('loginEvent',response.data)
-              this.$router.push('/home')
+         axios
+              .get('http://localhost:3000/home_page/home', { withCredentials: true })
+              .then(response => {
+                this.$store.dispatch('followingPost/setEvent',response.data)
+                .then(this.$router.push('/home'))
+              })
+              .catch(error => {
+                console.error(error);
+              });
           }else{
               this.$data.errormessage = response.data.message
               this.$data.isDisplay = true
@@ -98,3 +106,8 @@ main {
   overflow-y: scroll; 
 }
 </style>
+          
+             
+          
+          
+           
