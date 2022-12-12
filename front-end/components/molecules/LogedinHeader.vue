@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <v-navigation-drawer
@@ -57,6 +58,7 @@
         <slot></slot>
       <v-spacer />
     </v-app-bar>
+    <v-divider></v-divider>
   </div>
 </template>
 
@@ -67,11 +69,11 @@
       return {
         drawer: null,
         items: [
-          { title: 'Following', icon: 'mdi-account-multiple',to: '/following', },
-          { title: 'Followers', icon: 'mdi-account-multiple-outline',to: '/followers',},
-          { title: 'My Profile', icon: 'mdi-card-account-details-outline',to: '/myProfile',},
-          { title: 'Quiz List', icon: 'mdi-help-box',to: '/quizList',},
-          { title: 'Description', icon: 'mdi-forum',to: '/description',},
+          { title: 'Following', icon: 'mdi-account-multiple',to:`/DrawerMenu/${this.$store.state.currentUser.id}/following`},
+          { title: 'Followers', icon: 'mdi-account-multiple-outline',to:`/DrawerMenu/${this.$store.state.currentUser.id}/followers`},
+          { title: 'My Profile', icon: 'mdi-card-account-details-outline',to:`/DrawerMenu/${this.$store.state.currentUser.id}/myProfile`},
+          { title: 'Quiz List', icon: 'mdi-help-box',to:`/DrawerMenu/${this.$store.state.currentUser.id}/quizList`},
+          { title: 'Description', icon: 'mdi-forum',to: '/DrawerMenu/description',},
         ],
       }
     },
@@ -94,5 +96,4 @@
 </script>
 
 <style>
-
 </style>

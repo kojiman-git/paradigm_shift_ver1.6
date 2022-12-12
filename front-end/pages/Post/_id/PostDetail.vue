@@ -1,10 +1,9 @@
 <template>
   <div class="con">
     <MoleculesLogedinHeader>Paradigm Shift</MoleculesLogedinHeader>
-    <AtomsSubHeader>Home</AtomsSubHeader>
+    <AtomsSubHeader>Post Detail</AtomsSubHeader>
     <main>
-     <MoleculesFollowingPost/>
-     <AtomsPlusBtn/>
+    <MoleculesPostDetail/>
     </main>
     <MoleculesLogedinFooter/>
  </div>
@@ -12,8 +11,11 @@
 
 <script>
 export default {
- 
-
+ data(){
+    return {
+     
+    }
+  },
 }  
 </script>
 

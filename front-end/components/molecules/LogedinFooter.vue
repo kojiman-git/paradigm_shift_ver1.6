@@ -1,5 +1,6 @@
 <template>
    <div>
+    <v-divider></v-divider>
     <v-app-bar color="#a7f9ff" class="text-h6">
         <v-row justify="space-around"  no-gutters class=mt-2 >
           <v-col class=center>
