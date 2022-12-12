@@ -3,11 +3,15 @@
     <v-card v-for="post in posts" :key="post.post_id">
       <v-row  no-gutters justify="space-around">
         <v-col cols="3" class="mt-4 ml-4" >
-          <v-img
-              max-height="75"
-              max-width="75"
-              v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
-          ></v-img><br>
+          <NuxtLink
+          :to="`/DrawerMenu/${post.user_id}/myProfile`">
+            <v-img
+                max-height="75"
+                max-width="75"
+                v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
+            ></v-img>
+          </NuxtLink>
+          <br>
           <NuxtLink
           :to="`/DrawerMenu/${post.user_id}/myProfile`">
           <v-card-text >
@@ -16,7 +20,8 @@
           </NuxtLink>
           
         </v-col>
-        <v-col cols="7" class="mt-4">
+        <v-col cols="7" class="mt-4" >
+        <NuxtLink :to="`/Post/${post.post_id}/PostDetail/`" tag="div" class="c-p">
           <v-card-text >
             {{post.category}}
             <br>
@@ -29,6 +34,7 @@
             <br>
             評価{{post.avg_score}}/5（{{post.reviewsCount}}件のレビュー）
           </v-card-text>
+        </NuxtLink>
         </v-col>
         <v-col cols="1" class="mt-4">
           <v-btn icon>
@@ -71,5 +77,8 @@ export default {
 </script>
 
 <style scoped>
-
+.c-p{
+ cursor: pointer;
+ 
+}
 </style>

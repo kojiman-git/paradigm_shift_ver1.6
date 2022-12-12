@@ -13,7 +13,8 @@ export const state = {
       "reviewsCount": "",
       "reviewScorePercentage": "", 
       "userImage": "" ,
-      "Liked":""}
+      "Liked":"",
+    }
   ]
 }
 
