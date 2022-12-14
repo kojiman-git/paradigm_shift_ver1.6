@@ -59,9 +59,12 @@
               <v-icon 
               v-if=postDetailsInfo.Liked
               color="red"
-              >
+              @click="disLikeEvnet">
               mdi-cards-heart</v-icon>
-              <v-icon v-else>mdi-cards-heart-outline</v-icon>
+              <v-icon 
+              v-else
+              @click="LikeEvnet">
+              mdi-cards-heart-outline</v-icon>
             </v-btn>
           </v-col>
         </v-row>
@@ -143,6 +146,44 @@ export default {
         .post(`http://localhost:3000/post_details/${this.$route.params.id}/reviews`,params, { withCredentials: true })
         .then(response => {
           if (response.data.message === "レビューを生成しました") {
+            axios
+            .get(`http://localhost:3000/post_details/${this.$route.params.id}`, { withCredentials: true })
+            .then(response => {
+              this.$data.postDetailsInfo =  response.data  
+            }) 
+            axios
+              .get('http://localhost:3000/home_page/home', { withCredentials: true })
+              .then(response => {
+                this.$store.dispatch('followingPost/setEvent',response.data)
+              })
+          }
+        })     
+    },
+    disLikeEvnet(){
+        const params = {post_id:this.$route.params.id}
+      axios
+        .get(`http://localhost:3000/posts/${this.$route.params.id}/des`,{ withCredentials: true },params)
+        .then(response => {
+          if (response.data.message === "お気に入り解除できました") {
+            axios
+            .get(`http://localhost:3000/post_details/${this.$route.params.id}`, { withCredentials: true })
+            .then(response => {
+              this.$data.postDetailsInfo =  response.data  
+            }) 
+            axios
+              .get('http://localhost:3000/home_page/home', { withCredentials: true })
+              .then(response => {
+                this.$store.dispatch('followingPost/setEvent',response.data)
+              })
+          }
+        })     
+    },
+    LikeEvnet(){
+        const params = {post_id:this.$route.params.id}
+      axios
+        .get(`http://localhost:3000/posts/${this.$route.params.id}/cre`,{ withCredentials: true },params)
+        .then(response => {
+          if (response.data.message === "お気に入り登録できました") {
             axios
             .get(`http://localhost:3000/post_details/${this.$route.params.id}`, { withCredentials: true })
             .then(response => {
