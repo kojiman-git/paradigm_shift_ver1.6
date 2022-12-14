@@ -5,18 +5,14 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
+    @review = Review.new(params.require(:review).permit(:post_id, :score))
     @review.user_id = current_user.id
     if @review.save
-      
-      redirect_to post_detail_path(@review.post_id)
-
+      payload = { message: "レビューを生成しました"}
     else
-      @post = Post.find(params[:post_detail_id])
-      @comment= Comment.new
-      @comments = Comment.where(post_id: @post.id)
-      render "post_details/show"
+      payload = { message: "レビューを生成に失敗しました"}
     end
+    render json: payload
   end
 
   private

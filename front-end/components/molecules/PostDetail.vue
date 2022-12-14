@@ -25,24 +25,41 @@
           </v-col>
         </v-row> 
       </v-sheet >
-      <v-sheet height="38vh">
+      <v-sheet height="36vh">
         <v-row justify="center"  no-gutters>
           <v-col cols="12" class= "center text-h4">
             {{postDetailsInfo.paraphrase}}
           </v-col>
         </v-row>
       </v-sheet >
-      <v-sheet height="5vh">
+      <v-sheet height="7vh">
         <v-row justify="space-between"  no-gutters>
-          <v-col cols="2" class=center>
-            評価
+          <v-col cols="9" class=start>
+            <v-rating
+              color="warning"
+              empty-icon="mdi-star-outline"
+              full-icon="mdi-star"
+              hover
+              length="5"
+              size="25"
+              v-model="value"
+            ></v-rating>
+            <v-btn
+            color="#a7f9ff" 
+            @click="sendReviewEvent"
+            
+            >send</v-btn>
+            <NuxtLink to=/home class=ml-4>
+              {{postDetailsInfo.reviewsCount}}件のレビュー
+            </NuxtLink>
           </v-col>
 
           <v-col cols="2" class=center>
             <v-btn icon>
               <v-icon 
               v-if=postDetailsInfo.Liked
-              color="red">
+              color="red"
+              >
               mdi-cards-heart</v-icon>
               <v-icon v-else>mdi-cards-heart-outline</v-icon>
             </v-btn>
@@ -58,9 +75,9 @@
         </v-col>
         <v-col cols="2" >
          <v-img
-              max-height="50"
-              max-width="50"
-              v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
+          max-height="50"
+          max-width="50"
+          v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
          ></v-img>
          {{comment.user_name}}
         </v-col>
@@ -100,11 +117,12 @@ export default {
     return{
       postDetailsInfo: {post_id:"",user_id:"",user_name:"",term:"",paraphrase:"",category:"",created_at: "",reviewsCount:"",userImage:"",Liked:"",comments:[]},
       comment:"",
+      value:0
     }
   },
   methods: {
     sendCommentEvent() {
-    const params = {comment:{comment:this.$data.comment,post_id:this.$route.params.id}}
+        const params = {comment:{comment:this.$data.comment,post_id:this.$route.params.id}}
      axios
         .post('http://localhost:3000/post_details',params, { withCredentials: true })
         .then(response => {
@@ -115,14 +133,38 @@ export default {
             .then(response => {
               this.$data.postDetailsInfo =  response.data  
             }) 
-           }
+          }
         })     
-  }
+    },
+    
+    sendReviewEvent(){
+        const params = {review:{post_id:this.$route.params.id,score:this.$data.value}}
+      axios
+        .post(`http://localhost:3000/post_details/${this.$route.params.id}/reviews`,params, { withCredentials: true })
+        .then(response => {
+          if (response.data.message === "レビューを生成しました") {
+            axios
+            .get(`http://localhost:3000/post_details/${this.$route.params.id}`, { withCredentials: true })
+            .then(response => {
+              this.$data.postDetailsInfo =  response.data  
+            }) 
+            axios
+              .get('http://localhost:3000/home_page/home', { withCredentials: true })
+              .then(response => {
+                this.$store.dispatch('followingPost/setEvent',response.data)
+              })
+          }
+        })     
+    },
+    
  },
 
    computed:{
      comments(){
      return this.$data.postDetailsInfo.comments
+   },
+     reviewsCount(){
+     return this.$data.postDetailsInfo.reviewsCount
    }
   },
   
@@ -145,6 +187,10 @@ export default {
 .center {
  display: flex;
  justify-content: center;
+}
+.start {
+ display: flex;
+ justify-content: start;
 }
 .end {
  display: flex;
