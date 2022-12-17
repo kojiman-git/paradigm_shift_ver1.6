@@ -49,7 +49,7 @@
             @click="sendReviewEvent"
             
             >send</v-btn>
-            <NuxtLink to=/home class=ml-4>
+            <NuxtLink :to="`/Post/${this.$route.params.id}/reviews/`" class=ml-4>
               {{postDetailsInfo.reviewsCount}}件のレビュー
             </NuxtLink>
           </v-col>
