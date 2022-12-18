@@ -3,8 +3,7 @@
     <MoleculesLogedinHeader>Paradigm Shift</MoleculesLogedinHeader>
     <AtomsSubHeader>All Follows</AtomsSubHeader>
     <main>
-      
-     
+      <MoleculesFollowingList/>
     </main>
     <MoleculesLogedinFooter/>
  </div>

@@ -73,15 +73,19 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
     @users = @user.following
     
-    # render 'head_icon/follows_list'
+    render json: @users
   end
 
   def followers
     
     @user  = User.find(params[:id])
     @users = @user.followers
-    # render 'head_icon/followers_list'
-    
+
+    followersList = []
+      @users.each do |user|
+        followersList.push({user_id:user.id,user_name:user.name,userImage:user.image.thumb.url,intoroduction:user.intoroduction,follow:current_user.following?(user)})
+      end
+    render json:  followersList
   end
   
   private
