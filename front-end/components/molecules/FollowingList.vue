@@ -73,6 +73,11 @@ export default {
             this.$data.followingList =  response.data 
           })
           }
+          axios
+          .get('http://localhost:3000/home_page/home', { withCredentials: true })
+          .then(response => {
+            this.$store.dispatch('followingPost/setEvent',response.data)
+          })
         })     
    }
   }
