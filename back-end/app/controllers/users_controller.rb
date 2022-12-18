@@ -73,7 +73,7 @@ class UsersController < ApplicationController
     @user  = User.find(params[:id])
     @users = @user.following
     
-    # render 'head_icon/follows_list'
+    render json: @users
   end
 
   def followers
