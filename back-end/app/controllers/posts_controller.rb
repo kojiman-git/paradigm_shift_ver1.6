@@ -3,14 +3,13 @@ class PostsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def create
-    @post = current_user.posts.build(post_params)
+    @post = current_user.posts.build(params.require(:post).permit(:paraphrase,:term,:m_category_id))
     if @post.save
-      flash[:success] = "post created!"
-      redirect_to home_page_home_path
+      payload = { message: '投稿完了です'}
     else
-      @feed_items = []
-      render 'home_page/post'
+      payload = { message: '投稿失敗です' }
     end
+    render json: payload
   end
 
   def destroy
