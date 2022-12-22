@@ -42,7 +42,7 @@
       </v-row> 
       <v-row justify="center" no-gutters>
         <v-col cols="10" >
-          <v-btn  color="#cefffb" block class=mt-12 @click="userCreateEvents" :disabled="ObserverProps.invalid || !ObserverProps.validated">
+          <v-btn  color="#cefffb" block class=mt-12 @click="postCreateEvents" :disabled="ObserverProps.invalid || !ObserverProps.validated">
             Post
           </v-btn>
         </v-col>
@@ -52,6 +52,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
  data(){
     return {
@@ -59,16 +60,58 @@ export default {
       select: null,
       paraphrase:"",
       errorMessage:"",
-      category: [
-        '英語',
-        '数学',
-        '国語',
-        '理科',
-        '社会',
-        'その他',
-      ],
+      category: ["英語","数学","国語","社会","理科","その他"],
+      m_category_id: null,
     }
   },
+
+    methods: {
+      postCreateEvents() {
+        switch (this.$data.select){
+          case '英語':
+            this.$data.m_category_id = 1
+            break;
+          case '数学':
+            this.$data.m_category_id = 2
+            break;
+          case '国語':
+            this.$data.m_category_id = 3
+            break;
+          case '理科':
+            this.$data.m_category_id = 4
+            break;
+          case '社会':
+            this.$data.m_category_id = 5
+            break;
+          case 'その他':
+            this.$data.m_category_id = 6
+            break;
+          default:
+            console.log('失敗');
+        }
+
+
+        const params = {post:{paraphrase:this.$data.paraphrase,term:this.$data.term,m_category_id:this.$data.m_category_id}}  
+          axios
+            .post('http://localhost:3000/posts',params, { withCredentials: true })
+            .then(response => {
+              if (response.data.message === "投稿完了です") {
+              axios
+              .get('http://localhost:3000/home_page/home', { withCredentials: true })
+              .then(response => {
+                this.$store.dispatch('followingPost/setEvent',response.data)
+                .then(this.$router.push('/home'))
+              })
+
+            }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+  
+        
+    }
+ }
 }
 </script>
 
