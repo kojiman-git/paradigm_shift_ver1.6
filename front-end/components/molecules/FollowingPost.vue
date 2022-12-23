@@ -37,9 +37,11 @@
         </NuxtLink>
         </v-col>
         <v-col cols="1" class="mt-4">
-          <v-btn icon>
-            <v-icon>mdi-delete</v-icon>
+          
+          <v-btn icon v-if=post.sameID>
+            <v-icon >mdi-delete</v-icon>
           </v-btn>
+
           <br>
           <br>
           <br>
