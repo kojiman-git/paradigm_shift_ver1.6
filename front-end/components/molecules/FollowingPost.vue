@@ -37,8 +37,12 @@
         </NuxtLink>
         </v-col>
         <v-col cols="1" class="mt-4">
-          <v-btn icon>
-            <v-icon>mdi-delete</v-icon>
+          <v-btn 
+          icon 
+          v-show=post.sameID 
+          @click="deleteEvent(post.post_id)"
+          >
+            <v-icon >mdi-delete</v-icon>
           </v-btn>
           <br>
           <br>
@@ -64,17 +68,39 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
+  data(){
+    return {
+      dialog:false,
+    }
+  },
  computed:{
    posts(){
      return this.$store.state.followingPost.postData
    }
- }
- 
+ },
+  methods: {
+    deleteEvent(id) {
+       axios
+    .delete(`http://localhost:3000/posts/${id}/`, { withCredentials: true })
+    .then(response => {
+       if (response.data.message === "削除完了です") {
+          axios
+          .get('http://localhost:3000/home_page/home', { withCredentials: true })
+          .then(response => {
+            this.$store.dispatch('followingPost/setEvent',response.data)
+          })
+        }    
+      })
+    }
 
-} 
-
+  }
+}
 </script>
+         
+          
+          
 
 <style scoped>
 .c-p{

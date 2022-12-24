@@ -14,6 +14,7 @@ export const state = {
       "reviewScorePercentage": "", 
       "userImage": "" ,
       "Liked":"",
+      "sameID":"",
     }
   ]
 }
