@@ -53,9 +53,13 @@
           <v-btn icon>
             <v-icon 
             v-if="post.Liked"
-            color="red">
+            color="red"
+            @click="disLikeEvnet(post.post_id)">
             mdi-cards-heart</v-icon>
-            <v-icon v-else>mdi-cards-heart-outline</v-icon>
+            <v-icon 
+            v-else
+            @click="LikeEvnet(post.post_id)"
+            >mdi-cards-heart-outline</v-icon>
           </v-btn>
         </v-col>
       </v-row> 
@@ -93,7 +97,35 @@ export default {
           })
         }    
       })
-    }
+    },
+    disLikeEvnet(ID){
+      const params = {post_id:ID}
+      axios
+      .get(`http://localhost:3000/posts/${ID}/des`,{ withCredentials: true },params)
+      .then(response => {
+        if (response.data.message === "お気に入り解除できました") { 
+          axios
+            .get('http://localhost:3000/home_page/home', { withCredentials: true })
+            .then(response => {
+              this.$store.dispatch('followingPost/setEvent',response.data)
+            })
+        }
+      })     
+    },
+    LikeEvnet(ID){
+        const params = {post_id:ID}
+      axios
+      .get(`http://localhost:3000/posts/${ID}/cre`,{ withCredentials: true },params)
+      .then(response => {
+        if (response.data.message === "お気に入り登録できました") {
+          axios
+            .get('http://localhost:3000/home_page/home', { withCredentials: true })
+            .then(response => {
+              this.$store.dispatch('followingPost/setEvent',response.data)
+            })
+        }
+      })     
+    },
 
   }
 }
