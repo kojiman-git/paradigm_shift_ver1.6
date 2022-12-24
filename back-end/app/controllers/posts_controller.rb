@@ -13,9 +13,15 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
-    flash[:success] = "post deleted"
-    redirect_to request.referrer || root_url
+    @post = Post.find(params[:id])
+    
+    if @post.destroy
+      payload = { message: '削除完了です'}
+    else
+      payload = { message: '削除失敗です' }
+    end
+    render json: payload
+   
   end
 
   private
