@@ -3,8 +3,7 @@
     <MoleculesLogedinHeader>Paradigm Shift</MoleculesLogedinHeader>
     <AtomsSubHeader>Quiz List</AtomsSubHeader>
     <main>
-      
-     
+      <MoleculesQuizList/>
     </main>
     <MoleculesLogedinFooter/>
  </div>
