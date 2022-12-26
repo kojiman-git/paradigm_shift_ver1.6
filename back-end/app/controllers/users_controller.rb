@@ -6,8 +6,22 @@ class UsersController < ApplicationController
   end
 
   def show
+
     @user = User.find(params[:id])
-    @posts = @user.posts
+
+    @posts = @user.posts 
+
+    userPosts = []
+
+    @posts.each do |post|
+      userPosts.push({post_id:post.id,user_id:post.user.id,user_name:post.user.name,term:post.term,paraphrase:post.paraphrase,category:post.m_category.name,created_at: post.created_at,avg_score:post.avg_score,reviewsCount:post.reviews.count,userImage:post.user.image.thumb.url,Liked:post.liked_by?(current_user),sameID:sameID?(post)})
+    
+    end
+
+    vueProfile = {userID:@user.id,userName: @user.name,intoroduction: @user.intoroduction,image:@user.image.thumb.url,currentUser:current_user?(@user),following:@user.following.count,follower:@user.followers.count,followingJudgment:current_user.following?(@user),userPosts:userPosts}
+
+    render json: vueProfile
+ 
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
     
@@ -95,6 +109,12 @@ class UsersController < ApplicationController
                                    :password_confirmation,:image)
     end
 
-    
+    def sameID?(post)
+      if post.user.id == current_user.id
+        true
+      else
+        false
+      end
+    end
 
 end

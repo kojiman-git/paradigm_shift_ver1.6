@@ -1,9 +1,9 @@
 <template>
   <div class="con">
     <MoleculesLogedinHeader>Paradigm Shift</MoleculesLogedinHeader>
-    <MoleculesProfileSubHeader/>
+    <AtomsSubHeader>Edit My Profile</AtomsSubHeader>
     <main>
-     <MoleculesProFile/>
+       <MoleculesProfileEditForm/>
     </main>
     <MoleculesLogedinFooter/>
  </div>
