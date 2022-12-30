@@ -8,11 +8,21 @@
     >
       <v-list-item>
         <v-list-item-avatar>
-          <v-img
-            max-height="50"
-            max-width="50"
-            v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
-          ></v-img>
+         <div v-if="this.$store.state.currentUser.image === null">
+            <v-img
+                max-height="75"
+                max-width="75"
+                v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
+            ></v-img>
+          </div>
+          <div v-else>
+            <v-img
+                class="user-icon"
+                max-height="75"
+                max-width="75"
+                :src="`http://localhost:3000${this.$store.state.currentUser.image}`"
+            ></v-img>
+          </div>
         </v-list-item-avatar>
 
         <v-list-item-content>
@@ -48,12 +58,23 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar color="#a7f9ff" class="text-h4">
-      <v-img
-        @click.stop="drawer = !drawer"
-        max-height="50"
-        max-width="50"
-        v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
-      ></v-img>
+      <div v-if="this.$store.state.currentUser.image === null">
+        <v-img
+          @click.stop="drawer = !drawer"
+          max-height="50"
+          max-width="50"
+          v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
+        ></v-img>
+      </div>
+      <div v-else>
+        <v-img
+          @click.stop="drawer = !drawer"
+          class="user-icon"
+          max-height="50"
+          max-width="50"
+          :src="`http://localhost:3000${this.$store.state.currentUser.image}`"
+        ></v-img>
+      </div>
       <v-spacer />
         <slot></slot>
       <v-spacer />

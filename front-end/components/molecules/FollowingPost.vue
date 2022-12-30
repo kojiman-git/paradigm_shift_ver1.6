@@ -3,14 +3,27 @@
     <v-card v-for="post in posts" :key="post.post_id">
       <v-row  no-gutters justify="space-around">
         <v-col cols="3" class="mt-4 ml-4" >
-          <NuxtLink
-          :to="`/DrawerMenu/${post.user_id}/myProfile`">
-            <v-img
+          <div v-if="post.userImage === null">
+            <NuxtLink
+            :to="`/DrawerMenu/${post.user_id}/myProfile`">
+              <v-img
+                  max-height="75"
+                  max-width="75"
+                  v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
+              ></v-img>
+            </NuxtLink>
+          </div>
+          <div v-else>
+            <NuxtLink
+            :to="`/DrawerMenu/${post.user_id}/myProfile`">
+              <v-img
+                class="user-icon"
                 max-height="75"
                 max-width="75"
-                v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
-            ></v-img>
-          </NuxtLink>
+                :src="`http://localhost:3000${post.userImage}`"
+              ></v-img>
+            </NuxtLink>
+          </div>
           <br>
           <NuxtLink
           :to="`/DrawerMenu/${post.user_id}/myProfile`">

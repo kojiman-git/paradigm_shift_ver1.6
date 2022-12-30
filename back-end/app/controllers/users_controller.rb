@@ -63,20 +63,21 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    userInfo = {name:@user.name,email:@user.email,intoroduction:@user.intoroduction,
+      image:@user.image}
+    render json: userInfo
   end
 
   
   def update
     @user = User.find(params[:id])
-    
-    if @user.update(user_params)
-      # 更新に成功した場合を扱う。
-      flash[:success] = "Profile updated"
-      redirect_to user_path(@user)
-    else
+    if @user.update(  params.require(:user).permit(:name, :email,:intoroduction, :password,:password_confirmation,:image))
       
-      render 'edit'
+      payload = { message: 'ユーザーを更新しました'}
+    else
+      payload = { message: 'ユーザーを更新に失敗しました'}
     end
+    render json: payload
   end
 
   def destroy
@@ -101,6 +102,15 @@ class UsersController < ApplicationController
       end
     render json:  followersList
   end
+
+  def currentUser
+    
+    user  = User.find(params[:id])
+    payload = { message: '現在のユーザー',id: user.id, name: user.name ,email: user.email,intoroduction: user.intoroduction,profile_url: user.profile_url,image: user.image.thumb.url}
+    render json: payload
+
+  end
+
   
   private
 

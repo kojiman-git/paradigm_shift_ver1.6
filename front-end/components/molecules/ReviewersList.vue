@@ -3,11 +3,21 @@
     <v-card v-for="review in reviewsList" :key="review.id">
       <v-row  no-gutters>
         <v-col cols="4" class="center">
-         <v-img
-          max-height="75"
-          max-width="75"
-          v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
-         ></v-img>
+         <div v-if="review.userImage === null">
+          <v-img
+            max-height="75"
+            max-width="75"
+            v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
+          ></v-img>
+         </div>
+         <div v-else>
+            <v-img
+              class="user-icon"
+              max-height="75"
+              max-width="75"
+              :src="`http://localhost:3000${review.userImage}`"
+            ></v-img>
+          </div>
         </v-col>
         <v-col cols="4" class="mt-4 center text-h5">
           {{review.user_name}}

@@ -8,12 +8,22 @@
           <v-col cols="1">
           </v-col>
           <v-col cols="3"  class="column text-h6">
-            <v-img
-              max-height="75"
-              max-width="75"
-              v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
-            ></v-img>
-           {{postDetailsInfo.user_name}}
+            <div v-if="postDetailsInfo.userImage === null">
+              <v-img
+                max-height="75"
+                max-width="75"
+                v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
+              ></v-img>
+            </div>
+            <div v-else>
+               <v-img
+                class="user-icon"
+                max-height="75"
+                max-width="75"
+                :src="`http://localhost:3000${postDetailsInfo.userImage}`"
+              ></v-img>
+            </div>
+            {{postDetailsInfo.user_name}}
           </v-col>
           <v-col cols="4" class= "center text-h4">
             {{postDetailsInfo.term}}
@@ -77,11 +87,21 @@
          
         </v-col>
         <v-col cols="2" >
-         <v-img
-          max-height="50"
-          max-width="50"
-          v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
-         ></v-img>
+          <div v-if="comment.userImage === null">
+            <v-img
+              max-height="50"
+              max-width="50"
+              v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
+            ></v-img>
+          </div>
+          <div v-else>
+              <v-img
+              class="user-icon"
+              max-height="50"
+              max-width="50"
+              :src="`http://localhost:3000${comment.userImage}`"
+            ></v-img>
+          </div>
          {{comment.user_name}}
         </v-col>
         <v-col cols="7" class="mt-4">
