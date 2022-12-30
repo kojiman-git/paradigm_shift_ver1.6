@@ -3,11 +3,21 @@
     <v-card >
       <v-row  no-gutters justify = space-around>
         <v-col cols="3" class="mt-4 ml-4">
-          <v-img
-              max-height="75"
-              max-width="75"
-              v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
-          ></v-img>
+          <div v-if="vueProfile.image === null">
+            <v-img
+                max-height="75"
+                max-width="75"
+                v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
+            ></v-img>
+          </div>
+          <div v-else>
+            <v-img
+                class="user-icon"
+                max-height="75"
+                max-width="75"
+                :src="`http://localhost:3000${vueProfile.image}`"
+            ></v-img>
+          </div>
           <br>
           <v-card-text >
            {{vueProfile.userName}}
@@ -52,22 +62,25 @@
     <v-card v-for="post in vueProfile.userPosts" :key="post.post_id">
       <v-row  no-gutters justify="space-around">
         <v-col cols="3" class="mt-4 ml-4" >
-          <NuxtLink
-          :to="`/DrawerMenu/${post.user_id}/myProfile`">
-            <v-img
-                max-height="75"
-                max-width="75"
-                v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
-            ></v-img>
-          </NuxtLink>
+          <div v-if="vueProfile.image === null">
+              <v-img
+                  max-height="75"
+                  max-width="75"
+                  v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
+              ></v-img>
+          </div>
+          <div>
+              <v-img
+                  class="user-icon"
+                  max-height="75"
+                  max-width="75"
+                   :src="`http://localhost:3000${post.userImage}`"
+              ></v-img>
+          </div>
           <br>
-          <NuxtLink
-          :to="`/DrawerMenu/${post.user_id}/myProfile`">
           <v-card-text >
            {{post.user_name}}
           </v-card-text>
-          </NuxtLink>
-          
         </v-col>
         <v-col cols="7" class="mt-4" >
         <NuxtLink :to="`/Post/${post.post_id}/PostDetail/`" tag="div" class="c-p">
@@ -244,6 +257,9 @@ export default {
 <style>
 .c-p{
  cursor: pointer;
- 
+}
+
+.user-icon {
+  border-radius: 100px;
 }
 </style>

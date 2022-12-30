@@ -71,11 +71,13 @@ export default {
         .then(response => {
           if (response.data.message === "ログインしました。") {
               this.$store.dispatch('loginEvent',response.data)
+              console.log(response.data)
          axios
               .get('http://localhost:3000/home_page/home', { withCredentials: true })
               .then(response => {
                 this.$store.dispatch('followingPost/setEvent',response.data)
                 .then(this.$router.push('/home'))
+                
               })
               .catch(error => {
                 console.error(error);
