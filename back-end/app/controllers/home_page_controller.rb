@@ -27,6 +27,14 @@ class HomePageController < ApplicationController
   def news
     @notices = Notification.where(user_id: current_user.id).order(created_at: :desc)
 
+    noticeList = []
+
+    @notices.each do |notice|
+      noticeList.push({id:notice.id,content:notice.content,created_at: notice.created_at})
+    end
+
+    render json: noticeList
+
   end
 
   def direct_message
