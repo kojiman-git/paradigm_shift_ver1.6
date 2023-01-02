@@ -15,6 +15,11 @@ class HomePageController < ApplicationController
 
   def quiz
     @posts = current_user.liked_all
+    quizList = []
+    @posts.each do |post|
+      quizList.push({post_id:post.id,user_name:post.user.name,term:post.term,paraphrase:post.paraphrase,category:post.m_category.name,userImage:post.user.image.thumb.url})
+    end
+    render json: quizList
    
   end
 
