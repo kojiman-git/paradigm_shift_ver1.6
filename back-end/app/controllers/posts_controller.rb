@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(params.require(:post).permit(:paraphrase,:term,:m_category_id))
+    
     if @post.save
       payload = { message: '投稿完了です'}
     else

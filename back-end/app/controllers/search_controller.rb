@@ -14,8 +14,16 @@ class SearchController < ApplicationController
   end
 
   def user_search
+    
     @users = User.search(params[:keyword])
    
+    usersList = []
+
+    @users.each do |user|
+      usersList.push({userID:user.id,userName: user.name,intoroduction: user.intoroduction,image:user.image.thumb.url,currentUser:current_user?(user),followingJudgment:current_user.following?(user)})
+    end
+
+    render json: usersList
   end
 
   private
