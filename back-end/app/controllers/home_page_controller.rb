@@ -25,9 +25,17 @@ class HomePageController < ApplicationController
 
   def search
     @users = User.all
-    
+
+    usersList = []
+
+    @users.each do |user|
+      usersList.push({userID:user.id,userName: user.name,intoroduction: user.intoroduction,image:user.image.thumb.url,currentUser:current_user?(user),followingJudgment:current_user.following?(user)})
+    end
+
+    render json: usersList
     
   end
+
 
   def news
     @notices = Notification.where(user_id: current_user.id).order(created_at: :desc)
