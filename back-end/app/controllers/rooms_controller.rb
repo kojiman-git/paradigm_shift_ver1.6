@@ -10,14 +10,16 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+
     if Entry.where(user_id: current_user.id,room_id: @room.id).present?
       @messages = @room.messages
-      @message = Message.new
-      @entries = @room.entries
-      
-      
-    else
-      redirect_back(fallback_location: root_path)
+      @messageList = []
+      @messages.each do |message|
+        @messageList.push({id:message.id,userID:message.user_id,userName: message.user.name,userImage:message.user.image.thumb.url,roomId:message.room_id,Message:message.message,created_at:message.created_at})
+      end
     end
+
+    render json: @messageList
+    
   end
 end

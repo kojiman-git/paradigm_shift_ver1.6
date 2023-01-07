@@ -3,11 +3,7 @@
     <MoleculesLogedinHeader>Paradigm Shift</MoleculesLogedinHeader>
     <AtomsSubHeader>Message Partner</AtomsSubHeader>
     <main>
-    
- 
-
- 
-     
+    <MoleculesMessagePartner/>
     </main>
     <MoleculesLogedinFooter/>
  </div>
