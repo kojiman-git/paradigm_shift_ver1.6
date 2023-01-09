@@ -18,10 +18,6 @@ class UsersController < ApplicationController
     
     end
 
-    vueProfile = {userID:@user.id,userName: @user.name,intoroduction: @user.intoroduction,image:@user.image.thumb.url,currentUser:current_user?(@user),following:@user.following.count,follower:@user.followers.count,followingJudgment:current_user.following?(@user),userPosts:userPosts}
-
-    render json: vueProfile
- 
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
     
@@ -38,10 +34,15 @@ class UsersController < ApplicationController
       end
       if @isRoom
       else
-        @room = Room.new
-        @entry = Entry.new
+        @isRoom = false
+        @roomId = nil
       end
     end
+
+    vueProfile = {userID:@user.id,userName: @user.name,intoroduction: @user.intoroduction,image:@user.image.thumb.url,currentUser:current_user?(@user),following:@user.following.count,follower:@user.followers.count,followingJudgment:current_user.following?(@user),userPosts:userPosts,IsRoom:@isRoom,RoomId:@roomId}
+
+    render json: vueProfile
+
   end
 
   def new

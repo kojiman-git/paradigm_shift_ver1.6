@@ -51,7 +51,7 @@
             follow 
           </v-btn>
           <br>
-          <v-btn  color="#a7f9ff" class=" mt-4">
+          <v-btn  color="#a7f9ff" class=" mt-4" @click="messageEvent">
             message
           </v-btn>
           </div>
@@ -247,6 +247,21 @@ export default {
             this.$store.dispatch('followingPost/setEvent',response.data)
           })
         })     
+   },
+    messageEvent() {
+      if (this.$data.vueProfile.IsRoom) {
+          this.$router.push(`/Message/${this.$data.vueProfile.RoomId}/directMessage`)
+      }else{
+       const params = {entry:{user_id:this.$data.vueProfile.userID}}  
+      axios
+        .post('http://localhost:3000/rooms',params, { withCredentials: true })
+        .then(response => {
+           this.$router.push(`/Message/${response.data.RoomId}/directMessage`)
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      }
    }
 
   }

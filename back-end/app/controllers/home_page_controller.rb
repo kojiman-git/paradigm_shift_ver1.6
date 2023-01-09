@@ -60,12 +60,12 @@ class HomePageController < ApplicationController
     @room_id.each do |room_id|
       Entry.where(room_id: room_id).each do |g|
         unless current_user.id == g.user_id
-        @message_partners.push(g)
+        @message_partners.push({id:g.id,userID:g.user_id,userName: g.user.name,userImage:g.user.image.thumb.url,roomId:g.room_id})
         end
       end
     end
     
-    
+    render json: @message_partners
     
   end
 
