@@ -4,7 +4,7 @@
       <v-btn  id="login_button" color="#cefffb" to="/login">
       ログインはこちら
       </v-btn>
-      <v-btn  id="login_button" color="#cefffb">
+      <v-btn  id="login_button" color="#cefffb" @click="guestUserLoginEvents">
       ゲストユーザーとしてログイン
       </v-btn>
     </div>
@@ -15,7 +15,37 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
+  methods: {
+   guestUserLoginEvents() {
+     const params = {session:{email:"guest@gmail.com",password:24169757}}  
+      axios
+        .post('http://localhost:3000/login',params, { withCredentials: true })
+        .then(response => {
+          if (response.data.message === "ログインしました。") {
+              this.$store.dispatch('loginEvent',response.data)
+              console.log(response.data)
+         axios
+              .get('http://localhost:3000/home_page/home', { withCredentials: true })
+              .then(response => {
+                this.$store.dispatch('followingPost/setEvent',response.data)
+                .then(this.$router.push('/home'))
+                
+              })
+              .catch(error => {
+                console.error(error);
+              });
+          }else{
+              this.$data.errormessage = response.data.message
+              this.$data.isDisplay = true
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+ }
 
 }
 </script>
