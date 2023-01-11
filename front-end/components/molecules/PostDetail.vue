@@ -35,7 +35,7 @@
           </v-col>
         </v-row> 
       </v-sheet >
-      <v-sheet height="36vh">
+      <v-sheet height="34vh">
         <v-row justify="center"  no-gutters>
           <v-col cols="12" class= "center text-h4">
             {{postDetailsInfo.paraphrase}}
@@ -57,11 +57,7 @@
             <v-btn
             color="#a7f9ff" 
             @click="sendReviewEvent"
-            
             >send</v-btn>
-            <NuxtLink :to="`/Post/${this.$route.params.id}/reviews/`" class=ml-4>
-              {{postDetailsInfo.reviewsCount}}件のレビュー
-            </NuxtLink>
           </v-col>
 
           <v-col cols="2" class=center>
@@ -76,6 +72,13 @@
               @click="LikeEvnet">
               mdi-cards-heart-outline</v-icon>
             </v-btn>
+          </v-col>
+        </v-row>
+        <v-row justify="space-between"  no-gutters>
+          <v-col cols="9" class=start>
+            <NuxtLink :to="`/Post/${this.$route.params.id}/reviews/`" class=ml-4>
+              {{postDetailsInfo.reviewsCount}}件のレビュー
+            </NuxtLink>
           </v-col>
         </v-row>
       </v-sheet >

@@ -26,7 +26,7 @@
             <v-col cols="12" >
               <NuxtLink :to="`/DrawerMenu/${this.$data.vueProfile.userID}/following`" class="c-p" tag="span">
               {{vueProfile.following}} following
-              </NuxtLink>
+              </NuxtLink><br>
               <NuxtLink :to="`/DrawerMenu/${this.$data.vueProfile.userID}/followers`" class="c-p ml-2" tag="span">
               {{vueProfile.follower}} follower
               </NuxtLink>
