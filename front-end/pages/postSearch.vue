@@ -64,14 +64,10 @@
               ></v-img>
             </NuxtLink>
           </div>
-          <br>
-          <NuxtLink
-          :to="`/DrawerMenu/${post.user_id}/myProfile`">
+          <br>   
           <v-card-text >
            {{post.user_name}}
-          </v-card-text>
-          </NuxtLink>
-          
+          </v-card-text>  
         </v-col>
         <v-col cols="7" class="mt-4" >
         <NuxtLink :to="`/Post/${post.post_id}/PostDetail/`" tag="div" class="c-p">

@@ -4,19 +4,25 @@
       <v-row  no-gutters >
         <v-col cols="3" class="mt-4 ml-4">
          <div v-if="follower.userImage === null">
+            <NuxtLink
+            :to="`/DrawerMenu/${follower.user_id}/myProfile`">
             <v-img
               max-height="75"
               max-width="75"
               v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
             ></v-img>
+            </NuxtLink>
          </div>
          <div v-else>
+            <NuxtLink
+            :to="`/DrawerMenu/${follower.user_id}/myProfile`">
             <v-img
               class="user-icon"
               max-height="75"
               max-width="75"
               :src="`http://localhost:3000${follower.userImage}`"
             ></v-img>
+            </NuxtLink>
           </div>
           <br>
           <v-card-text >
