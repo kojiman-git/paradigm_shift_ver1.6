@@ -45,19 +45,21 @@
       <v-sheet height="7vh">
         <v-row justify="space-between"  no-gutters>
           <v-col cols="9" class=start>
-            <v-rating
-              color="warning"
-              empty-icon="mdi-star-outline"
-              full-icon="mdi-star"
-              hover
-              length="5"
-              size="25"
-              v-model="value"
-            ></v-rating>
-            <v-btn
-            color="#a7f9ff" 
-            @click="sendReviewEvent"
-            >send</v-btn>
+              <v-rating
+                color="warning"
+                empty-icon="mdi-star-outline"
+                full-icon="mdi-star"
+                hover
+                length="5"
+                size="25"
+                v-model="value"
+                v-if=!postDetailsInfo.reviewed
+              ></v-rating>
+              <v-btn
+              color="#a7f9ff" 
+              @click="sendReviewEvent"
+              v-if=!postDetailsInfo.reviewed
+              >send</v-btn>
           </v-col>
 
           <v-col cols="2" class=center>
