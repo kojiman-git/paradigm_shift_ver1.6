@@ -36,7 +36,6 @@ services:
         API_URL: "http://localhost:3000"
     stdin_open: true
     tty: true
-    command: npm run dev
     volumes:
       - ./front-end:/app
     ports:
