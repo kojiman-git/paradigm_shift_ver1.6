@@ -19,6 +19,8 @@ COPY . /paradigm_shift_docker
 RUN bundle install
 
 WORKDIR /paradigm_shift_docker
+RUN apt-get update
+RUN apt-get install vim -y
 
 RUN chmod 744 ./start.sh
 CMD ["./start.sh"]

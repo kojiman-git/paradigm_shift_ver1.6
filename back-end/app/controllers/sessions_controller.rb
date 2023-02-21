@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+  
   def new
   end
 
@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
     else
       payload = { message: 'メールアドレスまたはパスワードが正しくありません。' }
     end
+    
     render json: payload
   end
 
