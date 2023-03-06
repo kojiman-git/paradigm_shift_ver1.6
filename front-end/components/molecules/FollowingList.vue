@@ -20,7 +20,7 @@
               class="user-icon"
               max-height="75"
               max-width="75"
-              :src="`http://localhost:3000${following.image.thumb.url}`"
+              :src="`${following.image.thumb.url}`"
             ></v-img>
             </NuxtLink>
           </div>
@@ -67,7 +67,7 @@ export default {
 
    created(){
     axios
-    .get(`http://localhost:3000/users/${this.$route.params.id}/following`, { withCredentials: true })
+    .get(`https://test-ecs-back-end.work/users/${this.$route.params.id}/following`, { withCredentials: true })
     .then(response => {
       this.$data.followingList =  response.data 
       console.log(this.$data.followingList);
@@ -80,17 +80,17 @@ export default {
   methods: {
     unfollowEvent(id) {
        axios
-    .delete(`http://localhost:3000/relationships/${id}/`, { withCredentials: true })
+    .delete(`https://test-ecs-back-end.work/relationships/${id}/`, { withCredentials: true })
     .then(response => {
        if (response.data.message === "フォロー解除しました") {
             axios
-          .get(`http://localhost:3000/users/${this.$route.params.id}/following`, { withCredentials: true })
+          .get(`https://test-ecs-back-end.work/users/${this.$route.params.id}/following`, { withCredentials: true })
           .then(response => {
             this.$data.followingList =  response.data 
           })
           }
           axios
-          .get('http://localhost:3000/home_page/home', { withCredentials: true })
+          .get('https://test-ecs-back-end.work/home_page/home', { withCredentials: true })
           .then(response => {
             this.$store.dispatch('followingPost/setEvent',response.data)
           })

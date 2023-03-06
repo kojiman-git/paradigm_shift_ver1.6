@@ -20,7 +20,7 @@
                 class="user-icon"
                 max-height="75"
                 max-width="75"
-                :src="`http://localhost:3000${postDetailsInfo.userImage}`"
+                :src="`${postDetailsInfo.userImage}`"
               ></v-img>
             </div>
             {{postDetailsInfo.user_name}}
@@ -104,7 +104,7 @@
               class="user-icon"
               max-height="50"
               max-width="50"
-              :src="`http://localhost:3000${comment.userImage}`"
+              :src="`${comment.userImage}`"
             ></v-img>
           </div>
          {{comment.user_name}}
@@ -152,12 +152,12 @@ export default {
     sendCommentEvent() {
         const params = {comment:{comment:this.$data.comment,post_id:this.$route.params.id}}
      axios
-        .post('http://localhost:3000/post_details',params, { withCredentials: true })
+        .post('https://test-ecs-back-end.work/post_details',params, { withCredentials: true })
         .then(response => {
           if (response.data.message === "コメント生成しました") {
             this.$data.comment = "" 
             axios
-            .get(`http://localhost:3000/post_details/${this.$route.params.id}`, { withCredentials: true })
+            .get(`https://test-ecs-back-end.work/post_details/${this.$route.params.id}`, { withCredentials: true })
             .then(response => {
               this.$data.postDetailsInfo =  response.data  
             }) 
@@ -168,16 +168,16 @@ export default {
     sendReviewEvent(){
         const params = {review:{post_id:this.$route.params.id,score:this.$data.value}}
       axios
-        .post(`http://localhost:3000/post_details/${this.$route.params.id}/reviews`,params, { withCredentials: true })
+        .post(`https://test-ecs-back-end.work/post_details/${this.$route.params.id}/reviews`,params, { withCredentials: true })
         .then(response => {
           if (response.data.message === "レビューを生成しました") {
             axios
-            .get(`http://localhost:3000/post_details/${this.$route.params.id}`, { withCredentials: true })
+            .get(`https://test-ecs-back-end.work/post_details/${this.$route.params.id}`, { withCredentials: true })
             .then(response => {
               this.$data.postDetailsInfo =  response.data  
             }) 
             axios
-              .get('http://localhost:3000/home_page/home', { withCredentials: true })
+              .get('https://test-ecs-back-end.work/home_page/home', { withCredentials: true })
               .then(response => {
                 this.$store.dispatch('followingPost/setEvent',response.data)
               })
@@ -187,16 +187,16 @@ export default {
     disLikeEvnet(){
         const params = {post_id:this.$route.params.id}
       axios
-        .get(`http://localhost:3000/posts/${this.$route.params.id}/des`,{ withCredentials: true },params)
+        .get(`https://test-ecs-back-end.work/posts/${this.$route.params.id}/des`,{ withCredentials: true },params)
         .then(response => {
           if (response.data.message === "お気に入り解除できました") {
             axios
-            .get(`http://localhost:3000/post_details/${this.$route.params.id}`, { withCredentials: true })
+            .get(`https://test-ecs-back-end.work/post_details/${this.$route.params.id}`, { withCredentials: true })
             .then(response => {
               this.$data.postDetailsInfo =  response.data  
             }) 
             axios
-              .get('http://localhost:3000/home_page/home', { withCredentials: true })
+              .get('https://test-ecs-back-end.work/home_page/home', { withCredentials: true })
               .then(response => {
                 this.$store.dispatch('followingPost/setEvent',response.data)
               })
@@ -206,16 +206,16 @@ export default {
     LikeEvnet(){
         const params = {post_id:this.$route.params.id}
       axios
-        .get(`http://localhost:3000/posts/${this.$route.params.id}/cre`,{ withCredentials: true },params)
+        .get(`https://test-ecs-back-end.work/posts/${this.$route.params.id}/cre`,{ withCredentials: true },params)
         .then(response => {
           if (response.data.message === "お気に入り登録できました") {
             axios
-            .get(`http://localhost:3000/post_details/${this.$route.params.id}`, { withCredentials: true })
+            .get(`https://test-ecs-back-end.work/post_details/${this.$route.params.id}`, { withCredentials: true })
             .then(response => {
               this.$data.postDetailsInfo =  response.data  
             }) 
             axios
-              .get('http://localhost:3000/home_page/home', { withCredentials: true })
+              .get('https://test-ecs-back-end.work/home_page/home', { withCredentials: true })
               .then(response => {
                 this.$store.dispatch('followingPost/setEvent',response.data)
               })
@@ -236,7 +236,7 @@ export default {
   
   created(){
     axios
-    .get(`http://localhost:3000/post_details/${this.$route.params.id}`, { withCredentials: true })
+    .get(`https://test-ecs-back-end.work/post_details/${this.$route.params.id}`, { withCredentials: true })
     .then(response => {
       this.$data.postDetailsInfo =  response.data  
       console.log(this.$data.postDetailsInfo)

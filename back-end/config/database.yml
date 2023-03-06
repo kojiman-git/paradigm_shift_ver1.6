@@ -54,4 +54,4 @@ production:
   username: root
   password: password
   socket: /var/lib/mysql/mysql.sock
-  host: db 
+  host: paradigm-shift-web-terraform.c5xe5hixhxfb.ap-northeast-1.rds.amazonaws.com

@@ -1,5 +1,7 @@
 class HomePageController < ApplicationController
+  
   def home
+    
     if logged_in?
       @posts = current_user.feed
       vueHome = []
@@ -10,7 +12,7 @@ class HomePageController < ApplicationController
       render json: vueHome
 
     end
-
+    
   end
 
   def quiz

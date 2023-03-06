@@ -13,6 +13,9 @@ module ParadigmShiftVer16
 
     config.api_only = false
     config.debug_exception_response_format = :api
+    config.action_controller.forgery_protection_origin_check = false
+    config.action_controller.allow_forgery_protection = false
+
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -24,5 +27,6 @@ module ParadigmShiftVer16
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
     config.middleware.use ActionDispatch::ContentSecurityPolicy::Middleware
+    config.action_dispatch.cookies_same_site_protection = :none 
   end
 end

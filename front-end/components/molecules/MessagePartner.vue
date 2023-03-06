@@ -15,7 +15,7 @@
               class="user-icon"
               max-height="75"
               max-width="75"
-              :src="`http://localhost:3000${message.userImage}`"
+              :src="`${message.userImage}`"
             ></v-img>
           </div>
         </v-col>
@@ -45,7 +45,7 @@ export default {
 
    created(){
     axios
-    .get(`http://localhost:3000/home_page/direct_message`, { withCredentials: true })
+    .get(`https://test-ecs-back-end.work/home_page/direct_message`, { withCredentials: true })
     .then(response => {
       this.$data.messagePartners =  response.data 
       console.log(this.$data.messagePartners);
