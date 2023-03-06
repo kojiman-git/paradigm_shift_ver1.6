@@ -21,13 +21,13 @@ export default {
    guestUserLoginEvents() {
      const params = {session:{email:"guest@gmail.com",password:24169757}}  
       axios
-        .post('http://localhost:3000/login',params, { withCredentials: true })
+        .post('https://test-ecs-back-end.work/login',params, { withCredentials: true })
         .then(response => {
           if (response.data.message === "ログインしました。") {
               this.$store.dispatch('loginEvent',response.data)
               console.log(response.data)
          axios
-              .get('http://localhost:3000/home_page/home', { withCredentials: true })
+              .get('https://test-ecs-back-end.work/home_page/home', { withCredentials: true })
               .then(response => {
                 this.$store.dispatch('followingPost/setEvent',response.data)
                 .then(this.$router.push('/home'))

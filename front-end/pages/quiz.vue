@@ -25,7 +25,7 @@
                       class="user-icon"
                       max-height="75"
                       max-width="75"
-                      :src="`http://localhost:3000${this.$store.state.quizChallenge.quizList[this.count].userImage}`"
+                      :src="`${this.$store.state.quizChallenge.quizList[this.count].userImage}`"
                     ></v-img>
                   </div>
                   {{this.$store.state.quizChallenge.quizList[this.count].user_name}}
@@ -98,7 +98,7 @@ export default {
   },
   created(){
     axios
-    .get(`http://localhost:3000/home_page/quiz`, { withCredentials: true })
+    .get(`https://test-ecs-back-end.work/home_page/quiz`, { withCredentials: true })
     .then(response => {
         this.$store.dispatch('quizChallenge/setEvent',response.data)
      })

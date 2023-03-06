@@ -20,7 +20,7 @@
                 class="user-icon"
                 max-height="75"
                 max-width="75"
-                :src="`http://localhost:3000${Message.userImage}`"
+                :src="`${Message.userImage}`"
               ></v-img>
             </NuxtLink>
           </div>
@@ -63,7 +63,7 @@ export default {
   created(){
     
     axios
-    .get(`http://localhost:3000/rooms/${this.$route.params.id}`, { withCredentials: true })
+    .get(`https://test-ecs-back-end.work/rooms/${this.$route.params.id}`, { withCredentials: true })
     .then(response => {
           if (response.data[0].message === "部屋にいる") {
               this.$data.messageList =  response.data  

@@ -87,7 +87,7 @@ export default {
   },
     created(){
     axios
-    .get(`http://localhost:3000/users/${this.$route.params.id}/edit`, { withCredentials: true })
+    .get(`https://test-ecs-back-end.work/users/${this.$route.params.id}/edit`, { withCredentials: true })
     .then(response => {
       this.$data.userInfo =  response.data  
       console.log(response.data )
@@ -109,19 +109,19 @@ export default {
     formData.append('user[password]', this.$data.userInfo.password);
     formData.append('user[password_confirmation]', this.$data.userInfo.confirmation);
     formData.append('user[image]', this.$data.userInfo.image);
-    this.$axios.patch(`http://localhost:3000/users/${this.$route.params.id}/`,
+    this.$axios.patch(`https://test-ecs-back-end.work/users/${this.$route.params.id}/`,
      formData,{ withCredentials: true }
     )
     // 成功時の処理
     .then(response => {
       if (response.data.message === "ユーザーを更新しました") {
       axios
-        .get(`http://localhost:3000/users/${this.$route.params.id}/currentUser`,{ withCredentials: true })
+        .get(`https://test-ecs-back-end.work/users/${this.$route.params.id}/currentUser`,{ withCredentials: true })
         .then(response => {
           if (response.data.message === "現在のユーザー") {
               this.$store.dispatch('loginEvent',response.data)
            axios
-              .get('http://localhost:3000/home_page/home', { withCredentials: true })
+              .get('https://test-ecs-back-end.work/home_page/home', { withCredentials: true })
               .then(response => {
                 this.$store.dispatch('followingPost/setEvent',response.data)
               })

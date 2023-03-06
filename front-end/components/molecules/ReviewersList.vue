@@ -15,7 +15,7 @@
               class="user-icon"
               max-height="75"
               max-width="75"
-              :src="`http://localhost:3000${review.userImage}`"
+              :src="`${review.userImage}`"
             ></v-img>
           </div>
         </v-col>
@@ -43,7 +43,7 @@ export default {
 
    created(){
     axios
-    .get(`http://localhost:3000/post_details/${this.$route.params.id}/reviews`, { withCredentials: true })
+    .get(`https://test-ecs-back-end.work/post_details/${this.$route.params.id}/reviews`, { withCredentials: true })
     .then(response => {
       this.$data.reviewsList =  response.data  
     })

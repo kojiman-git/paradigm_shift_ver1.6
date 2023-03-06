@@ -20,7 +20,7 @@
                 class="user-icon"
                 max-height="75"
                 max-width="75"
-                :src="`http://localhost:3000${this.$store.state.currentUser.image}`"
+                :src="`${this.$store.state.currentUser.image}`"
             ></v-img>
           </div>
         </v-list-item-avatar>
@@ -72,7 +72,7 @@
           class="user-icon"
           max-height="50"
           max-width="50"
-          :src="`http://localhost:3000${this.$store.state.currentUser.image}`"
+          :src="`${this.$store.state.currentUser.image}`"
         ></v-img>
       </div>
       <v-spacer />
@@ -101,7 +101,7 @@
     methods: {
       LogOutEvent() {
       axios
-        .get('http://localhost:3000/logout',{ withCredentials: true })
+        .get('https://test-ecs-back-end.work/logout',{ withCredentials: true })
         .then(response => {
           if (response.data.message === "ログアウトしました") {
               this.$store.dispatch('logoutEvent')
