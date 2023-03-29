@@ -2,7 +2,7 @@
 # RDS parameter group
 # ---------------------------------------------
 resource "aws_db_parameter_group" "mysql_standalone_parametergroup" {
-  name   = "paradigm-shift-terraform-parametergroup"
+  name   = "spa-paradigm-shift-terraform-parametergroup"
   family = "mysql8.0"
 
   parameter {
@@ -21,7 +21,7 @@ resource "aws_db_parameter_group" "mysql_standalone_parametergroup" {
 # RDS option group
 # ---------------------------------------------
 resource "aws_db_option_group" "mysql_standalone_optiongroup" {
-  name                 = "paradigm-shift-terraform-optiongroup"
+  name                 = "spa-paradigm-shift-terraform-optiongroup"
   engine_name          = "mysql"
   major_engine_version = "8.0"
 }
@@ -30,15 +30,15 @@ resource "aws_db_option_group" "mysql_standalone_optiongroup" {
 # RDS subnet group
 # ---------------------------------------------
 resource "aws_db_subnet_group" "mysql_standalone_subnetgroup" {
-  name = "paradigm-shift-terraform-mysql-subnetgroup"
+  name = "spa-paradigm-shift-terraform-mysql-subnetgroup"
   subnet_ids = [
     aws_subnet.private_subnet_1a.id,
     aws_subnet.private_subnet_1c.id
   ]
 
   tags = {
-    Name    = "paradigm-shift-terraform-mysql-subnetgroup"
-    
+    Name = "spa-paradigm-shift-terraform-mysql-subnetgroup"
+
   }
 }
 
@@ -49,9 +49,9 @@ resource "aws_db_subnet_group" "mysql_standalone_subnetgroup" {
 
 resource "aws_db_instance" "mysql_standalone" {
   engine         = "mysql"
-  engine_version = "8.0.20"
+  engine_version = "8.0"
 
-  identifier = "paradigm-shift-web-terraform"
+  identifier = "spa-paradigm-shift-web-terraform"
 
   username = "root"
   password = "password"
@@ -70,9 +70,9 @@ resource "aws_db_instance" "mysql_standalone" {
   publicly_accessible    = false
   port                   = 3306
 
-  name                       = "paradigm_shift"
-  parameter_group_name       = aws_db_parameter_group.mysql_standalone_parametergroup.name
-  option_group_name          = aws_db_option_group.mysql_standalone_optiongroup.name
+  name                 = "paradigm_shift"
+  parameter_group_name = aws_db_parameter_group.mysql_standalone_parametergroup.name
+  option_group_name    = aws_db_option_group.mysql_standalone_optiongroup.name
 
   backup_window              = "04:00-05:00"
   backup_retention_period    = 7
@@ -85,6 +85,6 @@ resource "aws_db_instance" "mysql_standalone" {
   apply_immediately = true
 
   tags = {
-    Name    = "paradigm-shift-web-terraform"
+    Name = "spa-paradigm-shift-web-terraform"
   }
 }
