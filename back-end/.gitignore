@@ -37,7 +37,5 @@
 
 /config/credentials/production.key
 
-/terraform/.terraform
-
 /.env
 

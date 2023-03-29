@@ -12,6 +12,6 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1'
   }
 
-  config.fog_directory  = 'ba-for-paradigm-shift-spa'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/ba-for-paradigm-shift-spa'
+  config.fog_directory  = 'ba-for-paradigm-shift-spa-terraform'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/ba-for-paradigm-shift-spa-terraform'
 end
