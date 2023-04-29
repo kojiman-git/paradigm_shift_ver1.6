@@ -101,7 +101,7 @@
     methods: {
       LogOutEvent() {
       axios
-        .get('http://localhost:3000//logout',{ withCredentials: true })
+        .get('https://test-ecs-back-end.work/logout',{ withCredentials: true })
         .then(response => {
           if (response.data.message === "ログアウトしました") {
               this.$store.dispatch('logoutEvent')

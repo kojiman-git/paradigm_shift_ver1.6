@@ -45,7 +45,7 @@ export default {
 
    created(){
     axios
-    .get(`http://localhost:3000//home_page/direct_message`, { withCredentials: true })
+    .get(`https://test-ecs-back-end.work/home_page/direct_message`, { withCredentials: true })
     .then(response => {
       this.$data.messagePartners =  response.data 
       console.log(this.$data.messagePartners);
