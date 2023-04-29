@@ -95,7 +95,7 @@ export default {
 
    created(){
     axios
-    .get(`https://spa-back-paradigm-shift.work/head_icon/quiz_list`, { withCredentials: true })
+    .get(`https://test-ecs-back-end.work/head_icon/quiz_list`, { withCredentials: true })
     .then(response => {
       this.$data.quizList =  response.data 
       console.log(this.$data.quizList);
@@ -108,17 +108,17 @@ export default {
   methods: {
     deleteEvent(id) {
        axios
-    .delete(`https://spa-back-paradigm-shift.work/posts/${id}/`, { withCredentials: true })
+    .delete(`https://test-ecs-back-end.work/posts/${id}/`, { withCredentials: true })
     .then(response => {
        if (response.data.message === "削除完了です") {
          axios
-        .get(`https://spa-back-paradigm-shift.work/head_icon/quiz_list`, { withCredentials: true })
+        .get(`https://test-ecs-back-end.work/head_icon/quiz_list`, { withCredentials: true })
         .then(response => {
           this.$data.quizList =  response.data 
           console.log(this.$data.quizList);
         })
           axios
-          .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+          .get('https://test-ecs-back-end.work/home_page/home', { withCredentials: true })
           .then(response => {
             this.$store.dispatch('followingPost/setEvent',response.data)
           })
@@ -128,17 +128,17 @@ export default {
     disLikeEvnet(ID){
       const params = {post_id:ID}
       axios
-      .get(`https://spa-back-paradigm-shift.work/posts/${ID}/des`,{ withCredentials: true },params)
+      .get(`https://test-ecs-back-end.work/posts/${ID}/des`,{ withCredentials: true },params)
       .then(response => {
         if (response.data.message === "お気に入り解除できました") {
           axios
-          .get(`https://spa-back-paradigm-shift.work/head_icon/quiz_list`, { withCredentials: true })
+          .get(`https://test-ecs-back-end.work/head_icon/quiz_list`, { withCredentials: true })
           .then(response => {
             this.$data.quizList =  response.data 
             console.log(this.$data.quizList);
           }) 
           axios
-            .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+            .get('https://test-ecs-back-end.work/home_page/home', { withCredentials: true })
             .then(response => {
               this.$store.dispatch('followingPost/setEvent',response.data)
             })
@@ -148,17 +148,17 @@ export default {
     LikeEvnet(ID){
         const params = {post_id:ID}
       axios
-      .get(`https://spa-back-paradigm-shift.work/posts/${ID}/cre`,{ withCredentials: true },params)
+      .get(`https://test-ecs-back-end.work/posts/${ID}/cre`,{ withCredentials: true },params)
       .then(response => {
         if (response.data.message === "お気に入り登録できました") {
           axios
-          .get(`https://spa-back-paradigm-shift.work/head_icon/quiz_list`, { withCredentials: true })
+          .get(`https://test-ecs-back-end.work/head_icon/quiz_list`, { withCredentials: true })
           .then(response => {
             this.$data.quizList =  response.data 
             console.log(this.$data.quizList);
           })
           axios
-            .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+            .get('https://test-ecs-back-end.work/home_page/home', { withCredentials: true })
             .then(response => {
               this.$store.dispatch('followingPost/setEvent',response.data)
             })

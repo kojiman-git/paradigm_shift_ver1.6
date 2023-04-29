@@ -29,7 +29,7 @@ export default {
    },
    created(){
     axios
-    .get(`https://spa-back-paradigm-shift.work/home_page/news`, { withCredentials: true })
+    .get(`https://test-ecs-back-end.work/home_page/news`, { withCredentials: true })
     .then(response => {
       this.$data.noticeList =  response.data 
       console.log(this.$data.noticeList);

@@ -98,7 +98,7 @@ export default {
   },
   created(){
     axios
-    .get(`https://spa-back-paradigm-shift.work/home_page/quiz`, { withCredentials: true })
+    .get(`https://test-ecs-back-end.work/home_page/quiz`, { withCredentials: true })
     .then(response => {
         this.$store.dispatch('quizChallenge/setEvent',response.data)
      })

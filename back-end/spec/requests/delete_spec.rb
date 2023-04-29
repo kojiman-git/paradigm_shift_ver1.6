@@ -31,7 +31,7 @@ RSpec.describe "delete", type: :request do
     end
 
     it "フォローを解除できること" do
-      delete "/relationships/1"
+      delete "/relationships/2"
       expect(Relationship.count).to eq 0
     end
 

@@ -86,7 +86,7 @@ export default {
 
   created(){
     axios
-    .get(`https://spa-back-paradigm-shift.work/rooms/${this.$route.params.id}`, { withCredentials: true })
+    .get(`https://test-ecs-back-end.work/rooms/${this.$route.params.id}`, { withCredentials: true })
     .then(response => {
               this.$data.messageList =  response.data  
               console.log(this.$data.messageList)
@@ -99,11 +99,11 @@ export default {
    sendMessageEvent() {
      const params = {message:{message:this.$data.message,room_id:this.$route.params.id}}  
       axios
-        .post('https://spa-back-paradigm-shift.work/messages',params, { withCredentials: true })
+        .post('https://test-ecs-back-end.work/messages',params, { withCredentials: true })
         .then(response => {
           if (response.data.message === "メッセージ作成できました") {
              axios
-              .get(`https://spa-back-paradigm-shift.work/rooms/${this.$route.params.id}`, { withCredentials: true })
+              .get(`https://test-ecs-back-end.work/rooms/${this.$route.params.id}`, { withCredentials: true })
               .then(response => {
                     this.$data.messageList =  response.data 
                     this.$data.message = ""

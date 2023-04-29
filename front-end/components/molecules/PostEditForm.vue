@@ -93,11 +93,11 @@ export default {
 
         const params = {post:{paraphrase:this.$data.paraphrase,term:this.$data.term,m_category_id:this.$data.m_category_id}}  
           axios
-            .post('https://spa-back-paradigm-shift.work/posts',params, { withCredentials: true })
+            .post('https://test-ecs-back-end.work/posts',params, { withCredentials: true })
             .then(response => {
               if (response.data.message === "投稿完了です") {
               axios
-              .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+              .get('https://test-ecs-back-end.work/home_page/home', { withCredentials: true })
               .then(response => {
                 this.$store.dispatch('followingPost/setEvent',response.data)
                 .then(this.$router.push('/home'))
