@@ -70,7 +70,7 @@ export default {
 
    created(){
     axios
-    .get(`https://spa-back-paradigm-shift.work/users/${this.$route.params.id}/followers`, { withCredentials: true })
+    .get(`http://localhost:3000//users/${this.$route.params.id}/followers`, { withCredentials: true })
     .then(response => {
       this.$data.followersList =  response.data 
       console.log(this.$data.followersList);
@@ -83,17 +83,17 @@ export default {
   methods: {
     unfollowEvent(id) {
        axios
-    .delete(`https://spa-back-paradigm-shift.work/relationships/${id}/`, { withCredentials: true })
+    .delete(`http://localhost:3000//relationships/${id}/`, { withCredentials: true })
     .then(response => {
        if (response.data.message === "フォロー解除しました") {
             axios
-          .get(`https://spa-back-paradigm-shift.work/users/${this.$route.params.id}/followers`, { withCredentials: true })
+          .get(`http://localhost:3000//users/${this.$route.params.id}/followers`, { withCredentials: true })
           .then(response => {
             this.$data.followersList =  response.data 
           })
           }
             axios
-          .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+          .get('http://localhost:3000//home_page/home', { withCredentials: true })
           .then(response => {
             this.$store.dispatch('followingPost/setEvent',response.data)
           })
@@ -102,17 +102,17 @@ export default {
     followEvent(userId) {
        const params = {id:userId}  
        axios
-    .post(`https://spa-back-paradigm-shift.work/relationships/`,params, {withCredentials: true })
+    .post(`http://localhost:3000//relationships/`,params, {withCredentials: true })
     .then(response => {
        if (response.data.message === "フォロー生成しました") {
             axios
-          .get(`https://spa-back-paradigm-shift.work/users/${this.$route.params.id}/followers`, { withCredentials: true })
+          .get(`http://localhost:3000//users/${this.$route.params.id}/followers`, { withCredentials: true })
           .then(response => {
             this.$data.followersList =  response.data 
           })
           }
             axios
-          .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+          .get('http://localhost:3000//home_page/home', { withCredentials: true })
           .then(response => {
             this.$store.dispatch('followingPost/setEvent',response.data)
           })

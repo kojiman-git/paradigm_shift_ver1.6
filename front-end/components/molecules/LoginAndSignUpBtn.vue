@@ -21,13 +21,13 @@ export default {
    guestUserLoginEvents() {
      const params = {session:{email:"guest@gmail.com",password:24169757}}  
       axios
-        .post('https://spa-back-paradigm-shift.work/login',params, { withCredentials: true })
+        .post('http://localhost:3000//login',params, { withCredentials: true })
         .then(response => {
           if (response.data.message === "ログインしました。") {
               this.$store.dispatch('loginEvent',response.data)
               console.log(response.data)
          axios
-              .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+              .get('http://localhost:3000//home_page/home', { withCredentials: true })
               .then(response => {
                 this.$store.dispatch('followingPost/setEvent',response.data)
                 .then(this.$router.push('/home'))

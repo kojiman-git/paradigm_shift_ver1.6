@@ -140,7 +140,7 @@ export default {
    },
    created(){
     axios
-    .get(`https://spa-back-paradigm-shift.work/users/${this.$route.params.id}/`, { withCredentials: true })
+    .get(`http://localhost:3000//users/${this.$route.params.id}/`, { withCredentials: true })
     .then(response => {
       this.$data.vueProfile =  response.data 
       console.log(this.$data.vueProfile);
@@ -152,17 +152,17 @@ export default {
     methods: {
     deleteEvent(id) {
        axios
-    .delete(`https://spa-back-paradigm-shift.work/posts/${id}/`, { withCredentials: true })
+    .delete(`http://localhost:3000//posts/${id}/`, { withCredentials: true })
     .then(response => {
        if (response.data.message === "削除完了です") {
           axios
-          .get(`https://spa-back-paradigm-shift.work/users/${this.$route.params.id}/`, { withCredentials: true })
+          .get(`http://localhost:3000//users/${this.$route.params.id}/`, { withCredentials: true })
           .then(response => {
             this.$data.vueProfile =  response.data 
             console.log(this.$data.vueProfile);
           })
           axios
-          .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+          .get('http://localhost:3000//home_page/home', { withCredentials: true })
           .then(response => {
             this.$store.dispatch('followingPost/setEvent',response.data)
           })
@@ -172,17 +172,17 @@ export default {
     disLikeEvnet(ID){
       const params = {post_id:ID}
       axios
-      .get(`https://spa-back-paradigm-shift.work/posts/${ID}/des`,{ withCredentials: true },params)
+      .get(`http://localhost:3000//posts/${ID}/des`,{ withCredentials: true },params)
       .then(response => {
         if (response.data.message === "お気に入り解除できました") { 
           axios
-            .get(`https://spa-back-paradigm-shift.work/users/${this.$route.params.id}/`, { withCredentials: true })
+            .get(`http://localhost:3000//users/${this.$route.params.id}/`, { withCredentials: true })
             .then(response => {
               this.$data.vueProfile =  response.data 
               console.log(this.$data.vueProfile);
             })
           axios
-            .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+            .get('http://localhost:3000//home_page/home', { withCredentials: true })
             .then(response => {
               this.$store.dispatch('followingPost/setEvent',response.data)
             })
@@ -192,17 +192,17 @@ export default {
     LikeEvnet(ID){
         const params = {post_id:ID}
       axios
-      .get(`https://spa-back-paradigm-shift.work/posts/${ID}/cre`,{ withCredentials: true },params)
+      .get(`http://localhost:3000//posts/${ID}/cre`,{ withCredentials: true },params)
       .then(response => {
         if (response.data.message === "お気に入り登録できました") {
           axios
-            .get(`https://spa-back-paradigm-shift.work/users/${this.$route.params.id}/`, { withCredentials: true })
+            .get(`http://localhost:3000//users/${this.$route.params.id}/`, { withCredentials: true })
             .then(response => {
               this.$data.vueProfile =  response.data 
               console.log(this.$data.vueProfile);
             })
           axios
-            .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+            .get('http://localhost:3000//home_page/home', { withCredentials: true })
             .then(response => {
               this.$store.dispatch('followingPost/setEvent',response.data)
             })
@@ -211,18 +211,18 @@ export default {
     },
     unfollowEvent(id) {
        axios
-    .delete(`https://spa-back-paradigm-shift.work/relationships/${id}/`, { withCredentials: true })
+    .delete(`http://localhost:3000//relationships/${id}/`, { withCredentials: true })
     .then(response => {
        if (response.data.message === "フォロー解除しました") {
             axios
-            .get(`https://spa-back-paradigm-shift.work/users/${this.$route.params.id}/`, { withCredentials: true })
+            .get(`http://localhost:3000//users/${this.$route.params.id}/`, { withCredentials: true })
             .then(response => {
               this.$data.vueProfile =  response.data 
               console.log(this.$data.vueProfile);
             })
             }
             axios
-          .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+          .get('http://localhost:3000//home_page/home', { withCredentials: true })
           .then(response => {
             this.$store.dispatch('followingPost/setEvent',response.data)
           })
@@ -231,18 +231,18 @@ export default {
     followEvent(userId) {
        const params = {id:userId}  
        axios
-    .post(`https://spa-back-paradigm-shift.work/relationships/`,params, {withCredentials: true })
+    .post(`http://localhost:3000//relationships/`,params, {withCredentials: true })
     .then(response => {
        if (response.data.message === "フォロー生成しました") {
             axios
-            .get(`https://spa-back-paradigm-shift.work/users/${this.$route.params.id}/`, { withCredentials: true })
+            .get(`http://localhost:3000//users/${this.$route.params.id}/`, { withCredentials: true })
             .then(response => {
               this.$data.vueProfile =  response.data 
               console.log(this.$data.vueProfile);
             })
             }
             axios
-          .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+          .get('http://localhost:3000//home_page/home', { withCredentials: true })
           .then(response => {
             this.$store.dispatch('followingPost/setEvent',response.data)
           })
@@ -254,7 +254,7 @@ export default {
       }else{
        const params = {entry:{user_id:this.$data.vueProfile.userID}}  
       axios
-        .post('https://spa-back-paradigm-shift.work/rooms',params, { withCredentials: true })
+        .post('http://localhost:3000//rooms',params, { withCredentials: true })
         .then(response => {
            this.$router.push(`/Message/${response.data.RoomId}/directMessage`)
         })

@@ -94,7 +94,7 @@ export default {
   },
  created(){
     axios
-    .get(`https://spa-back-paradigm-shift.work/home_page/search`, { withCredentials: true })
+    .get(`http://localhost:3000//home_page/search`, { withCredentials: true })
     .then(response => {
       this.$data.usersList =  response.data 
       console.log(this.$data.usersList);
@@ -107,7 +107,7 @@ export default {
   userSearchEvent(){
      
      axios
-    .get(`https://spa-back-paradigm-shift.work/search/user_search?keyword=${this.$data.keyword}`,{ withCredentials: true })
+    .get(`http://localhost:3000//search/user_search?keyword=${this.$data.keyword}`,{ withCredentials: true })
     .then(response => {
       this.$data.usersList =  response.data 
       console.log(this.$data.usersList);
@@ -119,17 +119,17 @@ export default {
 
     unfollowEvent(id) {
        axios
-    .delete(`https://spa-back-paradigm-shift.work/relationships/${id}/`, { withCredentials: true })
+    .delete(`http://localhost:3000//relationships/${id}/`, { withCredentials: true })
     .then(response => {
        if (response.data.message === "フォロー解除しました") {
             axios
-          .get(`https://spa-back-paradigm-shift.work/home_page/search`, { withCredentials: true })
+          .get(`http://localhost:3000//home_page/search`, { withCredentials: true })
           .then(response => {
             this.$data.usersList =  response.data 
           })
           }
             axios
-          .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+          .get('http://localhost:3000//home_page/home', { withCredentials: true })
           .then(response => {
             this.$store.dispatch('followingPost/setEvent',response.data)
           })
@@ -138,17 +138,17 @@ export default {
     followEvent(userId) {
        const params = {id:userId}  
        axios
-    .post(`https://spa-back-paradigm-shift.work/relationships/`,params,{withCredentials: true })
+    .post(`http://localhost:3000//relationships/`,params,{withCredentials: true })
     .then(response => {
        if (response.data.message === "フォロー生成しました") {
             axios
-          .get(`https://spa-back-paradigm-shift.work/home_page/search`, { withCredentials: true })
+          .get(`http://localhost:3000//home_page/search`, { withCredentials: true })
           .then(response => {
             this.$data.usersList =  response.data 
           })
           }
             axios
-          .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+          .get('http://localhost:3000//home_page/home', { withCredentials: true })
           .then(response => {
             this.$store.dispatch('followingPost/setEvent',response.data)
           })

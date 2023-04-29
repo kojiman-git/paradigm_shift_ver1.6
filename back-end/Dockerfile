@@ -12,6 +12,7 @@ WORKDIR /paradigm_shift_docker
 
 # Gemfileのみでbundle
 COPY Gemfile Gemfile.lock /paradigm_shift_docker/
+RUN bundle update
 RUN bundle install
 
 # ソースコード全体をコピーしてbundle

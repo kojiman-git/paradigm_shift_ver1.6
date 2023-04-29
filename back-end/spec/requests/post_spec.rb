@@ -25,8 +25,8 @@ RSpec.describe "post", type: :request do
 
     it "新規ユーザー登録できること" do
       post   "/users",
-      params: { user: { name: "テスト",email: "test@gmail.com",
-        password: "testpassword", password_confirmation: "testpassword" } }
+      params: { name: "テスト",email: "test@gmail.com",
+        password: "testpassword", password_confirmation: "testpassword" } 
         expect(User.count).to eq 4
     end
 
@@ -36,48 +36,36 @@ RSpec.describe "post", type: :request do
         m_category_id: "2"} }
       expect(Post.count).to eq 4
     end
-    it "投稿した後 post created! と表示されること" do
-      post   "/posts",
-      params: { post: { term: "テスト",paraphrase: "テスト",
-        m_category_id: "2"} }
-        expect(flash[:success]).to include("post created!")
-    end
+
     it "ユーザーをフォローできること" do
       post   "/relationships",
-      params: { followed_id: @user3.id }
+      params: { id: @user3.id }
       expect(Relationship.count).to eq 2
     end
+
     it "DMでメッセージを送信できること" do
       post   "/messages",
       params: { message: {user_id:current_user.id, room_id: @room.id,message: "テスト"} }
       expect(Message.count).to eq 1
     end
+
     it "まだDMしてないユーザーのメッセージボタンを押すと専用のトークルームができること" do
       post   "/rooms",
       params: { entry: {user_id:@user3.id} }
       expect(Room.count).to eq 2
     end
+
     it "投稿に評価点をつけることができること" do
       post   "/post_details/#{@post2.id}/reviews",
       params: { review: {post_id:@post2.id,score: 4} }
       expect(Review.count).to eq 1
     end
+
     it "投稿にコメントができること" do
       post   "/post_details",
       params: { comment: {comment:"テストコメント",post_id: @post2.id} }
       expect(Comment.count).to eq 1
     end
-
-    it "ログインした後、You were able to log inと表示されること" do
-      post login_path, 
-      params: { session: { email: @user1.email,
-        password: @user1.password } }
-      expect(flash[:success]).to include("You were able to log")
-    
-    end
-
-   
-    
 
   end
 end

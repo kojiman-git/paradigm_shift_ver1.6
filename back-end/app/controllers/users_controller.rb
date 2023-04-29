@@ -51,6 +51,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(name:params[:name],email: params[:email],password:params[:password],password_confirmation:params[:password_confirmation])
+  
     if @user.save
       log_in @user
       payload = { message: 'ユーザーを作ってログインしました。',id: @user.id, name: @user.name ,email: @user.email,intoroduction: @user.intoroduction,profile_url: @user.profile_url,image: @user.image.thumb.url}

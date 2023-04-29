@@ -15,5 +15,6 @@ class RelationshipsController < ApplicationController
     current_user.unfollow(user)
     payload = { message: "フォロー解除しました"}
     render json: payload
+    
   end
 end

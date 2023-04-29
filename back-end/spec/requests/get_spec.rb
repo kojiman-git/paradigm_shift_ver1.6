@@ -26,11 +26,6 @@ RSpec.describe "get", type: :request do
       expect(response).to be_successful
     end
 
-    it "ログインページにアクセスできること" do
-      get '/login'
-      expect(response).to be_successful
-    end
-
     it "新規ユーザー登録ページにアクセスできること" do
       get '/users/new'
       expect(response).to be_successful

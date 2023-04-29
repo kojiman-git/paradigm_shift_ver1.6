@@ -5,37 +5,38 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-/.bundle
+back-end/.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-*
+back-end/db/*.sqlite3
+back-end/db/*.sqlite3-*
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+back-end/log/*
+back-end/tmp/*
+!back-end/log/.keep
+!back-end/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
-/tmp/pids/*
-!/tmp/pids/
-!/tmp/pids/.keep
+back-end/tmp/pids/*
+!back-end/tmp/pids/
+!back-end/tmp/pids/.keep
 
 # Ignore uploaded files in development.
-/storage/*
-!/storage/.keep
-/tmp/storage/*
-!/tmp/storage/
-!/tmp/storage/.keep
+back-end/storage/*
+!back-end/storage/.keep
+back-end/tmp/storage/*
+!back-end/tmp/storage/
+!back-end/tmp/storage/.keep
 
-/public/assets
+back-end/public/assets
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
-/db/mysql_data
+back-end/config/master.key
+back-end/db/mysql_data
 
-/config/credentials/production.key
+back-end/config/credentials/production.key
 
-/.env
+back-end/.env
 
+terraform/.terraform/

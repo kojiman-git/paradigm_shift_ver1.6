@@ -101,7 +101,7 @@
     methods: {
       LogOutEvent() {
       axios
-        .get('https://spa-back-paradigm-shift.work/logout',{ withCredentials: true })
+        .get('http://localhost:3000//logout',{ withCredentials: true })
         .then(response => {
           if (response.data.message === "ログアウトしました") {
               this.$store.dispatch('logoutEvent')
