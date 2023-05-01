@@ -19,6 +19,8 @@ RUN bundle install
 COPY . /paradigm_shift_docker
 RUN bundle install
 
+RUN echo ${RAILS_PRODUCTION_KEY} > /paradigm_shift_docker/config/credentials/production.key
+
 WORKDIR /paradigm_shift_docker
 RUN apt-get update
 RUN apt-get install vim -y
