@@ -38,6 +38,14 @@ jobs:
       - run:
           name: test
           command: bundle exec rake spec
+      -run:
+          name: experiment1
+          command: pwd
+      -run:
+          name: experiment2
+          command: ls
+      
+
 
 
 workflows:
