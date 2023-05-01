@@ -43,6 +43,12 @@ workflows:
     build_and_test:
           jobs:
           - build_and_test 
+          - run:
+          name: experiment
+          command: pwd
+          - run:
+          name: experiment
+          command: ls
           - aws-ecr/build-and-push-image:
               requires:
                   - build_and_test 
