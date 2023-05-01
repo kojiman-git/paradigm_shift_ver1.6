@@ -56,7 +56,7 @@ workflows:
               
           - aws-ecs/back-deploy-service-update:
               requires:
-                  - aws-ecr-back/build-and-push-image
+                  - aws-ecr/back-build-and-push-image
               family: 'spa-paradigm-shift-ecs-back-task-definition-terraform' # タスク名
               cluster-name: 'spa-paradigm-shift-ecs-cluster-terraform'
               service-name: 'spa-back-paradigm-shift-ecs-servic-terraform'
