@@ -11,6 +11,7 @@ jobs:
     docker:
       - image: cimg/ruby:3.1.0
       - image: cimg/mysql:8.0
+      - image: alpine:3.7
         environment:
           MYSQL_ROOT_PASSWORD: password
           MYSQL_DATABASE: paradigm_shift_ver1_6_test
