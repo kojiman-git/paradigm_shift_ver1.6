@@ -52,7 +52,6 @@ workflows:
               region: AWS_REGION
               account-url: AWS_ECR_ACCOUNT_URL
               repo: 'spa-back-paradigm-shift-ecr-terraform'
-              path: ../back-end
               dockerfile: Dockerfile
               extra-build-args: '--build-arg RAILS_PRODUCTION_KEY=${RAILS_PRODUCTION_KEY}'
               tag: '${CIRCLE_SHA1}'
