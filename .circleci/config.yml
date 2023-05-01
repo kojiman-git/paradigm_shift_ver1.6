@@ -39,16 +39,20 @@ jobs:
           name: test
           command: bundle exec rake spec
 
+  experiment:
+    steps:
+      - run:
+          name: experiment1
+          command: pwd
+      - run:
+          name: experiment2
+          command: ls
+
 workflows:
     build_and_test:
           jobs:
           - build_and_test 
-          - run:
-          name: experiment
-          command: pwd
-          - run:
-          name: experiment
-          command: ls
+          - experiment
           - aws-ecr/build-and-push-image:
               requires:
                   - build_and_test 
