@@ -43,7 +43,7 @@ workflows:
     build_and_test:
           jobs:
           - build_and_test 
-          - aws-ecr/back-build-and-push-image:
+          - aws-ecr/build-and-push-image:
               requires:
                   - build_and_test 
               region: AWS_REGION
@@ -54,9 +54,9 @@ workflows:
               extra-build-args: '--build-arg RAILS_PRODUCTION_KEY=${RAILS_PRODUCTION_KEY}'
               tag: '${CIRCLE_SHA1}'
               
-          - aws-ecs/back-deploy-service-update:
+          - aws-ecs/deploy-service-update:
               requires:
-                  - aws-ecr/back-build-and-push-image
+                  - aws-ecr/build-and-push-image
               family: 'spa-paradigm-shift-ecs-back-task-definition-terraform' # タスク名
               cluster-name: 'spa-paradigm-shift-ecs-cluster-terraform'
               service-name: 'spa-back-paradigm-shift-ecs-servic-terraform'
