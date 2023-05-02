@@ -56,7 +56,6 @@ workflows:
               
           - aws-ecs/deploy-service-update:
               requires:
-                  - build_and_test 
                   - aws-ecr/build-and-push-image
               family: 'spa-paradigm-shift-ecs-back-task-definition-terraform' # タスク名
               cluster-name: 'spa-paradigm-shift-ecs-cluster-terraform'
