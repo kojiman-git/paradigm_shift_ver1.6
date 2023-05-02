@@ -48,7 +48,7 @@ workflows:
           jobs:
             - aws-ecr/build-and-push-image:
                 requires:
-                    - backend_test 
+                    - build_and_test
                 region: AWS_REGION
                 account-url: AWS_ECR_ACCOUNT_URL
                 repo: 'spa-back-paradigm-shift-ecr-terraform'
@@ -61,8 +61,8 @@ workflows:
            jobs:
             - aws-ecs/deploy-service-update:
                 requires:
-                    - backend_test 
-                    - build_and_push_image_backend
+                    - build_and_test 
+                    - aws-ecr/build-and-push-image
                 family: 'spa-paradigm-shift-ecs-back-task-definition-terraform' # タスク名
                 cluster-name: 'spa-paradigm-shift-ecs-cluster-terraform'
                 service-name: 'spa-back-paradigm-shift-ecs-servic-terraform'
