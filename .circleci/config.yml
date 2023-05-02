@@ -63,10 +63,6 @@ workflows:
     build_and_test:
           jobs:
           - build_and_test 
-          - build_and_push_image_backend
-              requires:
-                - build_and_test 
+          - build_and_push_image_backend   
           - deploy_service_update_backend
-              requires:
-                - build_and_test 
-                - build_and_push_image_backend
+             
