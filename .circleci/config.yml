@@ -40,7 +40,10 @@ jobs:
           command: bundle exec rake spec
   
   build_and_push_image_backend:
+    machine:
+      image: ubuntu-1604:201903-01
     steps:
+      - checkout
       - aws-ecr/build-and-push-image:
               region: AWS_REGION
               account-url: AWS_ECR_ACCOUNT_URL
@@ -51,7 +54,10 @@ jobs:
               tag: '${CIRCLE_SHA1}'
 
   deploy_service_update_backend:  
+    machine:
+      image: ubuntu-1604:201903-01
     steps:
+      - checkout
       - aws-ecs/deploy-service-update:
               family: 'spa-paradigm-shift-ecs-back-task-definition-terraform' # タスク名
               cluster-name: 'spa-paradigm-shift-ecs-cluster-terraform'
