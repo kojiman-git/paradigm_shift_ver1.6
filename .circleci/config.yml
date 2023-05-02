@@ -50,7 +50,7 @@ jobs:
               extra-build-args: '--build-arg RAILS_PRODUCTION_KEY=${RAILS_PRODUCTION_KEY}'
               tag: '${CIRCLE_SHA1}'
 
-  deploy_service_update_backend:    
+  deploy_service_update_backend:  
     steps:
       - aws-ecs/deploy-service-update:
               family: 'spa-paradigm-shift-ecs-back-task-definition-terraform' # タスク名
@@ -62,7 +62,7 @@ jobs:
 workflows:
     build_and_test:
           jobs:
-          - build_and_test 
-          - build_and_push_image_backend   
-          - deploy_service_update_backend
+            - build_and_test 
+            - build_and_push_image_backend   
+            - deploy_service_update_backend
              
