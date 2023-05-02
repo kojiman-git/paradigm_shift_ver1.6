@@ -40,12 +40,10 @@ jobs:
           command: bundle exec rake spec
 
 workflows:
-    backend_test:
+    build_and_test_and_deploy:
           jobs:
             - build_and_test 
-
-    build_and_push_image_backend:
-          jobs:
+            
             - aws-ecr/build-and-push-image:
                 requires:
                     - build_and_test
@@ -57,8 +55,6 @@ workflows:
                 extra-build-args: '--build-arg RAILS_PRODUCTION_KEY=${RAILS_PRODUCTION_KEY}'
                 tag: '${CIRCLE_SHA1}'
 
-    deploy_service_update_backend:
-           jobs:
             - aws-ecs/deploy-service-update:
                 requires:
                     - build_and_test 
