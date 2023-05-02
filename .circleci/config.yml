@@ -53,6 +53,10 @@ workflows:
               dockerfile: Dockerfile
               extra-build-args: '--build-arg RAILS_PRODUCTION_KEY=${RAILS_PRODUCTION_KEY}'
               tag: '${CIRCLE_SHA1}'
+              filters:    
+                branches:
+                    only:
+                    - main
               
           - aws-ecs/deploy-service-update:
               requires:
@@ -61,6 +65,10 @@ workflows:
               cluster-name: 'spa-paradigm-shift-ecs-cluster-terraform'
               service-name: 'spa-back-paradigm-shift-ecs-servic-terraform'
               container-image-name-updates: 'container=spa-paradigm-shift-ecs-back-container-terraform,tag=${CIRCLE_SHA1}'
+              filters:    
+                branches:
+                    only:
+                    - main
 
     build_and_deploy_frontend:
           jobs: 
@@ -71,6 +79,10 @@ workflows:
               path: ./front-end/
               dockerfile: Dockerfile
               tag: '${CIRCLE_SHA1}'
+              filters:    
+                branches:
+                    only:
+                    - main
        
           - aws-ecs/deploy-service-update:
               requires:
@@ -79,4 +91,7 @@ workflows:
               cluster-name: 'spa-paradigm-shift-ecs-cluster-terraform'
               service-name: 'spa-front-paradigm-shift-ecs-servic-terraform'
               container-image-name-updates: 'container=spa-paradigm-shift-ecs-front-container-terraform,tag=${CIRCLE_SHA1}'
-                        
+              filters:    
+                branches:
+                    only:
+                    - main         

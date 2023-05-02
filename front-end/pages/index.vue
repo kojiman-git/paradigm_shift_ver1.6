@@ -5,7 +5,7 @@
     <AtomsAppExplanation/>
     <MoleculesLoginAndSignUpBtn/>
     </main>
-   <AtomsNoLoginHeaderAndFooter>世界が変わる瞬間!</AtomsNoLoginHeaderAndFooter>
+   <AtomsNoLoginHeaderAndFooter>世界が変わる瞬間</AtomsNoLoginHeaderAndFooter>
  </div>
 </template>
 
