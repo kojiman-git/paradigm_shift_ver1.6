@@ -51,8 +51,7 @@ workflows:
               repo: 'spa-back-paradigm-shift-ecr-terraform'
               path: ./back-end/
               dockerfile: Dockerfile
-              extra-build-args: '--build-arg RAILS_PRODUCTION_KEY=${RAILS_PRODUCTION_KEY}'
-              extra-build-args: '--build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}'
+              extra-build-args: '--build-arg RAILS_PRODUCTION_KEY=${RAILS_PRODUCTION_KEY} --build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}'
               tag: '${CIRCLE_SHA1}'
          
               
