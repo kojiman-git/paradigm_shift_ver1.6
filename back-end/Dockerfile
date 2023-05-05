@@ -5,6 +5,7 @@ ENV RAILS_LOG_TO_STDOUT=out
 
 ### CircleCI経由でイメージのプッシュ/デプロイを行う際に使用
 ARG RAILS_PRODUCTION_KEY
+ARG RAILS_MASTER_KEY
 
 WORKDIR /paradigm_shift_docker
 
@@ -17,7 +18,9 @@ RUN bundle install
 COPY . /paradigm_shift_docker
 RUN bundle install
 
-RUN echo ${RAILS_PRODUCTION_KEY} > /paradigm_shift_docker/back-end/config/credentials/production.key
+RUN echo ${RAILS_PRODUCTION_KEY} > /paradigm_shift_docker/config/credentials/production.key
+
+RUN echo ${RAILS_MASTER_KEY} > /paradigm_shift_docker/config/master.key
 
 WORKDIR /paradigm_shift_docker
 RUN apt-get update
