@@ -2,11 +2,13 @@ FROM ruby:3.1.0
 
 ENV RAILS_ENV=production
 ENV RAILS_LOG_TO_STDOUT=out
-ENV AWS_ACCESS_KEY_ID_CARRIER
-ENV AWS_SECRET_ACCESS_KEY_CARRIER
+ENV AWS_ACCESS_KEY_ID_CARRIER = ${AWS_ACCESS_KEY_ID_CARRIER}
+ENV AWS_SECRET_ACCESS_KEY_CARRIER = ${AWS_SECRET_ACCESS_KEY_CARRIER}
 
 ### CircleCI経由でイメージのプッシュ/デプロイを行う際に使用
 ARG RAILS_PRODUCTION_KEY
+ARG RAILS_MASTER_KEY
+
 
 WORKDIR /paradigm_shift_docker
 
@@ -20,6 +22,7 @@ COPY . /paradigm_shift_docker
 RUN bundle install
 
 RUN echo ${RAILS_PRODUCTION_KEY} > /paradigm_shift_docker/config/credentials/production.key
+RUN echo ${RAILS_MASTER_KEY} > /paradigm_shift_docker/config/master.key
 
 WORKDIR /paradigm_shift_docker
 RUN apt-get update
