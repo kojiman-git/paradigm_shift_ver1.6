@@ -73,10 +73,7 @@ workflows:
               path: ./front-end/
               dockerfile: Dockerfile
               tag: '${CIRCLE_SHA1}'
-              filters:    
-                branches:
-                    only:
-                    - main
+          
        
           - aws-ecs/deploy-service-update:
               requires:
@@ -85,7 +82,4 @@ workflows:
               cluster-name: 'spa-paradigm-shift-ecs-cluster-terraform'
               service-name: 'spa-front-paradigm-shift-ecs-servic-terraform'
               container-image-name-updates: 'container=spa-paradigm-shift-ecs-front-container-terraform,tag=${CIRCLE_SHA1}'
-              filters:    
-                branches:
-                    only:
-                    - main         
+                 

@@ -63,7 +63,7 @@ export default {
   created(){
     
     axios
-    .get(`https://test-ecs-back-end.work/rooms/${this.$route.params.id}`, { withCredentials: true })
+    .get(`https://spa-back-paradigm-shift.work/rooms/${this.$route.params.id}`, { withCredentials: true })
     .then(response => {
           if (response.data[0].message === "部屋にいる") {
               this.$data.messageList =  response.data  

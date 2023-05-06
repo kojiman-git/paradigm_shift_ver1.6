@@ -43,7 +43,7 @@ export default {
 
    created(){
     axios
-    .get(`https://test-ecs-back-end.work/post_details/${this.$route.params.id}/reviews`, { withCredentials: true })
+    .get(`https://spa-back-paradigm-shift.work/post_details/${this.$route.params.id}/reviews`, { withCredentials: true })
     .then(response => {
       this.$data.reviewsList =  response.data  
     })
