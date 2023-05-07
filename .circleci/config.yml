@@ -40,10 +40,62 @@ jobs:
           command: bundle exec rake spec
 
 workflows:
-    build_and_test:
+    build_and_test_and_deploy_backend:
           jobs:
           - build_and_test 
-          
-              
+          - aws-ecr/build-and-push-image:
+              requires:
+                  - build_and_test 
+              region: AWS_REGION
+              account-url: AWS_ECR_ACCOUNT_URL
+              repo: 'spa-back-paradigm-shift-ecr-terraform'
+              path: ./back-end/
+              dockerfile: Dockerfile
+              extra-build-args: '--build-arg RAILS_PRODUCTION_KEY=${RAILS_PRODUCTION_KEY} --build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY} --build-arg AWS_ACCESS_KEY_ID_CARRIER=${AWS_ACCESS_KEY_ID_CARRIER} --build-arg AWS_SECRET_ACCESS_KEY_CARRIER=${AWS_SECRET_ACCESS_KEY_CARRIER}'
+              tag: '${CIRCLE_SHA1}'
+              filters:    
+                branches:
+                    only:
+                    - main
 
          
+              
+          - aws-ecs/deploy-service-update:
+              requires:
+                  - aws-ecr/build-and-push-image
+              family: 'spa-paradigm-shift-ecs-back-task-definition-terraform' # タスク名
+              cluster-name: 'spa-paradigm-shift-ecs-cluster-terraform'
+              service-name: 'spa-back-paradigm-shift-ecs-servic-terraform'
+              container-image-name-updates: 'container=spa-paradigm-shift-ecs-back-container-terraform,tag=${CIRCLE_SHA1}'
+              filters:    
+                branches:
+                    only:
+                    - main
+       
+
+    build_and_deploy_frontend:
+          jobs: 
+          - aws-ecr/build-and-push-image:
+              region: AWS_REGION
+              account-url: AWS_ECR_ACCOUNT_URL
+              repo: 'spa-front-paradigm-shift-ecr-terraform'
+              path: ./front-end/
+              dockerfile: Dockerfile
+              tag: '${CIRCLE_SHA1}'
+              filters:    
+                branches:
+                    only:
+                    - main
+          
+       
+          - aws-ecs/deploy-service-update:
+              requires:
+                  - aws-ecr/build-and-push-image
+              family: 'spa-paradigm-shift-ecs-front-task-definition-terraform' # タスク名
+              cluster-name: 'spa-paradigm-shift-ecs-cluster-terraform'
+              service-name: 'spa-front-paradigm-shift-ecs-servic-terraform'
+              container-image-name-updates: 'container=spa-paradigm-shift-ecs-front-container-terraform,tag=${CIRCLE_SHA1}'
+              filters:    
+                branches:
+                    only:
+                    - main  
