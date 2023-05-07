@@ -53,6 +53,11 @@ workflows:
               dockerfile: Dockerfile
               extra-build-args: '--build-arg RAILS_PRODUCTION_KEY=${RAILS_PRODUCTION_KEY} --build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY} --build-arg AWS_ACCESS_KEY_ID_CARRIER=${AWS_ACCESS_KEY_ID_CARRIER} --build-arg AWS_SECRET_ACCESS_KEY_CARRIER=${AWS_SECRET_ACCESS_KEY_CARRIER}'
               tag: '${CIRCLE_SHA1}'
+              filters:    
+                branches:
+                    only:
+                    - main
+
          
               
           - aws-ecs/deploy-service-update:
@@ -62,6 +67,10 @@ workflows:
               cluster-name: 'spa-paradigm-shift-ecs-cluster-terraform'
               service-name: 'spa-back-paradigm-shift-ecs-servic-terraform'
               container-image-name-updates: 'container=spa-paradigm-shift-ecs-back-container-terraform,tag=${CIRCLE_SHA1}'
+              filters:    
+                branches:
+                    only:
+                    - main
        
 
     build_and_deploy_frontend:
