@@ -29,10 +29,10 @@
       </v-row> 
       <v-row justify="center" no-gutters>
         <v-col cols="10">
-          <ValidationProvider v-slot="{ errors }" rules="max:400|required" name="言い換え">
+          <ValidationProvider v-slot="{ errors }" rules="max:250|required" name="言い換え">
             <v-textarea
               v-model="paraphrase"
-              :counter="400"
+              :counter="250"
               label="その用語を自分の言葉で言い換えるとどんな感じ？"
               :error-messages="errors"
               class=mt-6
