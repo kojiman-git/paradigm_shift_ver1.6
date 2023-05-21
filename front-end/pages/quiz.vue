@@ -49,12 +49,14 @@
             <v-row justify="center"  no-gutters>
               <v-col cols="12" class= "center text-h4">
                 <div v-if="this.$store.state.quizChallenge.quizList.length !== 0">
-                  <div v-if="this.hide">
-                    上記の用語がどんな意味だったか思い出してみましょう
-                  </div>
-                  <div v-else>
-                    {{this.$store.state.quizChallenge.quizList[this.count].paraphrase}}
-                  </div>
+                  <v-container>
+                    <div v-if="this.hide">
+                      上記の用語がどんな意味だったか思い出してみましょう
+                    </div>
+                    <div v-else>
+                      {{this.$store.state.quizChallenge.quizList[this.count].paraphrase}}
+                    </div>
+                  </v-container>
                 </div>
               </v-col>
             </v-row>

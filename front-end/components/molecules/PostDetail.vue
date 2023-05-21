@@ -36,11 +36,13 @@
         </v-row> 
       </v-sheet >
       <v-sheet height="34vh">
-        <v-row justify="center"  no-gutters>
-          <v-col cols="12" class= "center text-h4">
-            {{postDetailsInfo.paraphrase}}
-          </v-col>
-        </v-row>
+        <v-container>
+          <v-row justify="center"  no-gutters>
+            <v-col cols="12" class= "center text-h4">
+              {{postDetailsInfo.paraphrase}}
+            </v-col>
+          </v-row>
+        </v-container>
       </v-sheet >
       <v-sheet height="7vh">
         <v-row justify="space-between"  no-gutters>

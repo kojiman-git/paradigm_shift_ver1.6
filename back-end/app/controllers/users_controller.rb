@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       end
     end
 
-    vueProfile = {userID:@user.id,userName: @user.name,intoroduction: @user.intoroduction,image:@user.image.thumb.url,currentUser:current_user?(@user),following:@user.following.count,follower:@user.followers.count,followingJudgment:current_user.following?(@user),userPosts:userPosts,IsRoom:@isRoom,RoomId:@roomId}
+    vueProfile = {userID:@user.id,userName: @user.name,userEmail: @user.email,intoroduction: @user.intoroduction,image:@user.image.thumb.url,currentUser:current_user?(@user),following:@user.following.count,follower:@user.followers.count,followingJudgment:current_user.following?(@user),userPosts:userPosts,IsRoom:@isRoom,RoomId:@roomId}
 
     render json: vueProfile
 
