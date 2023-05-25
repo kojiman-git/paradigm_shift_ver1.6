@@ -1,6 +1,6 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://spa-front-paradigm-shift.work/'
+    origins 'https://spa-front-paradigm-shift.work'
 
     resource '*',
       headers: :any,
