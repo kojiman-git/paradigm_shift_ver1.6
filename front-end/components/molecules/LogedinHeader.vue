@@ -98,6 +98,16 @@
         ],
       }
     },
+    created(){
+      axios
+      .get(`https://spa-back-paradigm-shift.work/users/currentUser`, { withCredentials: true })
+      .then(response => {
+          this.$store.dispatch('loginEvent',response.data)
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    },
     methods: {
       LogOutEvent() {
       axios

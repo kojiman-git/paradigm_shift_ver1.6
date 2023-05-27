@@ -116,9 +116,8 @@ export default {
     .then(response => {
       if (response.data.message === "ユーザーを更新しました") {
       axios
-        .get(`https://spa-back-paradigm-shift.work/users/${this.$route.params.id}/currentUser`,{ withCredentials: true })
+        .get(`https://spa-back-paradigm-shift.work/users/currentUser`,{ withCredentials: true })
         .then(response => {
-          if (response.data.message === "現在のユーザー") {
               this.$store.dispatch('loginEvent',response.data)
            axios
               .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
@@ -128,7 +127,6 @@ export default {
               .catch(error => {
                 console.error(error);
               });
-          }
         }).then(this.$router.push(`/DrawerMenu/${this.$route.params.id}/myProfile`))   
       }
     })

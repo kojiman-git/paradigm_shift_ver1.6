@@ -88,11 +88,21 @@ export default {
       dialog:false,
     }
   },
- computed:{
+  computed:{
    posts(){
      return this.$store.state.followingPost.postData
    }
- },
+  },
+  created(){
+    axios
+    .get(`https://spa-back-paradigm-shift.work/home_page/home`, { withCredentials: true })
+    .then(response => {
+        this.$store.dispatch('followingPost/setEvent',response.data)
+     })
+    .catch(error => {
+      console.error(error);
+    });
+  },
   methods: {
     deleteEvent(id) {
        axios
