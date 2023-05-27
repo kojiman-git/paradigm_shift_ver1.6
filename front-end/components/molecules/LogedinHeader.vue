@@ -98,10 +98,20 @@
         ],
       }
     },
+    created(){
+      axios
+      .get(`http://localhost:3000/users/currentUser2`, { withCredentials: true })
+      .then(response => {
+          this.$store.dispatch('loginEvent',response.data)
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    },
     methods: {
       LogOutEvent() {
       axios
-        .get('https://spa-back-paradigm-shift.work/logout',{ withCredentials: true })
+        .get('http://localhost:3000/logout',{ withCredentials: true })
         .then(response => {
           if (response.data.message === "ログアウトしました") {
               this.$store.dispatch('logoutEvent')

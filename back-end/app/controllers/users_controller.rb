@@ -113,6 +113,14 @@ class UsersController < ApplicationController
 
   end
 
+  def currentUser2
+    
+    user  = current_user
+    payload = { message: '現在のユーザー',id: user.id, name: user.name ,email: user.email,intoroduction: user.intoroduction,profile_url: user.profile_url,image: user.image.thumb.url}
+    render json: payload
+
+  end
+
   
   private
 

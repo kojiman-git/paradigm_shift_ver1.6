@@ -45,7 +45,7 @@ export default {
 
    created(){
     axios
-    .get(`https://spa-back-paradigm-shift.work/home_page/direct_message`, { withCredentials: true })
+    .get(`http://localhost:3000/home_page/direct_message`, { withCredentials: true })
     .then(response => {
       this.$data.messagePartners =  response.data 
       console.log(this.$data.messagePartners);

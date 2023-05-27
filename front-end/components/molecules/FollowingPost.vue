@@ -88,19 +88,29 @@ export default {
       dialog:false,
     }
   },
- computed:{
+  computed:{
    posts(){
      return this.$store.state.followingPost.postData
    }
- },
+  },
+  created(){
+    axios
+    .get(`http://localhost:3000/home_page/home`, { withCredentials: true })
+    .then(response => {
+        this.$store.dispatch('followingPost/setEvent',response.data)
+     })
+    .catch(error => {
+      console.error(error);
+    });
+  },
   methods: {
     deleteEvent(id) {
        axios
-    .delete(`https://spa-back-paradigm-shift.work/posts/${id}/`, { withCredentials: true })
+    .delete(`http://localhost:3000/posts/${id}/`, { withCredentials: true })
     .then(response => {
        if (response.data.message === "削除完了です") {
           axios
-          .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+          .get('http://localhost:3000/home_page/home', { withCredentials: true })
           .then(response => {
             this.$store.dispatch('followingPost/setEvent',response.data)
           })
@@ -110,11 +120,11 @@ export default {
     disLikeEvnet(ID){
       const params = {post_id:ID}
       axios
-      .get(`https://spa-back-paradigm-shift.work/posts/${ID}/des`,{ withCredentials: true },params)
+      .get(`http://localhost:3000/posts/${ID}/des`,{ withCredentials: true },params)
       .then(response => {
         if (response.data.message === "お気に入り解除できました") { 
           axios
-            .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+            .get('http://localhost:3000/home_page/home', { withCredentials: true })
             .then(response => {
               this.$store.dispatch('followingPost/setEvent',response.data)
             })
@@ -124,11 +134,11 @@ export default {
     LikeEvnet(ID){
         const params = {post_id:ID}
       axios
-      .get(`https://spa-back-paradigm-shift.work/posts/${ID}/cre`,{ withCredentials: true },params)
+      .get(`http://localhost:3000/posts/${ID}/cre`,{ withCredentials: true },params)
       .then(response => {
         if (response.data.message === "お気に入り登録できました") {
           axios
-            .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
+            .get('http://localhost:3000/home_page/home', { withCredentials: true })
             .then(response => {
               this.$store.dispatch('followingPost/setEvent',response.data)
             })
