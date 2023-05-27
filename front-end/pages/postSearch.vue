@@ -143,7 +143,7 @@ import axios from 'axios';
     },
     created(){
       axios
-      .get(`http://localhost:3000/search/narrow_down_by_category?post%5Bm_category_id%5D=${this.filter}`, { withCredentials: true })
+      .get(`https://spa-back-paradigm-shift.work/search/narrow_down_by_category?post%5Bm_category_id%5D=${this.filter}`, { withCredentials: true })
       .then(response => {
         this.$data.postList =  response.data 
         console.log(this.$data.postList);
@@ -155,16 +155,16 @@ import axios from 'axios';
     methods: {
     deleteEvent(id) {
        axios
-    .delete(`http://localhost:3000/posts/${id}/`, { withCredentials: true })
+    .delete(`https://spa-back-paradigm-shift.work/posts/${id}/`, { withCredentials: true })
     .then(response => {
        if (response.data.message === "削除完了です") {
           axios
-          .get('http://localhost:3000/home_page/home', { withCredentials: true })
+          .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
           .then(response => {
             this.$store.dispatch('followingPost/setEvent',response.data)
           })
           axios
-          .get(`http://localhost:3000/search/narrow_down_by_category?post%5Bm_category_id%5D=${this.filter}`, { withCredentials: true })
+          .get(`https://spa-back-paradigm-shift.work/search/narrow_down_by_category?post%5Bm_category_id%5D=${this.filter}`, { withCredentials: true })
           .then(response => {
             this.$data.postList =  response.data 
             console.log(this.$data.postList);
@@ -175,16 +175,16 @@ import axios from 'axios';
     disLikeEvnet(ID){
       const params = {post_id:ID}
       axios
-      .get(`http://localhost:3000/posts/${ID}/des`,{ withCredentials: true },params)
+      .get(`https://spa-back-paradigm-shift.work/posts/${ID}/des`,{ withCredentials: true },params)
       .then(response => {
         if (response.data.message === "お気に入り解除できました") { 
           axios
-          .get('http://localhost:3000/home_page/home', { withCredentials: true })
+          .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
           .then(response => {
             this.$store.dispatch('followingPost/setEvent',response.data)
           })
           axios
-          .get(`http://localhost:3000/search/narrow_down_by_category?post%5Bm_category_id%5D=${this.filter}`, { withCredentials: true })
+          .get(`https://spa-back-paradigm-shift.work/search/narrow_down_by_category?post%5Bm_category_id%5D=${this.filter}`, { withCredentials: true })
           .then(response => {
             this.$data.postList =  response.data 
             console.log(this.$data.postList);
@@ -195,16 +195,16 @@ import axios from 'axios';
     LikeEvnet(ID){
         const params = {post_id:ID}
       axios
-      .get(`http://localhost:3000/posts/${ID}/cre`,{ withCredentials: true },params)
+      .get(`https://spa-back-paradigm-shift.work/posts/${ID}/cre`,{ withCredentials: true },params)
       .then(response => {
         if (response.data.message === "お気に入り登録できました") {
           axios
-          .get('http://localhost:3000/home_page/home', { withCredentials: true })
+          .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
           .then(response => {
             this.$store.dispatch('followingPost/setEvent',response.data)
           })
           axios
-          .get(`http://localhost:3000/search/narrow_down_by_category?post%5Bm_category_id%5D=${this.filter}`, { withCredentials: true })
+          .get(`https://spa-back-paradigm-shift.work/search/narrow_down_by_category?post%5Bm_category_id%5D=${this.filter}`, { withCredentials: true })
           .then(response => {
             this.$data.postList =  response.data 
             console.log(this.$data.postList);
@@ -214,7 +214,7 @@ import axios from 'axios';
     },
     filterEvent(ID){
         axios
-          .get(`http://localhost:3000/search/narrow_down_by_category?post%5Bm_category_id%5D=${ID}`,{ withCredentials: true })
+          .get(`https://spa-back-paradigm-shift.work/search/narrow_down_by_category?post%5Bm_category_id%5D=${ID}`,{ withCredentials: true })
           .then(response => {
             this.filter = ID
             this.$data.postList =  response.data 

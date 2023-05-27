@@ -100,7 +100,7 @@
     },
     created(){
       axios
-      .get(`http://localhost:3000/users/currentUser2`, { withCredentials: true })
+      .get(`https://spa-back-paradigm-shift.work/users/currentUser`, { withCredentials: true })
       .then(response => {
           this.$store.dispatch('loginEvent',response.data)
       })
@@ -111,7 +111,7 @@
     methods: {
       LogOutEvent() {
       axios
-        .get('http://localhost:3000/logout',{ withCredentials: true })
+        .get('https://spa-back-paradigm-shift.work/logout',{ withCredentials: true })
         .then(response => {
           if (response.data.message === "ログアウトしました") {
               this.$store.dispatch('logoutEvent')

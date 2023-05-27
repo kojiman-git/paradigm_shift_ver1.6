@@ -23,7 +23,7 @@ export default {
    },
    created(){
     axios
-    .get(`http://localhost:3000/users/${this.$route.params.id}/`, { withCredentials: true })
+    .get(`https://spa-back-paradigm-shift.work/users/${this.$route.params.id}/`, { withCredentials: true })
     .then(response => {
       this.$data.vueProfile =  response.data 
       console.log(this.$data.vueProfile);

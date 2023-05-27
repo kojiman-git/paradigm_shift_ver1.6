@@ -94,12 +94,12 @@ export default {
       const params = {name:this.$data.name,email:this.$data.email,password:this.$data.password,password_confirmation:this.$data.password_confirmation}
       if (this.$data.password === this.$data.password_confirmation) {
         axios
-          .post('http://localhost:3000/users',params,{ withCredentials: true })
+          .post('https://spa-back-paradigm-shift.work/users',params,{ withCredentials: true })
           .then(response => {
             if (response.data.message === "ユーザーを作ってログインしました。") {
                  this.$store.dispatch('loginEvent',response.data)
               axios
-              .get('http://localhost:3000/home_page/home', { withCredentials: true })
+              .get('https://spa-back-paradigm-shift.work/home_page/home', { withCredentials: true })
               .then(response => {
                 this.$store.dispatch('followingPost/setEvent',response.data)
                 .then(this.$router.push('/home'))  
