@@ -1,71 +1,85 @@
 <template>
   <div>
     <v-container>
-      <v-row justify="center" no-gutters>
-        <v-col cols="10">
-          <v-text-field
-          v-model="userInfo.name"
-          label="Name"
-          required
-          ></v-text-field>
-        </v-col>
-      </v-row> 
-      <v-row justify="center" no-gutters>
-        <v-col cols="10">
-          <v-text-field
-          v-model="userInfo.email"
-          label="E-mail"
-          required
-          ></v-text-field>
-        </v-col>
-      </v-row> 
-      <v-row justify="center" no-gutters>
-        <v-col cols="10">
-          <v-text-field
-          v-model="userInfo.intoroduction"
-          label="Intoroductioon"
-          required
-          ></v-text-field>
-        </v-col>
-      </v-row> 
-      <v-row justify="center" no-gutters>
-        <v-col cols="10" >
-          <v-text-field 
-          v-model="userInfo.password"
-          label="Password" 
-          type="password" 
-          required 
-          ></v-text-field>
-        </v-col>
-      </v-row> 
-      <v-row justify="center" no-gutters>
-        <v-col cols="10" >
-          <v-text-field 
-          v-model="userInfo.confirmation"
-          label="Confirmation" 
-          type="password" 
-          required 
-          ></v-text-field>
-        </v-col>
-      </v-row>
-      <v-row justify="center" no-gutters>
-        <v-col cols="10" >
-          <v-file-input
-          accept="image/jpg, image/jpeg, image/gif, image/png"
-          label="Profile Image"
-          placeholder="画像を投稿"
-          type="file"
-          @change="setImage"
-        ></v-file-input>
-        </v-col>
-      </v-row>
-      <v-row justify="center" no-gutters>
-        <v-col cols="10" >
-          <v-btn  color="#cefffb" block  @click="UpdateEvents">
-            Update
-          </v-btn>
-        </v-col>
-      </v-row>
+      <validation-observer ref="obs" v-slot="ObserverProps">
+        <v-row justify="center" no-gutters>
+          <v-col cols="10">
+            <ValidationProvider v-slot="{ errors }" rules="max:40|required" name="Name">
+              <v-text-field
+              v-model="userInfo.name"
+              label="Name"
+              required
+              :error-messages="errors"
+              ></v-text-field>
+            </ValidationProvider>
+          </v-col>
+        </v-row> 
+        <v-row justify="center" no-gutters>
+          <v-col cols="10">
+            <ValidationProvider v-slot="{ errors }" rules="required|email" name="E-mail">
+              <v-text-field
+              v-model="userInfo.email"
+              label="E-mail"
+              :error-messages="errors"
+              required
+              ></v-text-field>
+            </ValidationProvider>
+          </v-col>
+        </v-row> 
+        <v-row justify="center" no-gutters>
+          <v-col cols="10">
+            <v-text-field
+            v-model="userInfo.intoroduction"
+            label="Intoroductioon"
+            required
+            ></v-text-field>
+          </v-col>
+        </v-row> 
+        <v-row justify="center" no-gutters>
+          <v-col cols="10" >
+            <ValidationProvider v-slot="{ errors }" rules="required|min:8|max:15" name="Password">
+              <v-text-field 
+              v-model="userInfo.password"
+              label="Password" 
+              type="password" 
+              :error-messages="errors"
+              required 
+              ></v-text-field>
+            </ValidationProvider>
+          </v-col>
+        </v-row> 
+        <v-row justify="center" no-gutters>
+          <v-col cols="10" >
+             <ValidationProvider v-slot="{ errors }" rules="required|min:8|max:15" name="Confirmation">
+              <v-text-field 
+              v-model="userInfo.confirmation"
+              label="Confirmation" 
+              type="password" 
+              :error-messages="errors"
+              required 
+              ></v-text-field>
+            </ValidationProvider>
+          </v-col>
+        </v-row>
+        <v-row justify="center" no-gutters>
+          <v-col cols="10" >
+            <v-file-input
+            accept="image/jpg, image/jpeg, image/gif, image/png"
+            label="Profile Image"
+            placeholder="画像を投稿"
+            type="file"
+            @change="setImage"
+          ></v-file-input>
+          </v-col>
+        </v-row>
+        <v-row justify="center" no-gutters>
+          <v-col cols="10" >
+            <v-btn  color="#cefffb" block  @click="UpdateEvents" :disabled="ObserverProps.invalid || !ObserverProps.validated">
+              Update
+            </v-btn>
+          </v-col>
+        </v-row>
+      </validation-observer>
     </v-container >
   </div>
 </template>
