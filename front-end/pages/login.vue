@@ -3,7 +3,7 @@
     <AtomsNoLoginHeaderAndFooter>Paradigm Shift</AtomsNoLoginHeaderAndFooter>
     <AtomsSubHeader>Login Form</AtomsSubHeader>
     <main>
-      <v-container>
+      <v-container class=mt-12>
         <v-row justify="center" no-gutters>
           <v-col cols="10">
             <div v-show="isDisplay">
@@ -28,19 +28,19 @@
             label="Password" 
             type="password" 
             required 
-            class=mt-12
+            class=mt-16
             ></v-text-field>
           </v-col>
         </v-row>
         <v-row justify="center" no-gutters>
           <v-col cols="10" >
-            <v-btn  color="#cefffb" block class=mt-12 @click="LoginEvents">
+            <v-btn  color="#cefffb" block class=mt-16 @click="LoginEvents">
               login
             </v-btn>
           </v-col>
         </v-row>
         <v-row justify="center" no-gutters>  
-          <NuxtLink to="signUp" class=mt-12>New user ? Sign up now!</NuxtLink>
+          <NuxtLink to="signUp" class=mt-16>New user ? Sign up now!</NuxtLink>
         </v-row>
       </v-container >
     </main>
@@ -95,19 +95,7 @@ export default {
 }
 </script>
 
-<style scoped>
-.con {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;  
-}
-main {
-  flex: 1;
-  background-color: rgb(255, 255, 255);
-  overflow-y: scroll; 
-}
-</style>
+
           
              
           

@@ -3,7 +3,7 @@
     <AtomsNoLoginHeaderAndFooter>Paradigm Shift</AtomsNoLoginHeaderAndFooter>
     <AtomsSubHeader>Sign Up</AtomsSubHeader>
     <main>
-      <v-container>
+      <v-container class=mt-12>
         <validation-observer ref="obs" v-slot="ObserverProps">
         <v-row justify="center" no-gutters>
           <v-col cols="10">
@@ -120,18 +120,3 @@ export default {
 }
 </script>
 
-<style scoped>
-.con {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;  
-}
-
-main {
-  flex: 1;
-  background-color: rgb(255, 255, 255);
-  overflow-y: scroll; 
-}
-
-</style>
