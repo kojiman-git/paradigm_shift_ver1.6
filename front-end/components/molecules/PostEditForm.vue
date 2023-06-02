@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class=mt-12>
     <validation-observer ref="obs" v-slot="ObserverProps">
       <v-row justify="center" no-gutters>
         <v-col cols="10">
