@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
       @messages = @room.messages
       @messageList = []
       @messages.each do |message|
-        @messageList.push({id:message.id,userID:message.user_id,userName: message.user.name,userImage:message.user.image.thumb.url,roomId:message.room_id,Message:message.message,created_at:message.created_at})
+        @messageList.push({id:message.id,userID:message.user_id,userName: message.user.name,userImage:message.user.image.thumb.url,roomId:message.room_id,Message:message.message,created_at:message.created_at.in_time_zone('Tokyo')})
       end
     end
 

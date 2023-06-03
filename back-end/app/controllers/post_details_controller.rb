@@ -13,7 +13,7 @@ class PostDetailsController < ApplicationController
     postDetailsComments = [] 
 
     @comments.each do |comment|
-      postDetailsComments.push({id: comment.id,user_name:comment.user.name,created_at: comment.created_at,userImage:comment.user.image.thumb.url,comment:comment.comment})
+      postDetailsComments.push({id: comment.id,user_name:comment.user.name,created_at: comment.created_at.in_time_zone('Tokyo'),userImage:comment.user.image.thumb.url,comment:comment.comment})
     end
 
     postDetailsInfo = {post_id:@post.id,user_id:@post.user.id,user_name:@post.user.name,term:@post.term,paraphrase:@post.paraphrase,category:@post.m_category.name,created_at: @post.created_at,reviewsCount:@post.reviews.count,userImage:@post.user.image.thumb.url,Liked:@post.liked_by?(current_user),comments:postDetailsComments,reviewed:@reviewed}

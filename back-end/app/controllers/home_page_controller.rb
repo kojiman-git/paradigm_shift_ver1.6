@@ -45,7 +45,7 @@ class HomePageController < ApplicationController
     noticeList = []
 
     @notices.each do |notice|
-      noticeList.push({id:notice.id,content:notice.content,created_at: notice.created_at})
+      noticeList.push({id:notice.id,content:notice.content,created_at: notice.created_at.in_time_zone('Tokyo')})
     end
 
     render json: noticeList
