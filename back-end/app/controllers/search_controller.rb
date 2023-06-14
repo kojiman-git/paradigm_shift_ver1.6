@@ -10,6 +10,18 @@ class SearchController < ApplicationController
 
     render json: postList
   end
+
+  def post_keyword_search
+    @posts = Post.search(params[:keyword])
+
+    postList = []
+
+    @posts.each do |post|
+      postList.push({post_id:post.id,user_id:post.user.id,user_name:post.user.name,term:post.term,paraphrase:post.paraphrase,category:post.m_category.name,created_at: post.created_at,avg_score:post.avg_score,reviewsCount:post.reviews.count,userImage:post.user.image.thumb.url,Liked:post.liked_by?(current_user),sameID:sameID?(post)})
+    end
+
+    render json: postList
+  end
   
   def narrow_down_by_category
     @posts = Post.where(params.require(:post).permit(:m_category_id))

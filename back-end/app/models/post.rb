@@ -24,6 +24,11 @@ class Post < ApplicationRecord
       0.0
     end
   end
+
+  def self.search(keyword)
+    where(["term like? OR paraphrase like?", "%#{keyword}%", "%#{keyword}%"])
+  end
+
   
   belongs_to :m_category, optional: true
   belongs_to :user, optional: true
