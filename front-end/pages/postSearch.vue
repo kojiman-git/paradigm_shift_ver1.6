@@ -4,9 +4,13 @@
       <div>
         <v-app-bar color="#cefffb" class="text-h4">
           <v-row no-gutters align=center>
-            <v-col class=center>
+            <v-col class=center cols="2">
+              <v-text-field v-model="keyword"></v-text-field>
             </v-col>
-            <v-col class=center>
+            <v-col >
+              <v-btn
+              color="#a7f9ff"  class=ml-2 @click="postSearchEvent"
+              >search</v-btn>
             </v-col>
             <v-col class=center>
             Posts
@@ -134,7 +138,8 @@ import axios from 'axios';
         { title: '全て' ,id:7},
       ],
       postList:[],
-      filter:7
+      filter:7,
+      keyword:""
     }),
     computed:{
       PostList(){
@@ -221,6 +226,17 @@ import axios from 'axios';
             console.log(this.$data.postList);
           })
     },
+    postSearchEvent(){
+     axios
+    .get(`https://spa-back-paradigm-shift.work/search/post_keyword_search?keyword=${this.$data.keyword}`,{ withCredentials: true })
+    .then(response => {
+      this.$data.postList =  response.data 
+      console.log(this.$data.usersList);
+    })
+    .catch(error => {
+      console.error(error);
+    });  
+   },
 
   }
 }

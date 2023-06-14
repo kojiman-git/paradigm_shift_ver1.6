@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'search/post_search'
   get 'search/narrow_down_by_category'
   get 'search/user_search'
+  get 'search/post_keyword_search'
   get 'home_page/home'
   get 'home_page/quiz'
   get 'home_page/search'
