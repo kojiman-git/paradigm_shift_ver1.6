@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'search/post_keyword_search'
   get 'home_page/home'
   get 'home_page/quiz'
+  get 'home_page/quiz_filter'
   get 'home_page/search'
   get 'home_page/news'
   get 'home_page/direct_message'

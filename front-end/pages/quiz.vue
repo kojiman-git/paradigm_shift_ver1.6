@@ -36,12 +36,30 @@
                   {{this.$store.state.quizChallenge.quizList[this.count].term}}
                 </div>
               </v-col>
-              <v-col cols="3" class="end text-h4" >
-                <div v-if="this.$store.state.quizChallenge.quizList.length !== 0">
-                  {{this.$store.state.quizChallenge.quizList[this.count].category}}
-                </div>
+              <v-col cols="2" >
               </v-col>
-              <v-col cols="1" >
+              <v-col cols="2" class="end text-h4" >
+                <v-menu offset-y>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                      color="#a7f9ff"
+                      v-bind="attrs"
+                      v-on="on"
+                    >
+                      filter
+                    </v-btn>
+                  </template>
+                  <v-list>
+                    <v-list-item
+                      v-for="(item, index) in items"
+                      :key="index"
+                      link
+                      @click="filterEvent(item.id)"
+                    >
+                      <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    </v-list-item>
+                  </v-list>
+                </v-menu>
               </v-col>
             </v-row> 
           </v-sheet >
@@ -93,6 +111,15 @@ import axios from 'axios';
 export default {
  data(){
     return {
+      items: [
+        { title: '英語' ,id:1},
+        { title: '数学' ,id:2},
+        { title: '国語' ,id:3},
+        { title: '理科' ,id:4},
+        { title: '社会' ,id:5},
+        { title: 'その他' ,id:6},
+        { title: '全て' ,id:7},
+      ],
      quizList: [],
      count:0,
      hide:true,
@@ -124,6 +151,13 @@ export default {
         this.hide = true
       }   
    },
+    filterEvent(ID){
+    axios
+      .get(`https://spa-back-paradigm-shift.work/home_page/quiz_filter?post%5Bm_category_id%5D=${ID}`,{ withCredentials: true })
+      .then(response => {
+        this.$store.dispatch('quizChallenge/setEvent',response.data)
+      })
+    },
   }
 }  
 </script>

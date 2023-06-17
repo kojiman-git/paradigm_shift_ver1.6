@@ -25,6 +25,25 @@ class HomePageController < ApplicationController
    
   end
 
+  def quiz_filter
+
+    if params.require(:post).require(:m_category_id).to_i == 7
+      @posts = current_user.liked_all
+    else
+      @posts = current_user.liked_all.select{|post| post.m_category_id == params.require(:post).require(:m_category_id).to_i}
+    end
+
+    quizList = []
+
+    @posts.each do |post|
+      quizList.push({post_id:post.id,user_name:post.user.name,term:post.term,paraphrase:post.paraphrase,category:post.m_category.name,userImage:post.user.image.thumb.url})
+    end
+
+    render json: quizList
+ 
+  end
+
+  
   def search
     @users = User.all
 
