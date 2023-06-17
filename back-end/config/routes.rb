@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'rooms/show'
   get 'head_icon/app_detailed_description'
   get 'head_icon/quiz_list'
+  get 'head_icon/quiz_list_filter'
   get 'search/post_search'
   get 'search/narrow_down_by_category'
   get 'search/user_search'
