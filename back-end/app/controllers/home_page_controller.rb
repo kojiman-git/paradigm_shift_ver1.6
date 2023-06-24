@@ -64,7 +64,11 @@ class HomePageController < ApplicationController
     noticeList = []
 
     @notices.each do |notice|
-      noticeList.push({id:notice.id,content:notice.content,created_at: notice.created_at.in_time_zone('Tokyo')})
+      
+      if !notice.subjectuser.nil?
+        noticeList.push({id:notice.id,subjectuserID:notice.subjectuser.id,subjectuserImage:notice.subjectuser.image.thumb.url,content:notice.content,created_at: notice.created_at.in_time_zone('Tokyo')})
+      end 
+
     end
 
     render json: noticeList

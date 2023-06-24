@@ -41,7 +41,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
 
-  has_many :notification, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   
 
   has_many :likes, dependent: :destroy

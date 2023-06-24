@@ -2,14 +2,39 @@
   <div>
     <v-card v-for="notice in  noticeList" :key="notice.id">
       <v-row  no-gutters >
-        <v-spacer />
-        <v-col cols="6">
-         <v-card-text >
-           {{notice.content}}
-         </v-card-text>
+        <v-col cols="4" class="center">
+          <div v-if="notice.subjectuserImage === null">
+            <NuxtLink
+            :to="`/DrawerMenu/${notice.subjectuserID}/myProfile`">
+              <v-img
+                  max-height="50"
+                  max-width="50"
+                  v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
+              ></v-img>
+            </NuxtLink>
+          </div>
+          <div v-else>
+            <NuxtLink
+            :to="`/DrawerMenu/${notice.subjectuserID}/myProfile`">
+              <v-img
+                  class="user-icon"
+                  max-height="50"
+                  max-width="50"
+                  :src="`${notice.subjectuserImage}`"
+              ></v-img>
+            </NuxtLink>
+          </div>
         </v-col>
         <v-col cols="4">
-          <v-card-text >
+          <NuxtLink
+            :to="`/DrawerMenu/${notice.subjectuserID}/myProfile`">
+            <v-card-text class="center">
+            {{notice.content}}
+            </v-card-text>
+          </NuxtLink>
+        </v-col>
+        <v-col cols="4">
+          <v-card-text class="center">
            {{notice.created_at.slice(0,10)}}
           </v-card-text>
         </v-col>
@@ -24,7 +49,7 @@ import axios from 'axios';
 export default {
  data(){
     return{
-     noticeList: [],
+     noticeList: [{id:"",subjectuserID:"",subjectuserImage:"",content:"",created_at: ""}],
     }
    },
    created(){
