@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     like = Like.create(user_id: user.id, post_id: post.id)
     liked_user = User.find_by(id:post.user_id)
     if liked_user != user
-      notice = Notification.create(user_id: liked_user.id, content:"#{user.name}さんが#{post.term}の投稿をお気に入りに追加しました。")
+      Notification.create(subjectuser_id: user.id,user_id: liked_user.id, content:"#{user.name}さんが#{post.term}の投稿をお気に入りに追加しました。")
     end
     
     if like 
