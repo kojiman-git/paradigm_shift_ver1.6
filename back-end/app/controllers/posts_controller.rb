@@ -25,6 +25,36 @@ class PostsController < ApplicationController
    
   end
 
+  def getDefaultRankingData
+    
+    posts = Post.where(m_category_id:1)
+    avgPostsList = posts.sort_by { |post| -(post.avg_score) }
+     
+    postList = []
+
+    avgPostsList.each_with_index do |post,i|
+      postList.push({Rank:i+1,post_id:post.id,user_id:post.user.id,user_name:post.user.name,term:post.term,paraphrase:post.paraphrase,category:post.m_category.name,avg_score:post.avg_score,reviewsCount:post.reviews.count,userImage:post.user.image.thumb.url}) 
+    end
+     
+    render json: postList
+
+  end
+ # params.require(:subjectId)
+  def getRankingData
+    
+    posts = Post.where(m_category_id: params.require(:subjectId))
+
+    avgPostsList = posts.sort_by { |post| -(post.avg_score) }
+    
+    postList = []
+
+    avgPostsList.each_with_index do |post,i|
+      postList.push({Rank:i+1,post_id:post.id,user_id:post.user.id,user_name:post.user.name,term:post.term,paraphrase:post.paraphrase,category:post.m_category.name,avg_score:post.avg_score,reviewsCount:post.reviews.count,userImage:post.user.image.thumb.url}) 
+    end
+     
+    render json: postList
+
+  end
 
   private
 
