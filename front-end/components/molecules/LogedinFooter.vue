@@ -31,6 +31,15 @@
             </router-link> 
           </v-col>
           <v-col class=center>
+            <router-link to="/ranking">
+              <v-img
+                max-height="50"
+                max-width="50"
+                v-bind:src="require('@/assets/image/undraw_people_search_re_5rre.svg')"
+              ></v-img>
+            </router-link> 
+          </v-col>
+          <v-col class=center>
             <router-link to="/notice">
               <v-img
                 max-height="70"
