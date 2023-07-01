@@ -4,57 +4,33 @@
     <v-app-bar color="#a7f9ff" class="text-h6">
         <v-row justify="space-around"  no-gutters class=mt-2 >
           <v-col class=center>
-           <router-link to="/home">
-            <v-img
-                max-height="100"
-                max-width="90"
-                v-bind:src="require('@/assets/image/undraw_at_home_octe.svg')"
-            ></v-img>
+           <router-link to="/home" class="routerLink">
+            <v-icon x-large color="black">mdi-home</v-icon>
            </router-link>   
           </v-col>
           <v-col class=center>
-            <router-link to="/quiz">
-              <v-img
-                max-height="100"
-                max-width="70"
-                v-bind:src="require('@/assets/image/undraw_questions_re_1fy7.svg')"
-              ></v-img>
-            </router-link> 
-          </v-col>
-          <v-col class=center>
-            <router-link to="/userSearch">
-              <v-img
-                max-height="50"
-                max-width="50"
-                v-bind:src="require('@/assets/image/undraw_people_search_re_5rre.svg')"
-              ></v-img>
-            </router-link> 
-          </v-col>
-          <v-col class=center>
-            <router-link to="/ranking">
-              <v-img
-                max-height="50"
-                max-width="50"
-                v-bind:src="require('@/assets/image/undraw_people_search_re_5rre.svg')"
-              ></v-img>
-            </router-link> 
-          </v-col>
-          <v-col class=center>
-            <router-link to="/notice">
-              <v-img
-                max-height="70"
-                max-width="70"
-                v-bind:src="require('@/assets/image/undraw_notify_re_65on.svg')"
-              ></v-img>
+            <router-link to="/quiz" class="routerLink">
+              <v-icon x-large color="black">mdi-quora</v-icon>
             </router-link>
           </v-col>
           <v-col class=center>
-            <router-link to="/message">
-              <v-img
-                max-height="50"
-                max-width="60"
-                v-bind:src="require('@/assets/image/undraw_opened_re_i38e.svg')"
-              ></v-img>
+            <router-link to="/userSearch" class="routerLink">
+              <v-icon x-large color="black">mdi-magnify</v-icon>
+            </router-link> 
+          </v-col>
+          <v-col class=center>
+            <router-link to="/ranking" class="routerLink">
+              <v-icon x-large color="black">mdi-medal</v-icon>
+            </router-link> 
+          </v-col>
+          <v-col class=center>
+            <router-link to="/notice" class="routerLink">
+              <v-icon x-large color="black">mdi-exclamation-thick</v-icon>
+            </router-link>
+          </v-col>
+          <v-col class=center>
+            <router-link to="/message" class="routerLink">
+              <v-icon x-large color="black">mdi-message-text</v-icon>
             </router-link>
           </v-col>
           
@@ -74,4 +50,8 @@ export default {
  display: flex;
  justify-content: center;
 }
+
+.routerLink{
+     text-decoration: none;
+ }
 </style>

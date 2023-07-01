@@ -40,7 +40,7 @@
           :to="item.to"
         >
           <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon color="black">{{ item.icon }}</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
@@ -49,7 +49,7 @@
         </v-list-item>
         <v-list-item link>
          <v-list-item-icon>
-            <v-icon>mdi-exit-to-app</v-icon>
+            <v-icon color="black">mdi-logout</v-icon>
           </v-list-item-icon>
           <v-list-item-content @click="LogOutEvent">
             <v-list-item-title>Log Out</v-list-item-title>
@@ -93,8 +93,8 @@
           { title: 'Following', icon: 'mdi-account-multiple',to:`/DrawerMenu/${this.$store.state.currentUser.id}/following`},
           { title: 'Followers', icon: 'mdi-account-multiple-outline',to:`/DrawerMenu/${this.$store.state.currentUser.id}/followers`},
           { title: 'My Profile', icon: 'mdi-card-account-details-outline',to:`/DrawerMenu/${this.$store.state.currentUser.id}/myProfile`},
-          { title: 'Quiz List', icon: 'mdi-help-box',to:`/DrawerMenu/${this.$store.state.currentUser.id}/quizList`},
-          { title: 'Description', icon: 'mdi-forum',to: '/DrawerMenu/description',},
+          { title: 'Quiz List', icon: 'mdi-quora',to:`/DrawerMenu/${this.$store.state.currentUser.id}/quizList`},
+          { title: 'Description', icon: 'mdi-help',to: '/DrawerMenu/description',},
         ],
       }
     },
