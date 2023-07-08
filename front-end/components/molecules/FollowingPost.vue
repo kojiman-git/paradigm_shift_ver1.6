@@ -13,7 +13,7 @@
               ></v-img>
             </NuxtLink>
           </div>
-          <div v-else>
+          <div class="center" v-else>
             <NuxtLink
             :to="`/DrawerMenu/${post.user_id}/myProfile`">
               <v-img

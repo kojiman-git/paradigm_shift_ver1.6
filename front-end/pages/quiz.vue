@@ -18,7 +18,7 @@
                       v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
                     ></v-img>
                   </div>
-                  <div v-else>
+                  <div class="center" v-else>
                     <v-img
                       class="user-icon"
                       max-height="75"
