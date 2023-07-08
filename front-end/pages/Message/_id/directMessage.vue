@@ -6,8 +6,8 @@
     <div>
       <v-card v-for="Message in MessageList" :key="Message.id">
         <v-row  no-gutters justify="space-around">
-          <v-col cols="3" class="mt-4 ml-4" >
-            <div v-if="Message.userImage === null">
+          <v-col cols="1" class="mt-4" >
+            <div class="center"  v-if="Message.userImage === null">
               <NuxtLink
               :to="`/DrawerMenu/${Message.userID}/myProfile`">
                 <v-img
@@ -17,7 +17,7 @@
                 ></v-img>
               </NuxtLink>
             </div>
-            <div v-else>
+            <div class="center" v-else>
               <NuxtLink
               :to="`/DrawerMenu/${Message.userID}/myProfile`">
                 <v-img
@@ -29,17 +29,17 @@
               </NuxtLink>
             </div>
             <br>
-            <v-card-text >
+            <v-card-text class="center">
             {{Message.userName}}
             </v-card-text>
           </v-col>
-          <v-col cols="5" class="mt-4" >
+          <v-col cols="6" class="mt-4" >
             <v-card-text >
               {{Message.Message}}
             </v-card-text>
           </v-col>
-          <v-col cols="3" class="mt-4 ">
-            <v-card-text >
+          <v-col cols="2" class="mt-4">
+            <v-card-text class="center">
               {{Message.created_at.slice(0,10)}}
             </v-card-text>
           </v-col>
@@ -60,6 +60,7 @@
         <v-btn
         color="#a7f9ff" 
         @click="sendMessageEvent"
+        small
         >send</v-btn>
       </v-col>
      </v-row>

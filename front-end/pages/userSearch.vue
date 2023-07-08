@@ -20,6 +20,7 @@
             <v-col >
               <v-btn
               color="#a7f9ff"  class=ml-2 @click="userSearchEvent"
+              small
               >search</v-btn>
             </v-col>
           </v-row>
@@ -29,46 +30,46 @@
       <div>
         <v-card v-for="user in usersList" :key="user.userID">
           <v-row  no-gutters >
-            <v-col cols="3" class="mt-4 ml-4">
-            <div v-if="user.image === null">
-              <NuxtLink :to="`/DrawerMenu/${user.userID}/myProfile`">
-                <v-img
-                  max-height="75"
-                  max-width="75"
-                  v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
-                ></v-img>
-               </NuxtLink>
-            </div>
-            <div v-else>
-              <NuxtLink :to="`/DrawerMenu/${user.userID}/myProfile`">
-                <v-img
-                  class="user-icon"
-                  max-height="75"
-                  max-width="75"
-                  :src="`${user.image}`"
-                ></v-img>
-              </NuxtLink>
-            </div>
-              <br>
-              <v-card-text >
-              {{user.userName}}
-              </v-card-text>
+            <v-col cols="2" class="mt-4">
+              <div class="center" v-if="user.image === null">
+                <NuxtLink :to="`/DrawerMenu/${user.userID}/myProfile`">
+                  <v-img
+                    max-height="75"
+                    max-width="75"
+                    v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
+                  ></v-img>
+                </NuxtLink>
+              </div>
+              <div class="center" v-else>
+                <NuxtLink :to="`/DrawerMenu/${user.userID}/myProfile`">
+                  <v-img
+                    class="user-icon"
+                    max-height="75"
+                    max-width="75"
+                    :src="`${user.image}`"
+                  ></v-img>
+                </NuxtLink>
+              </div>
+              
+              <div class="center phone-font">
+               {{user.userName}}
+              </div>
             </v-col>
-            <v-col cols="5" >
-              <v-card-text >
+            <v-col cols="8" >
+              <v-card-text class="phone-font">
               自己紹介
               </v-card-text>
               <br>
-              <v-card-text >
+              <v-card-text class="phone-font">
               {{user.intoroduction}}
               </v-card-text>
             </v-col>
-            <v-col cols="3" class="center mt-4 ml-4">
+            <v-col cols="1" class="center mt-4">
               <div v-if= !user.currentUser>
-                <v-btn  v-if= user.followingJudgment color="#999999" @click="unfollowEvent(user.userID)">
+                <v-btn small  v-if= user.followingJudgment color="#999999" @click="unfollowEvent(user.userID)">
                   unfollow
                 </v-btn> 
-                <v-btn v-else color="#a7f9ff" @click="followEvent(user.userID)">
+                <v-btn small v-else color="#a7f9ff" @click="followEvent(user.userID)">
                   follow 
                 </v-btn>
               </div>

@@ -9,11 +9,9 @@
           </v-sheet>
           <v-sheet height="30vh">
             <v-row  no-gutters>
-              <v-col cols="1">
-              </v-col>
-              <v-col cols="3"  class="column text-h6">
+              <v-col cols="4">
                 <div v-if="this.$store.state.quizChallenge.quizList.length !== 0">
-                  <div v-if="this.$store.state.quizChallenge.quizList[this.count].userImage === null">
+                  <div class ="center" v-if="this.$store.state.quizChallenge.quizList[this.count].userImage === null">
                     <v-img
                       max-height="75"
                       max-width="75"
@@ -28,23 +26,24 @@
                       :src="`${this.$store.state.quizChallenge.quizList[this.count].userImage}`"
                     ></v-img>
                   </div>
-                  {{this.$store.state.quizChallenge.quizList[this.count].user_name}}
+                  <div class ="center">
+                    {{this.$store.state.quizChallenge.quizList[this.count].user_name}}
+                  </div>
                 </div>
               </v-col>
-              <v-col cols="4" class= "center text-h4">
-                <div v-if="this.$store.state.quizChallenge.quizList.length !== 0">
+              <v-col cols="4" class="center">
+                <div class="pc-font" v-if="this.$store.state.quizChallenge.quizList.length !== 0">
                   {{this.$store.state.quizChallenge.quizList[this.count].term}}
                 </div>
               </v-col>
-              <v-col cols="2" >
-              </v-col>
-              <v-col cols="2" class="end text-h4" >
+              <v-col cols="4" class="center">
                 <v-menu offset-y>
                   <template v-slot:activator="{ on, attrs }">
                     <v-btn
                       color="#a7f9ff"
                       v-bind="attrs"
                       v-on="on"
+                      class="phone-font"
                     >
                       filter
                     </v-btn>
@@ -65,13 +64,13 @@
           </v-sheet >
           <v-sheet height="36vh">
             <v-row justify="center"  no-gutters>
-              <v-col cols="12" class= "center text-h4">
+              <v-col cols="12" class= "center pc-font">
                 <div v-if="this.$store.state.quizChallenge.quizList.length !== 0">
                   <v-container>
-                    <div v-if="this.hide">
-                      上記の用語がどんな意味だったか思い出してみましょう
+                    <div v-if="this.hide" >
+                      上記用語の意味を思い出してみましょう
                     </div>
-                    <div v-else>
+                    <div v-else >
                       {{this.$store.state.quizChallenge.quizList[this.count].paraphrase}}
                     </div>
                   </v-container>
