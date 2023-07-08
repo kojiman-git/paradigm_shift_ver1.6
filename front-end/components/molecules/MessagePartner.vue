@@ -19,13 +19,12 @@
             ></v-img>
           </div>
         </v-col>
-        <v-col cols="4" class="mt-4 center text-h5">
+        <v-col cols="4" class="mt-4 center pc-font">
            <NuxtLink :to="`/Message/${message.roomId}/directMessage`">
             {{message.userName}}とのトークルームへ移動
           </NuxtLink>
         </v-col>
-        <v-col cols="4" class="mt-4 center text-h5">
-          
+        <v-col cols="4">
         </v-col>
       </v-row> 
      <v-divider></v-divider>

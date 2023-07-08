@@ -3,7 +3,7 @@
     <v-card v-for="follower in  FollowersList" :key="follower.id">
       <v-row  no-gutters >
         <v-col cols="3" class="mt-4 ml-4">
-         <div v-if="follower.userImage === null">
+         <div class="center" v-if="follower.userImage === null">
             <NuxtLink
             :to="`/DrawerMenu/${follower.user_id}/myProfile`">
             <v-img
@@ -13,7 +13,7 @@
             ></v-img>
             </NuxtLink>
          </div>
-         <div v-else>
+         <div class="center" v-else>
             <NuxtLink
             :to="`/DrawerMenu/${follower.user_id}/myProfile`">
             <v-img
@@ -25,11 +25,11 @@
             </NuxtLink>
           </div>
           <br>
-          <v-card-text >
+          <v-card-text class="center">
            {{follower.user_name}}
           </v-card-text>
         </v-col>
-        <v-col cols="5" >
+        <v-col cols="6" >
           <v-card-text >
            自己紹介
           </v-card-text>
@@ -38,11 +38,11 @@
            {{follower.intoroduction}}
           </v-card-text>
         </v-col>
-        <v-col cols="3" class="center mt-4 ml-4">
-          <v-btn  v-if=follower.follow color="#999999" @click="unfollowEvent(follower.user_id)">
+        <v-col cols="2" class="center mt-4">
+          <v-btn small v-if=follower.follow color="#999999" @click="unfollowEvent(follower.user_id)">
             unfollow
           </v-btn> 
-          <v-btn v-else color="#a7f9ff" @click="followEvent(follower.user_id)">
+          <v-btn small v-else color="#a7f9ff" @click="followEvent(follower.user_id)">
             follow 
           </v-btn>
         </v-col>

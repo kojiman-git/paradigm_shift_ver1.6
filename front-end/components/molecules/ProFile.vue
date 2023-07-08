@@ -2,15 +2,15 @@
   <div>
     <v-card >
       <v-row  no-gutters justify = space-around>
-        <v-col cols="3" class="mt-4 ml-4">
-          <div v-if="vueProfile.image === null">
+        <v-col cols="3" class="mt-4">
+          <div class="center" v-if="vueProfile.image === null">
             <v-img
                 max-height="75"
                 max-width="75"
                 v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
             ></v-img>
           </div>
-          <div v-else>
+          <div class="center" v-else>
             <v-img
                 class="user-icon"
                 max-height="75"
@@ -19,21 +19,21 @@
             ></v-img>
           </div>
           <br>
-          <v-card-text >
+          <v-card-text class="center">
            {{vueProfile.userName}}
           </v-card-text>
           <v-row  no-gutters justify = space-between>
             <v-col cols="12" >
-              <NuxtLink :to="`/DrawerMenu/${this.$data.vueProfile.userID}/following`" class="c-p" tag="span">
+              <NuxtLink :to="`/DrawerMenu/${this.$data.vueProfile.userID}/following`" class="c-p center" tag="span">
               {{vueProfile.following}} following
-              </NuxtLink><br>
-              <NuxtLink :to="`/DrawerMenu/${this.$data.vueProfile.userID}/followers`" class="c-p ml-2" tag="span">
+              </NuxtLink>
+              <NuxtLink :to="`/DrawerMenu/${this.$data.vueProfile.userID}/followers`" class="c-p ml-2 center" tag="span">
               {{vueProfile.follower}} follower
               </NuxtLink>
             </v-col>
           </v-row>
         </v-col>
-        <v-col cols="4" >
+        <v-col cols="6" >
           <v-card-text >
            自己紹介
           </v-card-text>
@@ -42,16 +42,16 @@
            {{vueProfile.intoroduction}}
           </v-card-text>
         </v-col>
-        <v-col cols="4" class=" mt-4 ml-4" >
+        <v-col cols="2" class=" mt-4 mr-8" >
           <div v-show=!vueProfile.currentUser>
-          <v-btn  v-if=vueProfile.followingJudgment color="#999999" @click="unfollowEvent(vueProfile.userID)">
+          <v-btn small v-if=vueProfile.followingJudgment color="#999999" @click="unfollowEvent(vueProfile.userID)">
             unfollow
           </v-btn> 
-          <v-btn v-else color="#a7f9ff" @click="followEvent(vueProfile.userID)">
+          <v-btn small v-else color="#a7f9ff" @click="followEvent(vueProfile.userID)">
             follow 
           </v-btn>
           <br>
-          <v-btn  color="#a7f9ff" class=" mt-4" @click="messageEvent">
+          <v-btn small color="#a7f9ff" class=" mt-4" @click="messageEvent">
             message
           </v-btn>
           </div>
@@ -61,30 +61,35 @@
     </v-card>
     <v-card v-for="post in vueProfile.userPosts" :key="post.post_id">
       <v-row  no-gutters justify="space-around">
-        <v-col cols="3" class="mt-4 ml-4" >
-          <div v-if="vueProfile.image === null">
+        <v-col cols="3" class="mt-4" >
+          <div v-if="post.userImage === null" class="center">
+            <NuxtLink
+            :to="`/DrawerMenu/${post.user_id}/myProfile`">
               <v-img
                   max-height="75"
                   max-width="75"
                   v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
               ></v-img>
+            </NuxtLink>
           </div>
-          <div>
+          <div v-else>
+            <NuxtLink
+            :to="`/DrawerMenu/${post.user_id}/myProfile`">
               <v-img
-                  class="user-icon"
-                  max-height="75"
-                  max-width="75"
-                   :src="`${post.userImage}`"
+                class="user-icon"
+                max-height="75"
+                max-width="75"
+                :src="`${post.userImage}`"
               ></v-img>
-          </div>
-          <br>
-          <v-card-text >
+            </NuxtLink>
+          </div>         
+          <v-card-text class="center phone-font">
            {{post.user_name}}
           </v-card-text>
         </v-col>
         <v-col cols="7" class="mt-4" >
         <NuxtLink :to="`/Post/${post.post_id}/PostDetail/`" tag="div" class="c-p">
-          <v-card-text >
+          <v-card-text class="phone-font">
             {{post.category}}
             <br>
             <br>
@@ -95,10 +100,10 @@
             <br>
             <br>
             評価{{post.avg_score}}/5（{{post.reviewsCount}}件のレビュー）
-          </v-card-text>
+          </v-card-text >
         </NuxtLink>
         </v-col>
-        <v-col cols="1" class="mt-4">
+        <v-col cols="1" class="likeAndDelete" >
           <v-btn 
           icon 
           v-show=post.sameID 
@@ -106,11 +111,6 @@
           >
             <v-icon >mdi-delete</v-icon>
           </v-btn>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
           <br>
           <v-btn icon>
             <v-icon 
@@ -125,8 +125,8 @@
           </v-btn>
         </v-col>
       </v-row> 
-    <v-divider></v-divider>
-    </v-card>
+     <v-divider></v-divider>
+    </v-card>  
   </div>
 </template>
 
@@ -276,5 +276,11 @@ export default {
 
 .user-icon {
   border-radius: 100px;
+}
+
+.likeAndDelete{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 </style>

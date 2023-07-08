@@ -22,4 +22,12 @@ main {
   overflow-y: scroll; 
 }
 
+@media (max-width:600px) {
+  .phone-font{ font-size: 12px;} 
+}
+
+@media (min-width:600px) {
+  .pc-font{ font-size: 25px;} 
+}
+
 </style>

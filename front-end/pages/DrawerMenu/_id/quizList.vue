@@ -20,6 +20,7 @@
                     color="#a7f9ff"
                     v-bind="attrs"
                     v-on="on"
+                    small
                   >
                     filter
                   </v-btn>
@@ -43,8 +44,8 @@
       <div>
         <v-card v-for="post in QuizList" :key="post.post_id">
           <v-row  no-gutters justify="space-around">
-            <v-col cols="3" class="mt-4 ml-4">
-              <div v-if="post.userImage === null">
+            <v-col cols="2" class="mt-4 ml-4" >
+              <div v-if="post.userImage === null" class="center">
                 <NuxtLink
                 :to="`/DrawerMenu/${post.user_id}/myProfile`">
                   <v-img
@@ -57,36 +58,35 @@
               <div v-else>
                 <NuxtLink
                 :to="`/DrawerMenu/${post.user_id}/myProfile`">
-                <v-img
-                  class="user-icon"
-                  max-height="75"
-                  max-width="75"
-                  :src="`${post.userImage}`"
-                ></v-img>
+                  <v-img
+                    class="user-icon"
+                    max-height="75"
+                    max-width="75"
+                    :src="`${post.userImage}`"
+                  ></v-img>
                 </NuxtLink>
-              </div>
-              <br>
-              <v-card-text >
+              </div>         
+              <v-card-text class="center phone-font">
               {{post.user_name}}
               </v-card-text>
             </v-col>
-            <v-col cols="7" class="mt-4" >
-              <NuxtLink :to="`/Post/${post.post_id}/PostDetail/`" tag="div" class="c-p">
-                <v-card-text >
-                  {{post.category}}
-                  <br>
-                  <br>
-                  {{post.term}}
-                  <br>
-                  <br>
-                  {{post.paraphrase}}
-                  <br>
-                  <br>
-                  評価{{post.avg_score}}/5（{{post.reviewsCount}}件のレビュー）
-                </v-card-text>
-              </NuxtLink>
+            <v-col cols="8" class="mt-4" >
+            <NuxtLink :to="`/Post/${post.post_id}/PostDetail/`" tag="div" class="c-p">
+              <v-card-text class="phone-font">
+                {{post.category}}
+                <br>
+                <br>
+                {{post.term}}
+                <br>
+                <br>
+                {{post.paraphrase}}
+                <br>
+                <br>
+                評価{{post.avg_score}}/5（{{post.reviewsCount}}件のレビュー）
+              </v-card-text >
+            </NuxtLink>
             </v-col>
-            <v-col cols="1" class="mt-4">
+            <v-col cols="1" class="likeAndDelete" >
               <v-btn 
               icon 
               v-show=post.sameID 
@@ -94,11 +94,6 @@
               >
                 <v-icon >mdi-delete</v-icon>
               </v-btn>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
               <br>
               <v-btn icon>
                 <v-icon 
@@ -113,8 +108,8 @@
               </v-btn>
             </v-col>
           </v-row> 
-        <v-divider></v-divider>
-        </v-card>
+         <v-divider></v-divider>
+        </v-card>  
       </div>
     </main>
     <MoleculesLogedinFooter/>
@@ -235,6 +230,12 @@ export default {
 .center {
  display: flex;
  justify-content: center;
-
 }
+
+.likeAndDelete{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 </style>

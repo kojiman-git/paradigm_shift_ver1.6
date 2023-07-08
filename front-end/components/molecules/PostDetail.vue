@@ -5,17 +5,15 @@
       </v-sheet>
       <v-sheet height="30vh">
         <v-row  no-gutters>
-          <v-col cols="1">
-          </v-col>
-          <v-col cols="3"  class="column text-h6">
-            <div v-if="postDetailsInfo.userImage === null">
+          <v-col cols="4"  class="column">
+            <div class="center" v-if="postDetailsInfo.userImage === null">
               <v-img
                 max-height="75"
                 max-width="75"
                 v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
               ></v-img>
             </div>
-            <div v-else>
+            <div class="center" v-else>
                <v-img
                 class="user-icon"
                 max-height="75"
@@ -23,22 +21,22 @@
                 :src="`${postDetailsInfo.userImage}`"
               ></v-img>
             </div>
-            {{postDetailsInfo.user_name}}
+            <div class="center pc-font">
+              {{postDetailsInfo.user_name}}
+            </div>
           </v-col>
-          <v-col cols="4" class= "center text-h4">
+          <v-col cols="4" class="center pc-font">
             {{postDetailsInfo.term}}
           </v-col>
-          <v-col cols="3" class="end text-h4" >
+          <v-col cols="4" class="center pc-font" >
             {{postDetailsInfo.category}}
-          </v-col>
-          <v-col cols="1" >
           </v-col>
         </v-row> 
       </v-sheet >
       <v-sheet height="34vh">
         <v-container>
           <v-row justify="center"  no-gutters>
-            <v-col cols="12" class= "center text-h4">
+            <v-col cols="12" class= "center pc-font phone-font">
               {{postDetailsInfo.paraphrase}}
             </v-col>
           </v-row>
@@ -89,19 +87,17 @@
     </v-sheet >
     <AtomsSubHeader>Comments</AtomsSubHeader>
     <v-card v-for="comment in comments" :key="comment.id">
-      <v-row  no-gutters >
-         <v-col cols="1">
-         
-        </v-col>
+      <v-row  no-gutters>
         <v-col cols="2" >
-          <div v-if="comment.userImage === null">
+          
+          <div class="center" v-if="comment.userImage === null">
             <v-img
               max-height="50"
               max-width="50"
               v-bind:src="require('@/assets/image/undraw_male_avatar_323b.svg')"
             ></v-img>
           </div>
-          <div v-else>
+          <div class="center" v-else>
               <v-img
               class="user-icon"
               max-height="50"
@@ -109,14 +105,19 @@
               :src="`${comment.userImage}`"
             ></v-img>
           </div>
-         {{comment.user_name}}
+          <div class="center">
+           {{comment.user_name}}
+          </div>
         </v-col>
-        <v-col cols="7" class="mt-4">
-         {{comment.comment}}
+        <v-col cols="6" class="mt-4 center">
+         <v-card-text>
+          {{comment.comment}}
+         </v-card-text>
         </v-col>
-        <v-col cols="2" class="mt-4">
+        <v-col cols="3" class="mt-4 center">
          {{comment.created_at.slice(0,10)}}
         </v-col>
+        
       </v-row> 
     <v-divider></v-divider>
     </v-card>
